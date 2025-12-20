@@ -22,8 +22,8 @@ const packages = Object.assign({}, ...Object.values(pnpmWorkspace.catalogs as an
 const [pm, pmVersion] = packageManager.split('@') as [string, string]
 
 const service = computed(() => ([
-	...ci ? [{ label: '构建平台', value: ciPlatform }] : [],
-	{ label: '图片存储', value: () => [h('img', { src: 'https://7.isyangs.cn/1/6553112f89de6-1.png', alt: '' }), ' 去图图床'] },
+	{ label: '构建平台', value: () => [h('img', { src: 'https://edgeone.ai/favicon.ico', alt: 'edgeone' }), 'EO Pages'] },
+	{ label: '图片存储', value: () => [h('img', { src: 'https://www.baiwulin.work/favicon.ico', alt: 'baiwulin' }), '白雾林'] },
 	{ label: '软件协议', value: 'MIT' },
 	{ label: '文章许可', value: appConfig.copyright.abbr },
 	{ label: '规范域名', value: getDomain(appConfig.url) },

@@ -10,6 +10,32 @@ export default defineAppConfig({
 	// 将 blog.config 中的配置项复制到 appConfig，方便调用
 	...blogConfig,
 
+	/** 侧边栏广告配置 */
+	ads: {
+		aside: [
+			{
+				id: 'rainyun',
+				title: '',
+				content: '',
+				url: 'https://qxzhan.cn/rainyun?s=qx',
+				target: '_blank',
+				nofollow: true,
+				image: 'https://app.rainyun.com/img/logo.d193755d.png',
+				type: 'image' as 'text' | 'image' | 'html',
+			},
+			{
+				id: 'esa',
+				title: '',
+				content: '',
+				url: 'https://qxzhan.cn/esa',
+				target: '_blank',
+				nofollow: true,
+				image: 'https://img.alicdn.com/imgextra/i3/O1CN01O8TMbq28i1lzkuiZL_!!6000000007965-2-tps-2812-1516.png',
+				type: 'image',
+			},
+		],
+	},
+
 	component: {
 		alert: {
 			/** 默认使用卡片风格还是扁平风格 */
@@ -37,7 +63,7 @@ export default defineAppConfig({
 
 		stats: {
 			/** 归档页面每年标题对应的年龄 */
-			birthYear: 2003,
+			birthYear: 2010,
 			/** blog-stats widget 的预置文本 */
 			wordCount: '约10万',
 		},
@@ -50,10 +76,10 @@ export default defineAppConfig({
 		/** 侧边栏底部图标导航 */
 		iconNav: [
 			{ icon: 'ph:house-bold', text: '个人主页', url: blogConfig.author.homepage },
-			{ icon: 'ri:qq-line', text: '交流群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
-			{ icon: 'ph:github-logo-bold', text: 'GitHub: L33Z22L11', url: 'https://github.com/L33Z22L11' },
+			{ icon: 'ri:qq-line', text: '交流群: 665751334', url: 'https://qm.qq.com/q/veCtZrS51e' },
+			{ icon: 'ph:github-logo-bold', text: 'GitHub: scfcn', url: 'https://github.com/scfcn' },
 			{ icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
-			{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/' },
+			{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/plain.html' },
 		] satisfies NavItem[],
 		/** 页脚站点地图 */
 		nav: [
@@ -61,14 +87,15 @@ export default defineAppConfig({
 				title: '探索',
 				items: [
 					{ icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
-					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/' },
+					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/plain.html' },
+					{ icon: 'ph:bug-droid-bold', text: '揪蝉', url: 'https://www.jiuchan.org/' },
 				],
 			},
 			{
 				title: '社交',
 				items: [
-					{ icon: 'ph:github-logo-bold', text: 'L33Z22L11', url: 'https://github.com/L33Z22L11' },
-					{ icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
+					{ icon: 'ph:github-logo-bold', text: 'scfcn', url: 'https://github.com/scfcn' },
+					{ icon: 'ri:qq-line', text: '群: 665751334', url: 'https://qm.qq.com/q/veCtZrS51e' },
 					{ icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
 				],
 			},
@@ -76,8 +103,7 @@ export default defineAppConfig({
 				title: '信息',
 				items: [
 					{ icon: 'simple-icons:nuxtdotjs', text: `主题: Clarity ${version}`, url: 'https://github.com/L33Z22L11/blog-v3' },
-					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: '/theme' },
-					{ icon: 'ph:certificate-bold', text: '陕ICP备2025082251号', url: 'https://beian.miit.gov.cn/' },
+					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: 'https://blog.zhilu.site/theme' },
 				],
 			},
 		] satisfies Nav,
@@ -85,11 +111,11 @@ export default defineAppConfig({
 
 	/** 左侧栏顶部 Logo */
 	header: {
-		logo: 'https://weavatar.com/avatar/47c0f2e82b76d9b10eb3023df9e02e4e3fdbeaf5b74b842063f207971e7fbe7b?s=160',
+		logo: blogConfig.author.avatar,
 		/** 展示标题文本，否则展示纯 Logo */
 		showTitle: true,
 		subtitle: blogConfig.subtitle,
-		emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
+		emojiTail: ['🌞', '🤫', '🕊️', '🎍', '👋🏻'],
 	},
 
 	/** 友链页面 */

@@ -6,11 +6,13 @@ import {
 	LazyWidgetEmpty,
 	LazyWidgetGithubCard,
 	LazyWidgetToc,
+	LazyWidgetBlogAd,
 } from '#components'
 import { pascal } from 'radash'
 
 // @keep-sorted
 const rawWidgets = {
+	LazyWidgetBlogAd,
 	LazyWidgetBlogLog,
 	LazyWidgetBlogStats,
 	LazyWidgetBlogTech,
