@@ -1,16 +1,11 @@
 ---
 title: Cloudflare、CF优选教程
 date: 2025-08-01 08:46:00
-updated: 2025/11/29 19:52:17
 type: tech
-categories:
-  - 文章
-  - 技术教程
-tags:
-  - 教程
-  - Cloudflare
+categories: [技术干货]
+tags: [Cloudflare, CF优选]
 summary: 本文介绍了Cloudflare优选方法，需准备信用卡和托管于CF的域名。通过添加DNS记录、配置SAAS回退源和自定义主机名，完成域名验证和证书配置。最后修改CNAME记录实现优选配置，建议分线路解析以规避检测。
-thumb: https://qxzhan.cn/img/cfyouxuan.webp
+image: https://qxzhan.cn/img/cfyouxuan.webp
 ---
 
 # 本期来讲讲Cloudflare的优选方法

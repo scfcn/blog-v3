@@ -1,16 +1,11 @@
 ---
 title: Github Actions 实现雨云自动签到
 date: 2025-10-06 12:33:00
-updated: 2025/11/29 19:27:10
 type: tech
-categories:
-  - 文章
-  - 技术教程
-tags:
-  - Github
-  - 雨云自动签到
+categories: [技术干货]
+tags: [Github, 雨云自动签到]
 summary: 利用GitHub Actions实现雨云自动签到，通过配置Secrets和启用工作流，实现定时运行Python脚本完成登录、验证码识别和签到，每日UTC+8 12点自动执行，失败会重试。
-thumb: https://image.lolimi.cn/2025/10/06/68e3453458717.png
+image: https://image.lolimi.cn/2025/10/06/68e3453458717.png
 ---
 
 ## 国庆放假，闲着没事干，在各大群里摸鱼，偶然发现了一个[项目](https://github.com/SerendipityR-2022/Rainyun-Qiandao)

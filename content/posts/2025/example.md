@@ -3,10 +3,9 @@ title: 组件样式示例
 date: 2024-09-21 23:18:18
 updated: 2025-02-12 11:18:33
 type: tech
-categories:
-  - [学习笔记]
-tags:
-summary:
+categories: [学习笔记]
+tags: [组件样式]
+summary: 展示 Nuxt Content 中可用的组件样式。
 ---
 
 ## 在 Markdown 中使用组件
