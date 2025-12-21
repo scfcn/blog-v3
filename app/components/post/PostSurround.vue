@@ -69,7 +69,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 	}
 
 	&[align-end] {
-		// direction: rtl 会导致末尾标点居左
+		// direction: rtl 会导致末尾标点居左;direction
 		flex-direction: row-reverse;
 		text-align: end;
 	}

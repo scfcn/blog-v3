@@ -55,6 +55,7 @@ if (import.meta.dev) {
 	/>
 
 	<PostFooter v-bind="post" />
+	<PostDonation />
 	<PostSurround />
 	<PostComment />
 </template>

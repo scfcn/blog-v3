@@ -1,12 +1,14 @@
 import {
+	LazyWidgetBlogAd,
 	LazyWidgetBlogLog,
 	LazyWidgetBlogStats,
 	LazyWidgetBlogTech,
 	LazyWidgetCommGroup,
 	LazyWidgetEmpty,
 	LazyWidgetGithubCard,
+	LazyWidgetLatestComments,
 	LazyWidgetToc,
-	LazyWidgetBlogAd,
+	LazyWidgetWelcomeVisitor,
 } from '#components'
 import { pascal } from 'radash'
 
@@ -19,7 +21,9 @@ const rawWidgets = {
 	LazyWidgetCommGroup,
 	LazyWidgetEmpty,
 	LazyWidgetGithubCard,
+	LazyWidgetLatestComments,
 	LazyWidgetToc,
+	LazyWidgetWelcomeVisitor,
 }
 
 type RawWidgetName = keyof typeof rawWidgets

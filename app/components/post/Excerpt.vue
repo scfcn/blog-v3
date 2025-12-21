@@ -47,7 +47,7 @@ if (import.meta.dev) {
 	font-size: 0.9em;
 	color: var(--c-text-2);
 
-	// animation: fadein 3s;
+	// animation: fadein 3s;animationanimation
 
 	.iconify {
 		margin-inline-end: 0.3em;

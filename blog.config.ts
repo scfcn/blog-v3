@@ -7,7 +7,7 @@ const basicConfig = {
 	description: '青序栈：代码与远方交汇的小站。这里记录网站部署的实战经验、技术学习的点滴思考，也分享旅途中的风景与感悟。欢迎驻足，交换故事。',
 	author: {
 		name: '筱序二十',
-		avatar: 'https://qxzhan.cn/favicon.ico',
+		avatar: 'https://q.qlogo.cn/g?b=qq&nk=2907713872&s=640',
 		email: 'qxbk@qq.com',
 		homepage: 'https://me.qxzhan.cn/',
 	},
@@ -58,6 +58,16 @@ const blogConfig = {
 		robotsNotIndex: ['/preview', '/previews/*'],
 	},
 
+	/** 赞赏配置 */
+	donation: {
+		enable: true,
+		message: '感谢您的支持，这将激励我创作更多优质内容！',
+		items: {
+			支付宝: 'https://image.lolimi.cn/2025/10/07/68e47ecc3e3a9.jpg',
+			微信: 'https://image.lolimi.cn/2025/10/07/68e47ecc450c5.png',
+		},
+	},
+
 	/** 博客 Atom 订阅源 */
 	feed: {
 		/** 订阅源最大文章数量 */
@@ -69,9 +79,9 @@ const blogConfig = {
 	/** 向 <head> 中添加脚本 */
 	scripts: [
 		// 自己部署的 Umami 统计服务
-		{ 'src': 'https://um.qxzhan.cn/script.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
+		{ 'src': 'https://um.qxzhan.cn/script.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true, 'crossorigin': 'anonymous' },
 		// Twikoo 评论系统
-		{ 'src': 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', 'defer': true },
+		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true, crossorigin: 'anonymous' },
 	],
 
 	/** 自己部署的 Twikoo 服务 */

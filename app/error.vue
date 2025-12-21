@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
+import { removeHtmlTags } from '~/utils/str'
 
 const props = defineProps<{
 	error: NuxtError & { url?: string }

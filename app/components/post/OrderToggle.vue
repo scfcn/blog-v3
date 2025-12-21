@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ArticleOrderType } from '~/types/article'
+import { getCategoryIcon } from '~/composables/useArticle'
 
 const props = defineProps<{
 	// 强制允许或禁止升序
@@ -11,11 +12,17 @@ const props = defineProps<{
 const appConfig = useAppConfig()
 const orderMap = appConfig.article.order
 // 配置文件中允许升序时，且未明确禁用升序时，允许升序
-const allowAscending = computed(() => appConfig.pagination.allowAscending ? !props.disableAscending : props.enableAscending)
+const allowAscending = computed(() => {
+	const configAllow = appConfig.pagination.allowAscending ?? false
+	if (configAllow) {
+		return props.disableAscending !== true
+	}
+	return props.enableAscending === true
+})
 
-const category = defineModel<string>('category')
+const category = defineModel<string | undefined>('category', { default: undefined })
 const sortOrder = defineModel<ArticleOrderType>('sortOrder', { default: 'date' })
-const isAscending = defineModel<boolean>('isAscending')
+const isAscending = defineModel<boolean>('isAscending', { default: false })
 
 function toggleOrder() {
 	const orderKeys = Object.keys(orderMap) as (ArticleOrderType)[]
@@ -31,24 +38,26 @@ function toggleDirection() {
 
 <template>
 <div class="order-toggle">
-	<ZDropdown trigger="focusin" tabindex="0">
-		<button :disabled="!categories">
-			<Icon :name="getCategoryIcon(category)" />
-			<span class="order-text">{{ category ?? '全部分类' }}</span>
-		</button>
-
-		<template #content="{ hide }">
-			<button :class="{ active: !category }" @click="hide(), category = undefined">
-				<Icon :name="getCategoryIcon()" />
-				<span>全部分类</span>
+	<ClientOnly>
+		<ZDropdown trigger="focusin" tabindex="0">
+			<button :disabled="!categories || categories.length === 0">
+				<Icon :name="getCategoryIcon(category)" />
+				<span class="order-text">{{ category ?? '全部分类' }}</span>
 			</button>
 
-			<button v-for="item in categories" :key="item" :class="{ active: item === category }" @click="hide(), category = item">
-				<Icon :name="getCategoryIcon(item)" />
-				<span>{{ item }}</span>
-			</button>
-		</template>
-	</ZDropdown>
+			<template #content="{ hide }">
+				<button :class="{ active: !category }" @click="hide(), category = undefined">
+					<Icon :name="getCategoryIcon()" />
+					<span>全部分类</span>
+				</button>
+
+				<button v-for="item in categories" :key="item" :class="{ active: item === category }" @click="hide(), category = item">
+					<Icon :name="getCategoryIcon(item)" />
+					<span>{{ item }}</span>
+				</button>
+			</template>
+		</ZDropdown>
+	</ClientOnly>
 
 	<span>
 		<button v-if="allowAscending" aria-label="切换排序方向" @click="toggleDirection">

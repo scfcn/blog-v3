@@ -6,17 +6,7 @@ import pnpmWorkspace from '~~/pnpm-workspace.yaml'
 const appConfig = useAppConfig()
 const { public: { arch, ci, nodeVersion, platform } } = useRuntimeConfig()
 
-const ciPlatform = computed(() => {
-	const iconName = ciIcons[ci]
-	if (!iconName)
-		return ''
 
-	const iconNode = iconName.startsWith('http')
-		? h('img', { src: iconName, alt: '' })
-		: h(Icon, { name: iconName })
-
-	return h('span', {}, [iconNode, ` ${ci.split(' ')[0]}`])
-})
 
 const packages = Object.assign({}, ...Object.values(pnpmWorkspace.catalogs as any)) as Record<string, string>
 const [pm, pmVersion] = packageManager.split('@') as [string, string]

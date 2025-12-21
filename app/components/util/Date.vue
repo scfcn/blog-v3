@@ -3,11 +3,11 @@ import { differenceInWeeks, isSameYear } from 'date-fns'
 import { toDate } from 'date-fns-tz'
 
 const props = withDefaults(defineProps<{
-	icon?: string
-	date: string
-	absolute?: boolean
-	relative?: boolean
-	nospace?: boolean
+	icon?: string;
+	date: string;
+	absolute?: boolean;
+	relative?: boolean;
+	nospace?: boolean;
 	tipPrefix?: string
 }>(), {
 	tipPrefix: '',

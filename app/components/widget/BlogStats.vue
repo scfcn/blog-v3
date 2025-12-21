@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { UtilDate } from '#components'
+import { h } from 'vue'
 
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()

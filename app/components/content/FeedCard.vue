@@ -28,6 +28,7 @@ function getInspectStyle(src: string): CSSProperties {
 	return {
 		border: `2px solid ${color}`,
 		boxSizing: 'content-box',
+		boxSizingboxSizing,
 	}
 }
 </script>
