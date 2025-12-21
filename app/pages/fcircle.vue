@@ -10,41 +10,62 @@ const description = '发现更多有趣的博主。'
 const image = 'https://i.p-i.vip/135/20251129-692ade5d9f367.webp'
 useSeoMeta({ title, description, ogImage: image })
 
+// 类型定义
+interface Article {
+	id: string;
+	title: string;
+	link: string;
+	author: string;
+	created: string;
+	avatar: string;
+}
+
+interface UserConfigType {
+	api_url: string;
+	page_size: number;
+}
+
 // 配置选项
-const UserConfig = reactive({
+const UserConfig = reactive<UserConfigType>({
 	api_url: 'https://fc.qxzhan.cn/',
 	page_size: 20,
 })
 
 // 状态管理
-const allArticles = ref([])
-const displayCount = ref(20)
-const isLoading = ref(true)
-const randomArticle = ref(null)
-const showAvatarPopup = ref(false)
-const selectedAuthor = ref('')
-const selectedAuthorAvatar = ref('')
-const selectedArticleLink = ref('')
-const articlesByAuthor = ref({})
-const lastUpdatedDate = ref('')
+const allArticles = ref<Article[]>([])
+const displayCount = ref<number>(20)
+const isLoading = ref<boolean>(true)
+const randomArticle = ref<Article | null>(null)
+const showAvatarPopup = ref<boolean>(false)
+const selectedAuthor = ref<string>('')
+const selectedAuthorAvatar = ref<string>('')
+const selectedArticleLink = ref<string>('')
+const articlesByAuthor = ref<Record<string, Article[]>>({})
+const lastUpdatedDate = ref<string>('')
+const errorMessage = ref<string>('')
 
 // 计算属性
 const displayedArticles = computed(() => allArticles.value.slice(0, displayCount.value))
 const hasMoreArticles = computed(() => allArticles.value.length > displayCount.value)
 
 // 格式化日期
-function formatDate(dateString) {
+function formatDate(dateString: string): string {
 	if (!dateString)
 		return ''
 
-	const appConfig = useAppConfig()
-	return toDate(dateString, { timeZone: appConfig.timezone })
-		.toLocaleDateString(undefined, {
-			year: 'numeric',
-			month: '2-digit',
-			day: '2-digit',
-		})
-		.replace(/\//g, '-')
+	try {
+		const appConfig = useAppConfig()
+		return toDate(dateString, { timeZone: appConfig.timezone })
+			.toLocaleDateString(undefined, {
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+			})
+			.replace(/\//g, '-')
+	} catch (error) {
+		console.error('日期格式化失败:', error)
+		return dateString
+	}
 }
 
 // 刷新随机文章
@@ -52,6 +73,8 @@ function refreshRandomArticle() {
 	if (allArticles.value.length > 0) {
 		const randomIndex = Math.floor(Math.random() * allArticles.value.length)
 		randomArticle.value = allArticles.value[randomIndex]
+	} else {
+		randomArticle.value = null
 	}
 }
 
@@ -84,17 +107,28 @@ function handleClickOutside(event) {
 async function fetchData() {
 	try {
 		isLoading.value = true
+		errorMessage.value = ''
 		const response = await fetch(`${UserConfig.api_url}all.json`)
+		
+		if (!response.ok) {
+			throw new Error(`HTTP错误! 状态码: ${response.status}`)
+		}
+		
 		const data = await response.json()
 
-		// 处理数据
-		allArticles.value = data.article_data.map(item => ({
-			id: item.link + Math.random(), // 确保唯一ID
-			title: item.title,
-			link: item.link,
-			author: item.author,
-			created: item.created,
-			avatar: item.avatar,
+		// 验证数据格式
+		if (!data || !Array.isArray(data.article_data)) {
+			throw new Error('数据格式错误: 缺少article_data数组')
+		}
+
+		// 处理数据 - 使用更可靠的ID生成方式
+		allArticles.value = data.article_data.map((item, index) => ({
+			id: `${item.link}-${index}-${new Date(item.created).getTime()}`, // 更可靠的唯一ID
+			title: item.title || '无标题',
+			link: item.link || '#',
+			author: item.author || '未知作者',
+			created: item.created || new Date().toISOString(),
+			avatar: item.avatar || '',
 		}))
 
 		// 按作者分组
@@ -111,13 +145,15 @@ async function fetchData() {
 		// 设置最新更新日期
 		if (allArticles.value.length > 0) {
 			const sortedArticles = [...allArticles.value].sort((a, b) =>
-				new Date(b.created) - new Date(a.created),
+				new Date(b.created).getTime() - new Date(a.created).getTime(),
 			)
 			lastUpdatedDate.value = formatDate(sortedArticles[0].created)
 		}
 	}
 	catch (error) {
 		console.error('加载文章失败:', error)
+		errorMessage.value = error instanceof Error ? error.message : '加载文章失败，请稍后重试'
+		allArticles.value = [] // 确保错误时文章列表为空
 	}
 	finally {
 		isLoading.value = false
@@ -127,6 +163,7 @@ async function fetchData() {
 // 生命周期钩子
 onMounted(() => {
 	fetchData()
+	document.addEventListener('click', handleClickOutside) // 添加事件监听
 })
 
 onUnmounted(() => {
@@ -148,8 +185,14 @@ onUnmounted(() => {
 
 <div class="page-fcircle">
 	<div class="fcircle">
+		<!-- 加载指示器 -->
+		<div v-if="isLoading" class="loading-container">
+			<div class="loading-spinner"></div>
+			<p>加载中...</p>
+		</div>
+
 		<!-- 随机文章区域 -->
-		<div v-if="randomArticle" class="fcircle__random-article">
+		<div v-else-if="randomArticle" class="fcircle__random-article">
 			<div class="fcircle__random-title">
 				随机文章
 			</div>
@@ -208,19 +251,20 @@ onUnmounted(() => {
 			@click="loadMore"
 		/>
 
-		<!-- 空状态 -->
+		<!-- 空状态和错误状态 -->
 		<div v-if="!isLoading && allArticles.length === 0" class="error-container">
-			<Icon class="error-container__icon" name="ph:file-text-bold" />
-			<p>暂无文章数据</p>
+			<Icon class="error-container__icon" :name="errorMessage ? 'ph:warning-circle-bold' : 'ph:file-text-bold'" />
+			<p>{{ errorMessage || '暂无文章数据' }}</p>
 			<p class="empty-hint">
-				请稍后再试
+				{{ errorMessage ? '请检查网络连接或稍后再试' : '请稍后再试' }}
 			</p>
+			<ZButton v-if="errorMessage" class="btn-retry" text="重试" @click="fetchData" />
 		</div>
 
 		<!-- 作者模态框 - 时间线样式 -->
 		<Transition name="modal">
 			<div
-				v-if="showAvatarPopup && selectedAuthor && articlesByAuthor[selectedAuthor]"
+				v-if="showAvatarPopup && selectedAuthor"
 				id="avatar-popup"
 				class="modal"
 				@click="closeAvatarPopup"
@@ -228,14 +272,15 @@ onUnmounted(() => {
 				<div class="modal__content" @click.stop>
 					<div class="modal__header">
 						<NuxtImg
-							:src="selectedAuthorAvatar"
+							:src="selectedAuthorAvatar || ''"
 							:alt="selectedAuthor"
 							loading="lazy"
 							class="modal__avatar-img"
+							fallback-src=""
 						/>
 						<h3>{{ selectedAuthor }}</h3>
 						<a
-							:href="selectedArticleLink"
+							:href="selectedArticleLink || '#'"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="modal__author-link"
@@ -244,7 +289,7 @@ onUnmounted(() => {
 						</a>
 					</div>
 					<div class="modal__body">
-						<div class="timeline">
+						<div v-if="articlesByAuthor[selectedAuthor] && articlesByAuthor[selectedAuthor].length > 0" class="timeline">
 							<div
 								v-for="(article, index) in articlesByAuthor[selectedAuthor].slice(0, 10)"
 								:key="article.id"
@@ -263,12 +308,16 @@ onUnmounted(() => {
 								</a>
 							</div>
 						</div>
+						<div v-else class="timeline-empty">
+							<p>该作者暂无文章</p>
+						</div>
 					</div>
 					<div class="modal__avatar">
 						<NuxtImg
-							:src="selectedAuthorAvatar"
+							:src="selectedAuthorAvatar || ''"
 							:alt="selectedAuthor"
 							loading="lazy"
+							fallback-src=""
 						/>
 					</div>
 				</div>
@@ -614,7 +663,55 @@ onUnmounted(() => {
   height: 400px;
   justify-content: center;
 
-  .error-container__icon { font-size: 4rem; }
+  .error-container__icon {
+    font-size: 4rem;
+    color: var(--color-primary);
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
+
+  .btn-retry {
+    margin-top: 1rem;
+  }
+}
+
+/* 加载容器 */
+.loading-container {
+  align-items: center;
+  color: var(--c-text-2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 400px;
+  justify-content: center;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-hint {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.timeline-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-style: italic;
 }
 
 /* 移动端适配 */

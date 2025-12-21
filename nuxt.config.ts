@@ -72,6 +72,10 @@ export default defineNuxtConfig({
 			// https://github.com/nuxt/content/issues/2378
 			autoSubfolderIndex: CLOUDFLARE_PAGES || GITHUB_ACTIONS || NETLIFY ? false : undefined,
 		},
+		compressPublicAssets: {
+      	gzip: true,
+      	brotli: true
+    	},
 	},
 
 	// @keep-sorted
