@@ -86,7 +86,7 @@ summary: 谈谈不受欢迎的博客技术特征
 ::link-card
 ---
 title: 参见：通过 CDN 引入图标 CSS
-link: /2024/vitepress-enhancement#通过-cdn-引入图标-css
+link: https://blog.zhilu.site/2024/vitepress-enhancement#通过-cdn-引入图标-css
 ---
 ::
 
