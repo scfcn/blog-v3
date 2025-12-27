@@ -3,26 +3,28 @@ const { donation } = useAppConfig()
 </script>
 
 <template>
-<div v-if="donation?.enable" class="donation">
-	<Tooltip :delay="200" interactive hide-on-click="toggle" max-width="">
-		<ZButton class="donate-button" icon="ph:heart-fill" text="赞赏作者" />
-		<template #content>
-			<div class="donation-content">
-				<div v-if="Object.keys(donation.items).length" class="donation-list">
-					<figure v-for="(image, label) in donation.items" :key="label" class="donation-item">
-						<UtilImg class="image" width="160" height="160" :src="image" />
-						<figcaption class="label">
-							{{ label }}
-						</figcaption>
-					</figure>
+<UtilHydrateSafe>
+	<div v-if="donation?.enable" class="donation">
+		<Tooltip :delay="200" interactive hide-on-click="toggle" max-width="">
+			<ZButton class="donate-button" icon="ph:heart-fill" text="赞赏作者" />
+			<template #content>
+				<div class="donation-content">
+					<div v-if="Object.keys(donation.items).length" class="donation-list">
+						<figure v-for="(image, label) in donation.items" :key="label" class="donation-item">
+							<UtilImg class="image" width="160" height="160" :src="image" />
+							<figcaption class="label">
+								{{ label }}
+							</figcaption>
+						</figure>
+					</div>
+					<p v-if="donation.message" class="donation-message">
+						{{ donation.message }}
+					</p>
 				</div>
-				<p v-if="donation.message" class="donation-message">
-					{{ donation.message }}
-				</p>
-			</div>
-		</template>
-	</Tooltip>
-</div>
+			</template>
+		</Tooltip>
+	</div>
+</UtilHydrateSafe>
 </template>
 
 <style lang="scss" scoped>

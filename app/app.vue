@@ -1,3 +1,11 @@
+<script setup lang="ts">
+// 页面加载时立即初始化外链拦截器，使用事件委托确保所有链接都能被拦截
+if (import.meta.client) {
+	const { setupGlobalInterceptor } = useExternalLink({ enabled: true })
+	setupGlobalInterceptor()
+}
+</script>
+
 <template>
 <NuxtLoadingIndicator />
 <NuxtRouteAnnouncer :style="{ position: 'absolute' }" />

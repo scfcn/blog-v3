@@ -73,9 +73,9 @@ export default defineNuxtConfig({
 			autoSubfolderIndex: CLOUDFLARE_PAGES || GITHUB_ACTIONS || NETLIFY ? false : undefined,
 		},
 		compressPublicAssets: {
-      	gzip: true,
-      	brotli: true
-    	},
+			gzip: true,
+			brotli: true,
+		},
 	},
 
 	// @keep-sorted

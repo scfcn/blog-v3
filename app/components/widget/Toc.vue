@@ -47,10 +47,12 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 	</DefineTemplate>
 
 	<UtilHydrateSafe>
-		<ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
-		<p v-else class="no-toc">
-			暂无目录信息
-		</p>
+		<div :key="toc?.links?.length">
+			<ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
+			<p v-else class="no-toc">
+				暂无目录信息
+			</p>
+		</div>
 	</UtilHydrateSafe>
 </BlogWidget>
 </template>

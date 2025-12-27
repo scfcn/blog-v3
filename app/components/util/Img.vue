@@ -3,10 +3,10 @@ import ImageComponent from '#build/mdc-image-component.mjs'
 import { joinURL, withLeadingSlash, withTrailingSlash } from 'ufo'
 
 const props = withDefaults(defineProps<{
-	src: string;
-	width?: string | number;
-	height?: string | number;
-	alt?: string;
+	src: string
+	width?: string | number
+	height?: string | number
+	alt?: string
 	mirror?: ImgService
 }>(), {
 	alt: '',

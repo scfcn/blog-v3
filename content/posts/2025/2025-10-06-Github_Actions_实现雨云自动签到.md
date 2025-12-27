@@ -4,7 +4,7 @@ date: 2025-10-06 12:33:00
 type: tech
 categories: [技术干货]
 tags: [Github, 雨云自动签到]
-summary: 利用GitHub Actions实现雨云自动签到，通过配置Secrets和启用工作流，实现定时运行Python脚本完成登录、验证码识别和签到，每日UTC+8 12点自动执行，失败会重试。
+description: 利用GitHub Actions实现雨云自动签到，通过配置Secrets和启用工作流，实现定时运行Python脚本完成登录、验证码识别和签到，每日UTC+8 12点自动执行，失败会重试。
 image: https://image.lolimi.cn/2025/10/06/68e3453458717.png
 ---
 

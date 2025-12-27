@@ -12,17 +12,17 @@ useSeoMeta({ title, description, ogImage: image })
 
 // 类型定义
 interface Article {
-	id: string;
-	title: string;
-	link: string;
-	author: string;
-	created: string;
-	avatar: string;
+	id: string
+	title: string
+	link: string
+	author: string
+	created: string
+	avatar: string
 }
 
 interface UserConfigType {
-	api_url: string;
-	page_size: number;
+	api_url: string
+	page_size: number
 }
 
 // 配置选项
@@ -48,10 +48,10 @@ const errorMessage = ref<string>('')
 const displayedArticles = computed(() => allArticles.value.slice(0, displayCount.value))
 const hasMoreArticles = computed(() => allArticles.value.length > displayCount.value)
 const selectedAuthorArticles = computed(() => {
-  if (!selectedAuthor.value) {
-    return []
-  }
-  return articlesByAuthor.value[selectedAuthor.value] || []
+	if (!selectedAuthor.value) {
+		return []
+	}
+	return articlesByAuthor.value[selectedAuthor.value] || []
 })
 const hasSelectedAuthorArticles = computed(() => selectedAuthorArticles.value.length > 0)
 
@@ -69,7 +69,8 @@ function formatDate(dateString: string): string {
 				day: '2-digit',
 			})
 			.replace(/\//g, '-')
-	} catch (error) {
+	}
+	catch (error) {
 		console.error('日期格式化失败:', error)
 		return dateString
 	}
@@ -81,7 +82,8 @@ function refreshRandomArticle() {
 		const randomIndex = Math.floor(Math.random() * allArticles.value.length)
 		const article = allArticles.value[randomIndex]
 		randomArticle.value = article || null
-	} else {
+	}
+	else {
 		randomArticle.value = null
 	}
 }
@@ -117,11 +119,11 @@ async function fetchData() {
 		isLoading.value = true
 		errorMessage.value = ''
 		const response = await fetch(`${UserConfig.api_url}all.json`)
-		
+
 		if (!response.ok) {
 			throw new Error(`HTTP错误! 状态码: ${response.status}`)
 		}
-		
+
 		const data = await response.json()
 
 		// 验证数据格式
@@ -199,7 +201,7 @@ onUnmounted(() => {
 	<div class="fcircle">
 		<!-- 加载指示器 -->
 		<div v-if="isLoading" class="loading-container">
-			<div class="loading-spinner"></div>
+			<div class="loading-spinner" />
 			<p>加载中...</p>
 		</div>
 

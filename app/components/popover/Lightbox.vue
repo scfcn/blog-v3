@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
-	el: HTMLImageElement;
-	caption?: string;
+	el: HTMLImageElement
+	caption?: string
 	show?: boolean
 }>()
 
@@ -18,9 +18,9 @@ const lightboxEl = useCurrentElement<HTMLImageElement>(lightbox)
 const { width: winW, height: winH } = useWindowSize()
 
 interface Pointer {
-	startX: number;
-	startY: number;
-	currentX: number;
+	startX: number
+	startY: number
+	currentX: number
 	currentY: number
 }
 

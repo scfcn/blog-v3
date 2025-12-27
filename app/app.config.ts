@@ -42,6 +42,25 @@ export default defineAppConfig({
 			defaultStyle: 'card' as 'card' | 'flat',
 		},
 
+		/** 外链安全提示 */
+	externalLink: {
+		/** 是否启用外链安全提示 */
+		enabled: true,
+		/** 白名单域名，这些域名不会触发安全提示 */
+		whitelist: [
+			'qxzhan.cn',
+			'localhost',
+			'github.com',
+			'qq.com',
+			'travellings.cn',
+			'jiuchan.org',
+		],
+		/** 强制跳转页面，支持字符串路径或正则表达式，这些页面会启用外链安全提示 */
+		pageWhitelist: [],
+		/** 禁用跳转页面，支持字符串路径或正则表达式，这些页面会禁用外链安全提示 */
+		pageBlacklist: [/link/],
+	},
+
 		codeblock: {
 			/** 代码块触发折叠的行数 */
 			triggerRows: 32,
@@ -123,7 +142,7 @@ export default defineAppConfig({
 		/** 无订阅源展示静音图标 */
 		remindNoFeed: true,
 		/** 友链分组内随机排序 */
-		randomInGroup: true,
+		randomInGroup: false,
 	},
 
 	/** 左侧栏导航 */

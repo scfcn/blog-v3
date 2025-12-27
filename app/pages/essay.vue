@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { fetchTalks } from '../talks'
-import { toDate } from 'date-fns-tz'
-import { ref, onMounted } from 'vue'
 import type { TalkItem } from '../types/talk'
+import { toDate } from 'date-fns-tz'
+import { onMounted, ref } from 'vue'
+import { fetchTalks } from '../talks'
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-tech', 'blog-log', 'comm-group'])
@@ -21,65 +21,69 @@ const currentPage = ref(1)
 const hasMore = ref(true)
 
 async function loadTalks(showLoading = true) {
-  if (showLoading) {
-    isLoading.value = true
-    loadError.value = false
-  }
-  
-  try {
-    const talks = await fetchTalks()
-    const sortedTalks = [...talks]
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 30)
-    
-    recentTalks.value = sortedTalks
-    hasMore.value = sortedTalks.length >= 30
-  } catch (error) {
-    console.error('获取说说数据失败:', error)
-    loadError.value = true
-  } finally {
-    if (showLoading) {
-      isLoading.value = false
-    }
-  }
+	if (showLoading) {
+		isLoading.value = true
+		loadError.value = false
+	}
+
+	try {
+		const talks = await fetchTalks()
+		const sortedTalks = [...talks]
+			.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+			.slice(0, 30)
+
+		recentTalks.value = sortedTalks
+		hasMore.value = sortedTalks.length >= 30
+	}
+	catch (error) {
+		console.error('获取说说数据失败:', error)
+		loadError.value = true
+	}
+	finally {
+		if (showLoading) {
+			isLoading.value = false
+		}
+	}
 }
 
 onMounted(async () => {
-  loadTalks()
+	loadTalks()
 })
 
 function replyTalk(content?: string): void {
-  const input = document.querySelector('#twikoo .tk-input textarea')
-  if (!(input instanceof HTMLTextAreaElement)) return
+	const input = document.querySelector('#twikoo .tk-input textarea')
+	if (!(input instanceof HTMLTextAreaElement))
+		return
 
-  if (content?.trim()) {
-    const quotes = content.split('\n').map(str => `> ${str}`)
-    input.value = `${quotes}\n\n`
-  } else {
-    input.value = ''
-  }
-  input.dispatchEvent(new InputEvent('input'))
+	if (content?.trim()) {
+		const quotes = content.split('\n').map(str => `> ${str}`)
+		input.value = `${quotes}\n\n`
+	}
+	else {
+		input.value = ''
+	}
+	input.dispatchEvent(new InputEvent('input'))
 
-  const length = input.value.length
-  input.setSelectionRange(length, length)
-  input.focus()
+	const length = input.value.length
+	input.setSelectionRange(length, length)
+	input.focus()
 }
 
 function getEssayDate(date?: string | Date) {
-  if (!date) {
-    return ''
-  }
-  
-  const appConfig = useAppConfig()
-  return toDate(date, { timeZone: appConfig.timezone })
-    .toLocaleString(undefined, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    })
-    .replace(/\//g, '-') 
+	if (!date) {
+		return ''
+	}
+
+	const appConfig = useAppConfig()
+	return toDate(date, { timeZone: appConfig.timezone })
+		.toLocaleString(undefined, {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+			hour: '2-digit',
+			minute: '2-digit',
+		})
+		.replace(/\//g, '-')
 }
 </script>
 
@@ -87,103 +91,105 @@ function getEssayDate(date?: string | Date) {
 <ZPageBanner :title :description :image />
 
 <div class="talk-list">
-  <!-- 加载状态 -->
-  <template v-if="isLoading">
-    <div class="loading-state">
-      <div class="skeleton" v-for="i in 3" :key="`skeleton-${i}`">
-        <div class="skeleton-meta">
-          <div class="skeleton-avatar"></div>
-          <div class="skeleton-info">
-            <div class="skeleton-nick"></div>
-            <div class="skeleton-date"></div>
-          </div>
-        </div>
-        <div class="skeleton-content">
-          <div class="skeleton-text"></div>
-          <div class="skeleton-text"></div>
-          <div class="skeleton-text"></div>
-        </div>
-        <div class="skeleton-bottom">
-          <div class="skeleton-tags"></div>
-        </div>
-      </div>
-    </div>
-  </template>
+	<!-- 加载状态 -->
+	<template v-if="isLoading">
+		<div class="loading-state">
+			<div v-for="i in 3" :key="`skeleton-${i}`" class="skeleton">
+				<div class="skeleton-meta">
+					<div class="skeleton-avatar" />
+					<div class="skeleton-info">
+						<div class="skeleton-nick" />
+						<div class="skeleton-date" />
+					</div>
+				</div>
+				<div class="skeleton-content">
+					<div class="skeleton-text" />
+					<div class="skeleton-text" />
+					<div class="skeleton-text" />
+				</div>
+				<div class="skeleton-bottom">
+					<div class="skeleton-tags" />
+				</div>
+			</div>
+		</div>
+	</template>
 
-  <!-- 错误状态 -->
-  <template v-else-if="loadError">
-    <div class="error-state">
-      <div class="error-content">
-        <Icon name="ph:alert-circle-bold" class="error-icon" />
-        <h3>加载失败</h3>
-        <p>获取说说数据时出现错误，请稍后重试</p>
-        <button class="retry-btn" @click="() => loadTalks()">
-        <Icon name="ph:refresh-bold" />
-        重试
-      </button>
-      </div>
-    </div>
-  </template>
+	<!-- 错误状态 -->
+	<template v-else-if="loadError">
+		<div class="error-state">
+			<div class="error-content">
+				<Icon name="ph:alert-circle-bold" class="error-icon" />
+				<h3>加载失败</h3>
+				<p>获取说说数据时出现错误，请稍后重试</p>
+				<button class="retry-btn" @click="() => loadTalks()">
+					<Icon name="ph:refresh-bold" />
+					重试
+				</button>
+			</div>
+		</div>
+	</template>
 
-  <!-- 内容状态 -->
-  <template v-else>
-    <!-- 空状态 -->
-    <div class="empty-state" v-if="recentTalks.length === 0">
-      <Icon name="ph:chat-circle-bold" class="empty-icon" />
-      <p>暂无说说内容</p>
-    </div>
+	<!-- 内容状态 -->
+	<template v-else>
+		<!-- 空状态 -->
+		<div v-if="recentTalks.length === 0" class="empty-state">
+			<Icon name="ph:chat-circle-bold" class="empty-icon" />
+			<p>暂无说说内容</p>
+		</div>
 
-    <!-- 内容列表 -->
-    <transition-group name="talk-fade" tag="div" v-else>
-      <div class="talk-item" v-for="talk in recentTalks" :key="talk.id || talk.date">
-        <div class="talk-meta">
-          <NuxtImg class="avatar" :src="author.avatar" :alt="author.name" />
-          <div class="info">
-            <div class="nick">
-              {{ author.name }}
-              <Icon class="verified" name="i-material-symbols:verified" />
-            </div>
-            <div class="date">{{ getEssayDate(talk.date) }}</div>
-          </div>
-        </div>
+		<!-- 内容列表 -->
+		<transition-group v-else name="talk-fade" tag="div">
+			<div v-for="talk in recentTalks" :key="talk.id || talk.date" class="talk-item">
+				<div class="talk-meta">
+					<NuxtImg class="avatar" :src="author.avatar" :alt="author.name" />
+					<div class="info">
+						<div class="nick">
+							{{ author.name }}
+							<Icon class="verified" name="i-material-symbols:verified" />
+						</div>
+						<div class="date">
+							{{ getEssayDate(talk.date) }}
+						</div>
+					</div>
+				</div>
 
-        <div class="talk-content">
-          <div class="text" v-if="talk.text" v-html="talk.text"></div>
-          <div class="images" v-if="talk.images">
-            <Pic class="image" v-for="(image, index) in talk.images" :key="index" :src="image" />
-          </div>
-          <VideoEmbed class="video" v-if="talk.video" v-bind="talk.video" height="" />
-        </div>
+				<div class="talk-content">
+					<div v-if="talk.text" class="text" v-html="talk.text" />
+					<div v-if="talk.images" class="images">
+						<Pic v-for="(image, index) in talk.images" :key="index" class="image" :src="image" />
+					</div>
+					<VideoEmbed v-if="talk.video" class="video" v-bind="talk.video" height="" />
+				</div>
 
-        <div class="talk-bottom">
-          <div class="tags">
-            <span class="tag" v-for="tag in talk.tags" :key="tag">
-              <Icon name="ph:tag-bold" />
-              <span>{{ tag }}</span>
-            </span>
-            <a
-              class="location"
-              v-if="talk.location"
-              v-tip="`搜索: ${talk.location}`"
-              :href="`https://bing.com/maps?q=${encodeURIComponent(talk.location)}`"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon name="ph:map-pin-bold" />
-              <span>{{ talk.location }}</span>
-            </a>
-          </div>
-          <button class="comment-btn" v-tip="'评论'" @click="replyTalk(talk.text)">
-            <Icon name="ph:chats-bold" />
-          </button>
-        </div>
-      </div>
-    </transition-group>
+				<div class="talk-bottom">
+					<div class="tags">
+						<span v-for="tag in talk.tags" :key="tag" class="tag">
+							<Icon name="ph:tag-bold" />
+							<span>{{ tag }}</span>
+						</span>
+						<a
+							v-if="talk.location"
+							v-tip="`搜索: ${talk.location}`"
+							class="location"
+							:href="`https://bing.com/maps?q=${encodeURIComponent(talk.location)}`"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<Icon name="ph:map-pin-bold" />
+							<span>{{ talk.location }}</span>
+						</a>
+					</div>
+					<button v-tip="'评论'" class="comment-btn" @click="replyTalk(talk.text)">
+						<Icon name="ph:chats-bold" />
+					</button>
+				</div>
+			</div>
+		</transition-group>
 
-    <div class="talk-footer">
-      <p>仅显示最近 30 条记录</p>
-    </div>
-  </template>
+		<div class="talk-footer">
+			<p>仅显示最近 30 条记录</p>
+		</div>
+	</template>
 </div>
 
 <PostComment />
