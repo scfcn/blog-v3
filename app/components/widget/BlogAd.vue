@@ -9,7 +9,7 @@ const ads = computed(() => appConfig.ads?.aside || [])
 <div v-if="ads.length">
 	<BlogWidget card title="广告">
 		<div class="ad-container">
-			<div v-for="(ad, index) in ads" :key="ad.id" class="ad-item" :class="{ 'ad-item-separated': index > 0 }">
+			<div v-for="(ad, index) in ads" :key="index" class="ad-item" :class="{ 'ad-item-separated': index > 0 }">
 				<a
 					v-if="ad.url"
 					:href="ad.url"

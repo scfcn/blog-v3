@@ -47,6 +47,13 @@ const errorMessage = ref<string>('')
 // 计算属性
 const displayedArticles = computed(() => allArticles.value.slice(0, displayCount.value))
 const hasMoreArticles = computed(() => allArticles.value.length > displayCount.value)
+const selectedAuthorArticles = computed(() => {
+  if (!selectedAuthor.value) {
+    return []
+  }
+  return articlesByAuthor.value[selectedAuthor.value] || []
+})
+const hasSelectedAuthorArticles = computed(() => selectedAuthorArticles.value.length > 0)
 
 // 格式化日期
 function formatDate(dateString: string): string {
@@ -72,7 +79,8 @@ function formatDate(dateString: string): string {
 function refreshRandomArticle() {
 	if (allArticles.value.length > 0) {
 		const randomIndex = Math.floor(Math.random() * allArticles.value.length)
-		randomArticle.value = allArticles.value[randomIndex]
+		const article = allArticles.value[randomIndex]
+		randomArticle.value = article || null
 	} else {
 		randomArticle.value = null
 	}
@@ -84,7 +92,7 @@ function loadMore() {
 }
 
 // 模态框相关
-function showAvatarPosts(author, avatar, articleLink) {
+function showAvatarPosts(author: string, avatar: string, articleLink: string) {
 	selectedAuthor.value = author
 	selectedAuthorAvatar.value = avatar
 	selectedArticleLink.value = articleLink
@@ -96,9 +104,9 @@ function closeAvatarPopup() {
 }
 
 // 监听点击外部关闭弹窗
-function handleClickOutside(event) {
+function handleClickOutside(event: MouseEvent) {
 	const popup = document.getElementById('avatar-popup')
-	if (popup && !popup.contains(event.target) && showAvatarPopup.value) {
+	if (popup && event.target instanceof Node && !popup.contains(event.target) && showAvatarPopup.value) {
 		closeAvatarPopup()
 	}
 }
@@ -122,7 +130,7 @@ async function fetchData() {
 		}
 
 		// 处理数据 - 使用更可靠的ID生成方式
-		allArticles.value = data.article_data.map((item, index) => ({
+		allArticles.value = data.article_data.map((item: any, index: number) => ({
 			id: `${item.link}-${index}-${new Date(item.created).getTime()}`, // 更可靠的唯一ID
 			title: item.title || '无标题',
 			link: item.link || '#',
@@ -132,10 +140,12 @@ async function fetchData() {
 		}))
 
 		// 按作者分组
-		articlesByAuthor.value = allArticles.value.reduce((acc, article) => {
-			if (!acc[article.author])
-				acc[article.author] = []
-			acc[article.author].push(article)
+		articlesByAuthor.value = allArticles.value.reduce((acc: Record<string, Article[]>, article: Article) => {
+			const author = article.author
+			if (!acc[author]) {
+				acc[author] = []
+			}
+			acc[author].push(article)
 			return acc
 		}, {})
 
@@ -147,7 +157,9 @@ async function fetchData() {
 			const sortedArticles = [...allArticles.value].sort((a, b) =>
 				new Date(b.created).getTime() - new Date(a.created).getTime(),
 			)
-			lastUpdatedDate.value = formatDate(sortedArticles[0].created)
+			if (sortedArticles[0]) {
+				lastUpdatedDate.value = formatDate(sortedArticles[0].created)
+			}
 		}
 	}
 	catch (error) {
@@ -289,9 +301,9 @@ onUnmounted(() => {
 						</a>
 					</div>
 					<div class="modal__body">
-						<div v-if="articlesByAuthor[selectedAuthor] && articlesByAuthor[selectedAuthor].length > 0" class="timeline">
+						<div v-if="hasSelectedAuthorArticles" class="timeline">
 							<div
-								v-for="(article, index) in articlesByAuthor[selectedAuthor].slice(0, 10)"
+								v-for="(article, index) in selectedAuthorArticles.slice(0, 10)"
 								:key="article.id"
 								class="timeline__item"
 								:style="{ '--delay': `${0.2 + index * 0.1}s` }"
