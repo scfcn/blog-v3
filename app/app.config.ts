@@ -10,32 +10,6 @@ export default defineAppConfig({
 	// 将 blog.config 中的配置项复制到 appConfig，方便调用
 	...blogConfig,
 
-	/** 侧边栏广告配置 */
-	ads: {
-		aside: [
-			{
-				id: 'rainyun',
-				title: '',
-				content: '',
-				url: 'https://qxzhan.cn/rainyun?s=qx',
-				target: '_blank',
-				nofollow: true,
-				image: 'https://app.rainyun.com/img/logo.d193755d.png',
-				type: 'image' as 'text' | 'image' | 'html',
-			},
-			{
-				id: 'esa',
-				title: '',
-				content: '',
-				url: 'https://qxzhan.cn/esa',
-				target: '_blank',
-				nofollow: true,
-				image: 'https://img.alicdn.com/imgextra/i3/O1CN01O8TMbq28i1lzkuiZL_!!6000000007965-2-tps-2812-1516.png',
-				type: 'image',
-			},
-		],
-	},
-
 	component: {
 		alert: {
 			/** 默认使用卡片风格还是扁平风格 */

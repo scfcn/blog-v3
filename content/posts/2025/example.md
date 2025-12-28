@@ -1,11 +1,14 @@
 ---
 title: 组件样式示例
 date: 2024-09-21 23:18:18
-updated: 2025-02-12 11:18:33
+updated: 2025-12-28 11:18:33
 type: tech
 categories: [学习笔记]
 tags: [组件样式]
 description: 展示 Nuxt Content 中可用的组件样式。
+references:
+  - title: 纸鹿摸鱼处 - 组件样式示例
+    link: https://blog.zhilu.site/previews/example
 ---
 
 ## 在 Markdown 中使用组件

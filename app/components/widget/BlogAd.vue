@@ -1,8 +1,19 @@
 <script setup lang="ts">
-const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
 
-// 获取侧边栏广告配置
-const ads = computed(() => appConfig.ads?.aside || [])
+// 定义广告类型
+interface Ad {
+  url?: string
+  target?: string
+  nofollow?: boolean
+  title?: string
+  type?: 'image' | 'html' | string
+  image?: string
+  content?: string
+}
+
+// 获取侧边栏广告配置，从runtimeConfig中获取确保在生产环境中可用
+const ads = computed(() => (runtimeConfig.public.ads?.aside || []) as Ad[])
 </script>
 
 <template>

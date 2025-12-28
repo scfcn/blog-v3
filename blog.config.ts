@@ -16,7 +16,7 @@ const basicConfig = {
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	favicon: 'https://qxzhan.cn/favicon.ico',
+	favicon: 'https://qxzhan.cn/favicon.svg',
 	language: 'zh-CN',
 	timeEstablished: '2024-07-18',
 	timezone: 'Asia/Shanghai',
@@ -41,14 +41,14 @@ const blogConfig = {
 		defaultCategoryIcon: 'ph:folder-bold',
 		/** 文章版式，首个为默认版式 */
 		types: {
-			tech: {},
-			story: {},
+			tech: { icon: 'ph:cpu-bold', color: '#3af' },
+			story: { icon: 'ph:pen-nib-bold', color: '#3ba' },
 		},
 		/** 分类排序方式，键为排序字段，值为显示名称 */
 		order: {
 			date: '创建日期',
 			updated: '更新日期',
-			// title: '标题',
+			title: '标题',
 		},
 		/** 使用 pnpm new 新建文章时自动生成自定义链接（permalink/abbrlink） */
 		useRandomPremalink: false,
@@ -79,9 +79,12 @@ const blogConfig = {
 	/** 向 <head> 中添加脚本 */
 	scripts: [
 		// 自己部署的 Umami 统计服务
-		{ 'src': 'https://um.qxzhan.cn/script.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true, 'crossorigin': 'anonymous' },
+		{ src: 'https://um.qxzhan.cn/script.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', defer: true, crossorigin: 'anonymous' as const },
 		// Twikoo 评论系统
-		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true, crossorigin: 'anonymous' },
+		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true, crossorigin: 'anonymous' as const },
+		// MXANA统计
+		{ charset: 'UTF-8', id: 'MXA_COLLECT', src: '//mxana.tacool.com/sdk.js' },
+		{ innerHTML: 'MXA.init({ id: "c1-QatIDZ0E", useHeatMap: true, useHash: true, useErrorLog: true })' },
 	],
 
 	/** 自己部署的 Twikoo 服务 */
