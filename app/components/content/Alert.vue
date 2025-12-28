@@ -41,6 +41,11 @@ const typeMap = {
 		color: '#F33',
 		title: '错误',
 	},
+	success: {
+		icon: 'ph:check-circle-bold',
+		color: '#3A7',
+		title: '成功',
+	},
 }
 
 const icon = computed(() => props.icon || typeMap[props.type].icon)
