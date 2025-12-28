@@ -4,6 +4,7 @@ date: 2025-09-27 18:39:00
 type: tech
 categories: [技术干货]
 tags: [EdgeOne, 教程]
+recommend: 10
 description: 本文介绍了如何免费搭建多源头像API，支持通过MD5值、邮箱或QQ号获取头像，并详细阐述了在EdgeOne中添加站点、配置边缘函数及触发条件的步骤。该API利用EdgeOne的免费资源，无需担心用量超限，并提供在线使用体验。
 image: https://i.p-i.vip/135/20251129-692a7697a3235.webp
 ---

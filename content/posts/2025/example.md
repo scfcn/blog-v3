@@ -6,6 +6,7 @@ type: tech
 categories: [学习笔记]
 tags: [组件样式]
 description: 展示 Nuxt Content 中可用的组件样式。
+recommend: 15
 references:
   - title: 纸鹿摸鱼处 - 组件样式示例
     link: https://blog.zhilu.site/previews/example

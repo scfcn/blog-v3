@@ -4,6 +4,7 @@ date: 2025-08-25 10:40:00
 type: tech
 categories: [技术干货]
 tags: [EdgeOne]
+recommend: 10
 description: 使用Eo Pages搭建随机图API，Fork Acgapi仓库，选择加速区域，部署main分支。访问路径包括/get（双端自适应）、/pc（电脑端）和/pe（移动端），注意调整图片存储和数量。
 image: https://api.wudu.ltd/api/acg/
 ---

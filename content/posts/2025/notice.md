@@ -5,6 +5,7 @@ updated: 2025-11-29 14:36:19
 type: tech
 categories: [随笔杂谈]
 tags: [通知]
+recommend: 10
 description: 初三学业压力大，暂停更新。网站经历技术问题，已恢复但丢失部分内容。将调整投入学业，更换数据库，期间可能短暂不可用。
 image: https://eimg.yujiay.wang/images/2025/11/29/image.png
 ---
