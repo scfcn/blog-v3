@@ -21,7 +21,7 @@
   ],
   "redirects": [
     {
-        "source": "/post/:id",
+        "source": "/post/:id.php",
         "destination": "/2025/:id",
         "statusCode": 301
     }
