@@ -21,9 +21,9 @@
   ],
   "redirects": [
     {
-      "destination": "https://www.zhilu.site/api/icon",
-      "source": "/favicon.ico",
-      "status": 308
+        "source": "/post/:id",
+        "destination": "/2025/:id",
+        "statusCode": 301
     }
   ]
 }
