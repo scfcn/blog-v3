@@ -1,5 +1,4 @@
 import {
-	LazyWidgetBlogAd,
 	LazyWidgetBlogLog,
 	LazyWidgetBlogStats,
 	LazyWidgetBlogTech,
@@ -13,7 +12,6 @@ import { pascal } from 'radash'
 
 // @keep-sorted
 const rawWidgets = {
-	LazyWidgetBlogAd,
 	LazyWidgetBlogLog,
 	LazyWidgetBlogStats,
 	LazyWidgetBlogTech,

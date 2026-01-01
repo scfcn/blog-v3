@@ -100,31 +100,6 @@ export default defineNuxtConfig({
 			ci: env.TENCENTCLOUD_RUNENV === 'SCF' ? 'EdgeOne' : ciName || '',
 			nodeVersion,
 			platform,
-			// 广告配置，使用runtimeConfig确保在生产环境中可用
-			ads: {
-				aside: [
-					{
-						id: 'rainyun',
-						title: '',
-						content: '',
-						url: 'https://qxzhan.cn/rainyun?s=qx',
-						target: '_blank',
-						nofollow: true,
-						image: 'https://app.rainyun.com/img/logo.d193755d.png',
-						type: 'image',
-					},
-					{
-						id: 'esa',
-						title: '',
-						content: '',
-						url: 'https://qxzhan.cn/esa',
-						target: '_blank',
-						nofollow: true,
-						image: 'https://img.alicdn.com/imgextra/i3/O1CN01O8TMbq28i1lzkuiZL_!!6000000007965-2-tps-2812-1516.png',
-						type: 'image',
-					},
-				],
-			},
 		},
 	},
 
