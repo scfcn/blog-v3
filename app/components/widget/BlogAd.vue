@@ -13,7 +13,11 @@ interface Ad {
 }
 
 // 获取侧边栏广告配置，从runtimeConfig中获取确保在生产环境中可用
-const ads = computed(() => (runtimeConfig.public.ads?.aside || []) as Ad[])
+const ads = computed(() => {
+  const asideAds = runtimeConfig.public.ads?.aside || []
+  console.log('广告配置:', asideAds)
+  return asideAds as Ad[]
+})
 </script>
 
 <template>

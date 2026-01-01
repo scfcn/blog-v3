@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue'
 import { fetchTalks } from '../talks'
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog-stats', 'blog-tech', 'blog-log', 'comm-group'])
+layoutStore.setAside(['blog-stats', 'blog-log', 'comm-group'])
 
 const title = '说说'
 const description = '记录生活点滴，一些想法。'

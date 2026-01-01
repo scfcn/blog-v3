@@ -6,7 +6,6 @@ import {
 	LazyWidgetCommGroup,
 	LazyWidgetEmpty,
 	LazyWidgetGithubCard,
-	LazyWidgetLatestComments,
 	LazyWidgetToc,
 	LazyWidgetWelcomeVisitor,
 } from '#components'
@@ -21,7 +20,6 @@ const rawWidgets = {
 	LazyWidgetCommGroup,
 	LazyWidgetEmpty,
 	LazyWidgetGithubCard,
-	LazyWidgetLatestComments,
 	LazyWidgetToc,
 	LazyWidgetWelcomeVisitor,
 }

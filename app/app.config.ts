@@ -28,6 +28,9 @@ export default defineAppConfig({
 			'qq.com',
 			'travellings.cn',
 			'jiuchan.org',
+			'blogscn.fun',
+			'boyouquan.com',
+			'blogsclub.org',
 		],
 		/** 强制跳转页面，支持字符串路径或正则表达式，这些页面会启用外链安全提示 */
 		pageWhitelist: [],
@@ -79,8 +82,9 @@ export default defineAppConfig({
 			{
 				title: '探索',
 				items: [
-					{ icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
 					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/plain.html' },
+					{ icon: 'logos:blogger', text: '笔墨迹', url: 'https://blogscn.fun/' },
+					{ icon: 'el:livejournal', text: '博友圈', url: 'https://www.boyouquan.com/home' },
 					{ icon: 'ph:bug-droid-bold', text: '揪蝉', url: 'https://www.jiuchan.org/' },
 				],
 			},
@@ -97,6 +101,7 @@ export default defineAppConfig({
 				items: [
 					{ icon: 'simple-icons:nuxtdotjs', text: `主题: Clarity ${version}`, url: 'https://github.com/L33Z22L11/blog-v3' },
 					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: 'https://blog.zhilu.site/theme' },
+					{ icon: 'streamline-ultimate-color:blogger-logo', text: 'BlogsClub', url: 'https://www.blogsclub.org/' },
 				],
 			},
 		] satisfies Nav,
