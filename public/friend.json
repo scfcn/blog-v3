@@ -1,11 +1,6 @@
 {
   "friends": [
     [
-      "青序栈",
-      "https://www.qixz.cn/",
-      "https://q.qlogo.cn/g?b=qq&nk=2907713872&s=640"
-    ],
-    [
       "纸鹿摸鱼处",
       "https://blog.zhilu.site/",
       "https://weavatar.com/avatar/47c0f2e82b76d9b10eb3023df9e02e4e3fdbeaf5b74b842063f207971e7fbe7b?s=160"
@@ -16,6 +11,11 @@
       "https://oss-cdn.bsgun.cn/logo/avatar.256.png"
     ],
     [
+      "𝙛𝙞𝙨𝙝𝙘𝙥𝙮",
+      "https://blog.fis.ink/",
+      "https://file.fis.ink/img/fishcpy/logo.png"
+    ],
+    [
       "柒渊阁",
       "https://www.myxz.top/",
       "https://sourceimage.s3.bitiful.net/myxz.avif"
@@ -23,7 +23,17 @@
     [
       "朽丘秋雨",
       "https://koxiuqiu.cn/",
-      "https://image.lolimi.cn/2025/07/23/6880e2af521da.png"
+      "https://koxiuqiu.cn/img/avatar/xiaokeb.png"
+    ],
+    [
+      "安知鱼",
+      "https://blog.anheyu.com/",
+      "https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"
+    ],
+    [
+      "清羽飞扬",
+      "https://blog.liushen.fun/",
+      "https://q.qlogo.cn/g?b=qq&nk=3162475700&s=640"
     ],
     [
       "FrWalker",
@@ -38,7 +48,7 @@
     [
       "葱苓小筑",
       "https://blog.ciraos.top/",
-      "https://blog.ciraos.top/api/f/RgeK/avatar1.avif"
+      "https://i.p-i.vip/135/20260102-6957b41708b60.png"
     ],
     [
       "Imz",
@@ -61,13 +71,8 @@
       "https://www.xscnet.cn/avatar1.jpg"
     ],
     [
-      "𝙛𝙞𝙨𝙝𝙘𝙥𝙮",
-      "https://blog.fis.ink/",
-      "https://www.fis.ink/img/logo.png"
-    ],
-    [
       "AcoFork",
-      "https://acofork.com/",
+      "https://blog.acofork.com/",
       "https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=5"
     ],
     [
@@ -147,7 +152,7 @@
     ],
     [
       "天海博客",
-      "https://www.woolyun.com",
+      "https://woolyun.com",
       "https://i.p-i.vip/135/20251129-692a6da7aa977.png"
     ],
     [
@@ -241,14 +246,9 @@
       "https://scdn.us.kg/gh/huang233893/blog-image-bed@main/top/huang233893/imgs/blog/usersumi.png"
     ],
     [
-      "安知鱼",
-      "https://blog.anheyu.com/",
-      "https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"
-    ],
-    [
-      "清羽飞扬",
-      "https://blog.liushen.fun/",
-      "https://q.qlogo.cn/g?b=qq&nk=3162475700&s=640"
+      "Tavre",
+      "https://blog.tavr.top/",
+      "https://q1.qlogo.cn/g?b=qq&nk=2987304764&s=640"
     ]
   ]
 }

@@ -1,10 +1,12 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env tsx
 
 import fs from 'node:fs'
 import path from 'node:path'
 
 // 直接导入feeds.ts模块
 import feedGroups from '../app/feeds'
+
+// 调试信息已移除
 
 // 定义必要的接口
 export interface Friend {
@@ -78,6 +80,9 @@ export function generateFcircleJson() {
 }
 
 // 直接运行时执行
-if (import.meta.url === new URL(process.argv[1], import.meta.url).href) {
+// 使用更可靠的方式检查是否直接运行脚本
+if (process.argv[1]?.endsWith('generate-friend.ts')) {
+	console.log('开始执行generateFcircleJson函数')
 	generateFcircleJson()
+	console.log('generateFcircleJson函数执行完毕')
 }
