@@ -66,7 +66,7 @@ caption: 创建新的边缘函数
 
 3. 选择后点击下一步，填入代码：
 
-[获取代码点我](https://gist.qxzhan.cn/qxzhan/3d1e9efd866e444598fe64d646ac2fd2)
+[获取代码点我](https://gist.qixz.cn/qxzhan/3d1e9efd866e444598fe64d646ac2fd2)
 
 4. 点击“创建并部署”：
 

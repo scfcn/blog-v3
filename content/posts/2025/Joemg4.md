@@ -4,10 +4,11 @@ date: 2025-08-25 20:23:00
 type: tech
 categories: [技术干货]
 tags: [魔改, Joe]
+recommend: 10
 description: 文章介绍了如何为网站添加个性化定位欢迎信息功能，主要使用JavaScript代码实现。通过调用IP查询API获取用户位置信息，并根据用户所在地显示不同的欢迎语和距离提示。代码还包含根据本地时间切换欢迎语的功能，并适配了IPv6地址显示。最后，通过在HTML中添加自定义侧边栏代码，即可实现前端效果。
 image: https://scdn.xn--kiv.fun/cn/2025/08/25/68ac55967104c.jpg
 ---
-recommend: 10
+
 ## 功能介绍
 
 之前在逛[青桔气球](https://blog.qjqq.cn/)网站时，发现了一个非常精美的侧边栏欢迎卡片功能。这个功能可以根据用户的地理位置和本地时间显示个性化的欢迎信息。我花费了大约十天的时间，将这个功能适配到了Joe主题中。
@@ -33,7 +34,7 @@ caption: 个性化定位欢迎信息效果预览
 
 ### 步骤1：获取JavaScript代码
 
-核心JavaScript代码来自[筱序二十の代码分享](https://gist.qxzhan.cn/qxzhan/9793845b7896488cae8ef10294ef8f30)。
+核心JavaScript代码来自[筱序二十の代码分享](https://gist.qixz.cn/qxzhan/9793845b7896488cae8ef10294ef8f30)。
 
 ::alert{type="warning"}
 **重要提示**：
@@ -96,7 +97,7 @@ caption: 最终效果预览
 ## 参考文章
 
 - [Hexo侧边栏添加个性定位欢迎信息](https://blog.qjqq.cn/posts/2a52.html)
-- [筱序二十の代码分享](https://gist.qxzhan.cn/qxzhan/9793845b7896488cae8ef10294ef8f30)
+- [筱序二十の代码分享](https://gist.qixz.cn/qxzhan/9793845b7896488cae8ef10294ef8f30)
 
 ## 每日精选
 

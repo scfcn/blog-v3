@@ -22,7 +22,7 @@ export default defineAppConfig({
 		enabled: true,
 		/** 白名单域名，这些域名不会触发安全提示 */
 		whitelist: [
-			'qxzhan.cn',
+			'qixz.cn',
 			'localhost',
 			'github.com',
 			'qq.com',
@@ -130,10 +130,11 @@ export default defineAppConfig({
 			title: '',
 			items: [
 				{ icon: 'ph:files-bold', text: '文章', url: '/' },
-				{ icon: 'ph:link-bold', text: '友链', url: '/link' },
 				{ icon: 'ph:archive-bold', text: '归档', url: '/archive' },
-				{ icon: 'ph:chat-circle-bold', text: '说说', url: '/essay' },
+				{ icon: 'ph:tag-bold', text: '标签', url: '/tags' },
+				{ icon: 'ph:link-bold', text: '友链', url: '/link' },
 				{ icon: 'ph:users-bold', text: '鱼塘', url: '/fcircle' },
+				{ icon: 'ph:chat-circle-bold', text: '说说', url: '/essay' },
 			],
 		},
 	] satisfies Nav,

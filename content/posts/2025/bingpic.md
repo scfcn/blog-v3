@@ -6,7 +6,7 @@ categories: [技术干货]
 tags: [EdgeOne]
 recommend: 10
 description: 本文介绍了如何部署Bing每日图片项目，包括在GitHub上Fork原仓库、启用GitHub Actions工作流、部署前端页面至Vercel或Netlify等平台，并添加了随机图片功能。通过新建get.js文件并运行工作流，可在部署域名下获取随机图片。
-image: https://bing.qxzhan.cn/daily.webp
+image: https://bing.qixz.cn/daily.webp
 ---
 
 ::alert{type="success"}
@@ -109,7 +109,7 @@ caption: 新建get.js文件
 ---
 ::
 
-3. 从[筱序二十の代码分享](https://gist.qxzhan.cn/qxzhan/eobingapi)获取代码内容并粘贴到`get.js`文件中
+3. 从[筱序二十の代码分享](https://gist.qixz.cn/qxzhan/eobingapi)获取代码内容并粘贴到`get.js`文件中
 4. 保存并提交更改
 5. 重新运行GitHub Actions工作流
 6. 等待工作流执行完成并重新部署
@@ -148,7 +148,7 @@ caption: 工作流执行成功
 
 ::pic
 ---
-src: https://bing.qxzhan.cn/get/
+src: https://bing.qixz.cn/get/
 caption: Bing随机图片效果
 ---
 ::

@@ -3,6 +3,7 @@ const appConfig = useAppConfig()
 const timeEstablished = appConfig.timeEstablished
 
 const blogLog = [
+	{ label: '2026-1-2', value: '加入网络门户，启用域名 qixz.cn，完成迁移收尾'},
 	{ label: '2025-12-20', value: '博客迁移blog-v3' },
 	{ label: '2025-07-13', value: '博客迁移 Typecho，并启用域名 qxzhan.cn' },
 	{ label: timeEstablished, value: '发布第一篇文章' },

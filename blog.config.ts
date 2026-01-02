@@ -6,21 +6,21 @@ const basicConfig = {
 	// 长 description 利好于 SEO
 	description: '青序栈：代码与远方交汇的小站。这里记录网站部署的实战经验、技术学习的点滴思考，也分享旅途中的风景与感悟。欢迎驻足，交换故事。',
 	author: {
-		name: '筱序二十',
-		avatar: 'https://q.qlogo.cn/g?b=qq&nk=2907713872&s=640',
+		name: '青序栈',
+		avatar: 'https://www.qixz.cn/favicon.svg',
 		email: 'qxbk@qq.com',
-		homepage: 'https://me.qxzhan.cn/',
+		homepage: 'https://me.qixz.cn/',
 	},
 	copyright: {
 		abbr: 'CC BY-NC-SA 4.0',
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	favicon: 'https://qxzhan.cn/favicon.svg',
+	favicon: 'https://www.qixz.cn/favicon.svg',
 	language: 'zh-CN',
 	timeEstablished: '2024-07-18',
 	timezone: 'Asia/Shanghai',
-	url: 'https://qxzhan.cn/',
+	url: 'https://www.qixz.cn/',
 	defaultCategory: '未分类',
 }
 
@@ -79,18 +79,15 @@ const blogConfig = {
 	/** 向 <head> 中添加脚本 */
 	scripts: [
 		// 自己部署的 Umami 统计服务
-		{ src: 'https://um.qxzhan.cn/script.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', defer: true, crossorigin: 'anonymous' as const },
+		{ src: 'https://um.qixz.cn/script.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', defer: true, crossorigin: 'anonymous' as const },
 		// Twikoo 评论系统
 		{ src: 'https://lib.baomitu.com/twikoo/1.6.44/twikoo.min.js', defer: true, crossorigin: 'anonymous' as const },
-		// MXANA统计
-		{ charset: 'UTF-8', id: 'MXA_COLLECT', src: '//mxana.tacool.com/sdk.js' },
-		{ innerHTML: 'MXA.init({ id: "c1-QatIDZ0E", useHeatMap: true, useHash: true, useErrorLog: true })' },
 	],
 
 	/** 自己部署的 Twikoo 服务 */
 	twikoo: {
-		envId: 'https://twikoo.qxzhan.cn/',
-		preload: 'https://twikoo.qxzhan.cn/',
+		envId: 'https://twikoo.qixz.cn/',
+		preload: 'https://twikoo.qixz.cn/',
 	},
 }
 
@@ -104,7 +101,7 @@ export const myFeed: FeedEntry = {
 	feed: new URL('/atom.xml', blogConfig.url).toString(),
 	icon: blogConfig.favicon,
 	avatar: blogConfig.author.avatar,
-	archs: ['Nuxt', 'EdgeOne'],
+	archs: ['Nuxt', 'Cloudflare'],
 	date: blogConfig.timeEstablished,
 	comment: '栈主本栈啦~',
 }

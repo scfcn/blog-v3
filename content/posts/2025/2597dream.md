@@ -1,7 +1,7 @@
 ---
 title: 2025/9/7 梦记
 date: 2025-09-07 07:38:00
-type: essay
+type: talk
 categories: [随笔杂谈]
 tags: [梦记]
 recommend: 15

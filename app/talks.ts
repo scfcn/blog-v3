@@ -36,7 +36,7 @@ export interface ApiTalkItem {
 
 export async function fetchTalks(): Promise<TalkItem[]> {
 	try {
-		const response = await fetch('https://mm.qxzhan.cn/api/echo/page')
+		const response = await fetch('https://mm.qixz.cn/api/echo/page')
 		const data: ApiResponse = await response.json()
 
 		if (data.code !== 1) {

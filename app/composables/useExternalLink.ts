@@ -8,9 +8,8 @@ interface ExternalLinkOptions {
 }
 
 const defaultWhitelist = [
-	'qxzhan.cn',
+	'qixz.cn',
 	'localhost',
-	'github.com',
 ]
 
 let ExternalLinkDialog: any
