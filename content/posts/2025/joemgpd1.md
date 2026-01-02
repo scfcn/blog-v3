@@ -1,25 +1,26 @@
 ---
 title: Joe再续前缘魔改铺垫（一）
 date: 2025-07-24 13:42:00
+updated: 2026-01-02 12:00:00
 type: tech
 categories: [技术干货]
 tags: [Joe魔改]
-summary: 从Hexo安知鱼主题迁移后，旧美化教程不适用，作者研究两三天移植部分内容，本期为魔改教程铺垫。介绍了柳神两个项目“朋友圈精简版”和“友链状态检测”的适配方法，包括新建api文件夹和php文件，实现伪静态静态化json。下期将出适配鱼塘的教程。
+recommend: 13
+description: 从Hexo安知鱼主题迁移后，旧美化教程不适用，作者研究两三天移植部分内容，本期为魔改教程铺垫。介绍了柳神两个项目“朋友圈精简版”和“友链状态检测”的适配方法，包括新建api文件夹和php文件，实现伪静态静态化json。下期将出适配鱼塘的教程。
 image: https://image.lolimi.cn/2025/11/29/692ae259d11ca.webp
 ---
 
-### 从 Hexo 安知鱼主题迁移过来后，许多旧的美化教程都不适用了，网上搜搜也找不到多少适配的。
+从 Hexo 安知鱼主题迁移过来后，许多旧的美化教程都不适用了，网上搜搜也找不到多少适配的。
 
-### 研究了两三天后，已经移植了不少，本期是魔改教程铺垫的第一期，后续会发正式魔改教程。
+研究了两三天后，已经移植了不少，本期是魔改教程铺垫的第一期，后续会发正式魔改教程。
 
-### 那时候魔改印象最深刻的还是柳神的两个项目
+那时候魔改印象最深刻的还是柳神的两个项目
 
-::quote
+::quote{icon="ph:info-circle-duotone"}
 [朋友圈精简版](https://github.com/willow-god/Friend-Circle-Lite) > [友链状态检测](https://github.com/willow-god/check-flink)
 ::
 
 具体使用教程请见仓库的 readme 文档，及[柳神](https://blog.liushen.fun/)博客的相关教程。
-{dotted startColor="#ff6c6c" endColor="#1989fa"/}
 
 ## 朋友圈精简版 friend.json 适配
 
@@ -27,14 +28,12 @@ image: https://image.lolimi.cn/2025/11/29/692ae259d11ca.webp
 
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/4264055639.png
-caption: mdgxwvrl.png
+src: https://i.p-i.vip/135/20260102-6957710a425d1.png
+caption: 在api文件夹中创建friend.php文件
 ---
 ::
 
 #### 文件内容如下
-
-{hide}
 
 ```php
 <?php
@@ -64,20 +63,18 @@ try {
 }
 ```
 
-{/hide}
-
 ### 可以使用伪静态实现静态化 json
 
 #### 规则如下
 
-{callout color="#62a300"}
+```
 rewrite ^/friend.json$ /api/friend.php;
-{/callout}
+```
 
 ::pic
 ---
 src: https://image.lolimi.cn/2025/11/29/692ae264f3600.webp
-caption: 每日一图
+caption: 朋友圈精简版功能展示配图
 ---
 ::
 
@@ -87,14 +84,12 @@ caption: 每日一图
 
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/421530000.png
-caption: mdgyce3c.png
+src: https://i.p-i.vip/135/20260102-6957712eb71cf.png
+caption: 在api文件夹中创建flink_count.php文件
 ---
 ::
 
 #### 文件内容如下
-
-{hide}
 
 ```php
 <?php
@@ -134,16 +129,12 @@ try {
 }
 ```
 
-{/hide}
-
 ### 可以使用伪静态实现静态化 json
 
 #### 规则如下
 
-{callout color="#62a300"}
+::quote{icon="ph:info-circle-duotone"}
 rewrite ^/flink_count.json$ /api/flink_count.php;
-{/callout}
+::
 
 ## 下期出适配鱼塘的教程
-
-{anote icon="fa-archive" href="https://github.com/scfcn/Friend-Circle-Lite/issues/new?template=%E9%82%AE%E7%AE%B1%E8%AE%A2%E9%98%85.md" target="\_blank" type="secondary" content="本站邮箱订阅链接"/}

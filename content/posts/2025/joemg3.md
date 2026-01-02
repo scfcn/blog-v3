@@ -3,23 +3,23 @@ title: Joe再续前缘魔改（三）
 date: 2025-07-30 12:45:00
 type: tech
 categories: [技术干货]
+recommend: 12
 tags: [Joe魔改]
-summary: 本教程介绍Joe主题魔改新增友人帐页面延迟展示功能，需修改/usr/themes/joe/friends.php文件，替换为指定PHP代码，实现友链展示及状态标签延迟加载。部署后，友人帐页面将按设置延迟显示状态标签，提升用户体验。
+description: 本教程介绍Joe主题魔改新增友人帐页面延迟展示功能，需修改/usr/themes/joe/friends.php文件，替换为指定PHP代码，实现友链展示及状态标签延迟加载。部署后，友人帐页面将按设置延迟显示状态标签，提升用户体验。
 image: https://image.lolimi.cn/2025/07/30/6889a330421ce.png
 ---
 
 # 本文系Joe再续前缘主题魔改类第三篇教程，前置教程请见.
-::quote
-[Joe再续前缘魔改铺垫（一）](https://qxzhan.cn/post/Joemgpd1.php)
+::quote{icon="ph:info-circle-duotone"}
+[Joe再续前缘魔改铺垫（一）](/2025/joemgpd1)
 ::
 ## 这一期讲讲新增友人帐页面新增延迟展示。
-{callout color="#e64747"}
-具体部署教程详见[Joe再续前缘魔改（一）](https://qxzhan.cn/post/Joemg1.php)
-{/callout}
+::quote{icon="ph:info-circle-duotone"}
+具体部署教程详见[Joe再续前缘魔改（一）](/2025/joemg1)
+::
 
 ## 部署完成后，请修改博客文件夹中的/usr/themes/joe/friends.php文件
-#### 复制以下代码全部替换即可
-{hide}
+### 复制以下代码全部替换即可
 ```php
 <?php
 
@@ -245,18 +245,17 @@ $this->need('module/single/pjax.php');
 
 </html>
 ```
-{/hide}
 ### 前端效果预览
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/1108485421.png
-caption: mdphb2z6.png
+src: https://i.p-i.vip/135/20260102-69576f03e9f36.webp
+caption: 友链延迟展示功能前端效果预览
 ---
 ::
-# 每日精选
+## 每日精选
 ::pic
 ---
 src: https://image.lolimi.cn/2025/07/30/6889a330421ce.png
-caption: bizhi
+caption: Joe再续前缘主题友人帐页面预览图
 ---
 ::

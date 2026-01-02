@@ -1,14 +1,23 @@
 ---
 title: 南禅寺一日游(上)
 date: 2025-01-18 20:07:00
+updated: 2026-01-02 12:00:00
 type: story
+recommend: 16
 categories: [随笔杂谈]
 tags: [游记, 南禅寺]
-summary: 周末与朋友在南禅寺游玩，上午公交途中偶遇coser，抵达后因不熟悉路线被带路。午餐选择KFC，下午品尝了15元虾滑，与朋友互动，逛二次元商店购得正版周边。地下通道迷路后寻得厕所，最终抓到miku娃娃。
-image: https://e3f49eaa46b57.cdn.sohucs.com/2025/7/11/15/40/MTAwMTIyXzE3NTIyMTk2MjI3ODE=.png
+description: 周末与朋友在南禅寺游玩，上午公交途中偶遇coser，抵达后因不熟悉路线被带路。午餐选择KFC，下午品尝了15元虾滑，与朋友互动，逛二次元商店购得正版周边。地下通道迷路后寻得厕所，最终抓到miku娃娃。
+image: https://i.p-i.vip/135/20260102-695787aeb845c.webp
 ---
 
 # 这周四,刚考完期末我就约朋友去南禅寺玩了一天。
+
+::pic
+---
+src: https://i.p-i.vip/135/20260102-695787ae66b9e.webp
+caption: 公交途中的风景
+---
+::
 
 ## 上午 9:00 在同学家集合准备去坐公交。
 
@@ -16,7 +25,7 @@ image: https://e3f49eaa46b57.cdn.sohucs.com/2025/7/11/15/40/MTAwMTIyXzE3NTIyMTk2
 
 ### 几个同学一直在玩荒野乱斗，我不喜欢玩，但也只能陪着打几把。
 
-# 过了快一个小时,到了南禅寺。
+## 过了快一个小时,到了南禅寺。
 
 ## 几个唐人说南禅寺都玩腻了，结果还不认识路，让我带路。
 
@@ -26,8 +35,8 @@ image: https://e3f49eaa46b57.cdn.sohucs.com/2025/7/11/15/40/MTAwMTIyXzE3NTIyMTk2
 
 ::pic
 ---
-src: https://preview.cloud.189.cn/image/imageAction?param=1ED5823EA588EB960176706C911AE567E74D8811DEEA9E37E48DE6875B06038B8139129370454E24784D4552E02CA519D94823759D54D5A4E92CE5DAB6E558A96C87CB5698EA47205161F1788708631A4D68DF1327BF3B4C59FB27C73479B6416AB6B77930223897AD1E4F2D5A33D40CF11A7CB6
-caption:
+src: https://i.p-i.vip/135/20260102-6957853384f59.webp
+caption: KFC午餐
 ---
 ::
 
@@ -39,8 +48,8 @@ caption:
 
 ::pic
 ---
-src: https://e3f49eaa46b57.cdn.sohucs.com/2025/7/11/15/40/MTAwMTIyXzE3NTIyMTk2NDgwMjg=.png
-caption:
+src: https://i.p-i.vip/135/20260102-69578533930a9.webp
+caption: 南禅寺必吃的虾滑
 ---
 ::
 
@@ -50,22 +59,22 @@ caption:
 
 ## 店主人还蛮好，推荐我们买正版的（之前我去的那家没有），卖的也不贵，25 一个，网上都是断货的，还卖 22 一个，良心！
 
-# 欣赏一下我流萤脑婆 ♥!
+## 欣赏一下我流萤脑婆 ♥!
 
 ::pic
 ---
-src: https://e3f49eaa46b57.cdn.sohucs.com/2025/7/11/15/41/MTAwMTIyXzE3NTIyMTk2NjA4NTM=.png
-caption:
+src: https://i.p-i.vip/135/20260102-695785342b902.webp
+caption: 流萤周边展示
 ---
 ::
 
 ## 南禅寺还有一大特点
 
-# 地下
+## 地下
 
 ## 弯弯绕绕，找不到想去地方（WC），但总走到出口。跟着高德地图走找厕所，找不到，看路线的评论攻略，还是找不到，最后问了本地人才找到。
 
-# 星前月下抓的娃娃，我送他的游戏币。
+## 星前月下抓的娃娃，我送他的游戏币。
 
 ## 10 次保底，他 4 次就抓到了 miku，我直接“抢”过来开始“侵犯”:）。
 
@@ -73,7 +82,7 @@ caption:
 
 ::pic
 ---
-src: https://e3f49eaa46b57.cdn.sohucs.com/2025/7/11/15/41/MTAwMTIyXzE3NTIyMTk2Nzg3Mjc=.png
-caption:
+src: https://i.p-i.vip/135/20260102-69578534207c3.webp
+caption: 抓到的miku和奶龙娃娃
 ---
 ::

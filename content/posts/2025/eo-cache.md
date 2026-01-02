@@ -2,15 +2,17 @@
 title: EdgeOne缓存规则分享
 date: 2025-07-16 11:44:00
 type: tech
+recommend: 14
+updated: 2026-01-02 12:00:00
 categories: [技术干货]
 tags: [EdgeOne, 教程]
-summary: EdgeOne通过全球边缘节点缓存静态资源，显著降低延迟、源站负载和带宽成本。配置缓存规则需设置匹配条件（文件后缀、路径等）、全局配置（智能压缩、HTTPS等）和规则引擎（禁用缓存、默认缓存、动态优化）。关键策略包括静态资源强制缓存、动态内容按需缓存和敏感路径禁用缓存，以提升网站性能。
-image: https://qxzhan.cn/img/eo-cache.svg
+description: EdgeOne通过全球边缘节点缓存静态资源，显著降低延迟、源站负载和带宽成本。配置缓存规则需设置匹配条件（文件后缀、路径等）、全局配置（智能压缩、HTTPS等）和规则引擎（禁用缓存、默认缓存、动态优化）。关键策略包括静态资源强制缓存、动态内容按需缓存和敏感路径禁用缓存，以提升网站性能。
+image: https://r2.qixz.cn/qxz/img/eo-cache.svg
 ---
 
 # 腾讯云EdgeOne缓存配置全解析：加速网站的秘密武器
 
-::quote
+::quote{icon="ph:info-circle-duotone"}
 本文深度解读EdgeOne边缘加速服务的缓存规则配置技巧，附实战配置案例。
 ::
 
@@ -22,7 +24,7 @@ image: https://qxzhan.cn/img/eo-cache.svg
 
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/1452185350.png
+src: https://i.p-i.vip/135/20260102-69577bc93947b.png
 caption: 边缘缓存工作原理示意图
 ---
 ::
@@ -61,21 +63,21 @@ caption: 边缘缓存工作原理示意图
 #### Ⅰ禁用缓存(API类需要动态调用等)
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/1451137855.png
+src: https://i.p-i.vip/135/20260102-69577b9e6c8be.png
 caption: 禁用缓存
 ---
 ::
 #### Ⅱ默认缓存(静态文件等)
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/3860480878.png
+src: https://i.p-i.vip/135/20260102-69577bdba6857.png
 caption: 默认缓存
 ---
 ::
 #### Ⅲ动态优化(不那么需求实时响应)
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/3812358083.png
+src: https://i.p-i.vip/135/20260102-69577bea7673f.png
 caption: 动态优化
 ---
 ::
@@ -89,9 +91,9 @@ caption: 动态优化
 
 立即登录 [EdgeOne控制台](https://console.tencentcloud.com/edgeone) 实践文中的配置策略，感受边缘加速带来的性能飞跃吧！🚀
 
-::quote
+::quote{icon="ph:info-circle-duotone"}
 本文首发于个人技术博客，持续更新云服务实战技巧
 ::
-::quote
+::quote{icon="ph:info-circle-duotone"}
 原创声明：转载需保留来源信息 [@青序栈](https://www.qixz.cn/)
 ::

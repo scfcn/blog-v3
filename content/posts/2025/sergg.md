@@ -4,6 +4,7 @@ date: 2025-08-09 19:45:00
 updated: 2026-01-02 12:00:00
 type: essay
 categories: [随笔杂谈]
+recommend: 5
 tags: [攻击]
 description: 网站于2025年8月9日遭受持续3秒的CC攻击，带宽达3.51 Mbps，流量662 MB，攻击次数4.4万，主要来自中国大陆陕西省宝鸡市IPv6地址。服务器宕机后经工程师重启恢复，数据通过WebDAV备份成功恢复。已将防御方式从JS质询改为拦截，目前CDN配置为丘盾加速大陆流量，EO防护海外并关闭IPv6访问。
 image: https://i.p-i.vip/135/20260102-6957653b4f3a0.png

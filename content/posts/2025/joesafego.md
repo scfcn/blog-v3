@@ -1,10 +1,12 @@
 ---
 title: Joe再续前缘SafeGo适配魔改
 date: 2025-07-25 21:39:00
+updated: 2026-01-02 12:00:00
 type: tech
 categories: [技术干货]
 tags: [Joe魔改]
-summary: SafeGo插件适配Joe再续前缘主题，替换goto.php文件实现安全跳转页面功能，支持配置倒计时、Base64编码、头像、标题等，提供黑暗模式选项。
+recommend: 15
+description: SafeGo插件适配Joe再续前缘主题，替换goto.php文件实现安全跳转页面功能，支持配置倒计时、Base64编码、头像、标题等，提供黑暗模式选项。
 image: https://image.keimgae.fun/imgse/3/20250725/6e75b64e831e51a914a4f8ca99702464.webp
 ---
 
@@ -13,8 +15,8 @@ image: https://image.keimgae.fun/imgse/3/20250725/6e75b64e831e51a914a4f8ca997024
 ### 效果如图
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/3236790750.png
-caption: mdjmqxqg.png
+src: https://i.p-i.vip/135/20260102-695773baa9fba.png
+caption: SafeGo安全跳转页面效果预览
 ---
 ::
 
@@ -317,7 +319,7 @@ if (!$jump_url ||!preg_match($UrlReg, $jump_url)) {
 ### 目前可配置项如下
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/4021268023.png
-caption: mdiv9uq7.png
+src: https://i.p-i.vip/135/20260102-695773dedb934.png
+caption: SafeGo配置项展示
 ---
 ::

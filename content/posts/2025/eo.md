@@ -2,26 +2,27 @@
 title: EdgeOne优选教程
 date: 2025-07-21 10:03:00
 type: tech
+recommend: 16
+updated: 2026-01-02 12:00:00
 categories: [技术干货]
 tags: [EdgeOne, 教程]
-summary: EdgeOne优选教程建议将域名CNAME到eo.qxzhan.cn或eo.wudu.ltd以降低中国大陆用户访问延迟。优选方法包括添加解析记录，使用国内厂商支持免费分线路解析的服务。优选IP段为43.174.150.0/24等，需注意优选有风险，可能被攻击导致封禁。
-image: https://qxzhan.cn/img/eo+.svg
+description: EdgeOne优选教程建议将域名CNAME到eo.qxzhan.cn或eo.wudu.ltd以降低中国大陆用户访问延迟。优选方法包括添加解析记录，使用国内厂商支持免费分线路解析的服务。优选IP段为43.174.150.0/24等，需注意优选有风险，可能被攻击导致封禁。
+image: https://r2.qixz.cn/qxz/img/eo.svg
 ---
 
-## 在稳定吃上了EO之后，默认分配的节点延迟高，对中国大陆用户访问影响较大。
-### 于是————诞生出了eo优选这一野路子~
-------------
-## 如何优选？
-{hide}
+# 问题背景：EO节点延迟问题
+## eo优选的诞生
+## 优选方法
 ### EASY~只需要将域名cname到优选域名eo.xnet.ren
-{/hide}
 ### 有小伙伴就要问了：“诶呀诶呀栈主，控制台显示‘请添加 CNAME’怎么办呢？”。栈主表示————你都优选了还管他做甚？非要变成'已生效'状态也不是不行（给给给！）
 ### 很简单，国际站的eo解析检测只会检测海外记录，我们只需要添加个解析记录cname到默认地址即可，这样还能自动续签SSL证书，美滋滋（老八音）！
 ### 大部分国内厂商应该都支持免费分线路解析，比如华为云、DNSPOD、阿里云等，但海外厂商没有这项服务，那就没办法了，续签SSL证书时手动更换吧!誒~
-{lamp/}
+::quote{icon="ph:lightbulb-duotone"}
+以上方法可以帮助您解决CNAME验证问题，并实现自动SSL证书续签
+::
 ### 下面分享我优选IP的思路。
-::quote
-有官方给出的IP段地址，但这些是L7回源防护的段，具体请见[EO地址段](https://qxzhan.cn/post/eo-ips.php)
+::quote{icon="ph:info-circle-duotone"}
+有官方给出的IP段地址，但这些是L7回源防护的段，具体请见[EO地址段](/2025/eo-ips)
 ::
 ### 结合多方面情报，我找出比较稳定几段
 ```json
@@ -34,21 +35,21 @@ image: https://qxzhan.cn/img/eo+.svg
 ### 多日前EO的节点遭受攻击，导致1000多个IP只剩下几百个能用，中国大陆访问绿中闪电，这可不行，栈主得想办法动态优选。
 ### 找AI生成了批量测试脚本和DNS更新脚本，源码下期分享，终于实现了动态优选。但--还没完，为什么只有50个解析IP，™的我一报错，是华为云DNS API拒绝创建新的解析记录集，也就是说通过API的方式只能修改一个解析记录集。欸~50个IP也可以了，于是我就把脚本放到了服务器上跑，产生eo.qxzhan.cn这个优选域名。
 鸣谢华为云DNS的TTL 1s支持！！！
-# 注意注意！！
-## 优选有风险，遭打要写小作文申请解封的！
+## 注意事项
+### 优选有风险，遭打要写小作文申请解封的！
 ### 客服是这么说的————
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/3022126811.png
-caption: eokefu.png
+src: https://i.p-i.vip/135/20260102-69577a6763e83.png
+caption: EO客服关于优选风险的回复
 ---
 ::
-## 看看栈主的悲催故事呜呜
+## 实战案例分享
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/2401310957.png
-caption: zuizhong.png
+src: https://i.p-i.vip/135/20260102-69577a7c0f65f.png
+caption: EO节点被封禁的实例
 ---
 ::
 ### 目前海外解析到默认地址不知道会不会封，也希望各位不要被攻击，不要惹人！
-## 好，这期就这样，瑞斯拜！
+## 总结

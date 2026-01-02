@@ -4,27 +4,24 @@ date: 2025-07-15 17:02:00
 type: tech
 categories: [技术干货]
 tags: [源码, 免费]
-summary: Mini-Cover是一个现代化的封面生成工具，支持多种自定义选项，如响应式设计、丰富的图标库、自定义背景图片、灵活的标题编辑、水印效果调整等，适用于博客、短视频和社交媒体。
+description: Mini-Cover是一个现代化的封面生成工具，支持多种自定义选项，如响应式设计、丰富的图标库、自定义背景图片、灵活的标题编辑、水印效果调整等，适用于博客、短视频和社交媒体。
 image: https://cover.qixz.cn/favicon.svg
 ---
 
-{hide}
 {cloud title="迷你封面图生成源码" type="lanzou" url="https://scfc.lanzout.com/ivyuz313p9cj" password=""/}
-{/hide}
-!!!
-<p align="center">
-  <img src="https://cover.qixz.cn/favicon.svg" width="100" height="100" alt="Mini-Cover Logo">
-</p>
 
-<h1 align="center">Mini-Cover</h1>
+::pic
+---
+src: https://cover.qixz.cn/favicon.svg
+caption: Mini-Cover Logo
+---
+::
 
-<p align="center">优雅的在线封面生成工具</p>
-<p align="center">🎮 在线演示：
-  <a href="https://cover.qixz.cn/" target="_blank">
-  https://cover.qixz.cn/
-  </a>
-</p>
-!!!
+# Mini-Cover
+
+优雅的在线封面生成工具
+
+🎮 在线演示：[https://cover.qixz.cn/](https://cover.qixz.cn/)
 
 ## 📖 简介
 

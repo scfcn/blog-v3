@@ -1,16 +1,18 @@
 ---
 title: EdgeOne评测
 date: 2025-07-11 15:22:00
+updated: 2026-01-02 12:00:00
 type: tech
 categories: [技术干货]
 tags: [EdgeOne, 评测]
-summary: 腾讯EdgeOneCDN评测显示，其海外节点速度快，国内稳定，但文件下载限速明显。无限流量、请求和DDoS防护是其优势，适合中小型网站。WAF规则有限制，不适合大文件分发。国内性能需优化，适合寻求基础防护和丰富缓存配置的用户。
+recommend: 16
+description: 腾讯EdgeOneCDN评测显示，其海外节点速度快，国内稳定，但文件下载限速明显。无限流量、请求和DDoS防护是其优势，适合中小型网站。WAF规则有限制，不适合大文件分发。国内性能需优化，适合寻求基础防护和丰富缓存配置的用户。
 image: https://i.p-i.vip/135/20251129-692a761a0ea99.png
 ---
 
 # 🌍 腾讯EdgeOne真这么神？深度体验1周，速度/防护/限制全拆解（附避坑指南）
 
-::quote
+::quote{icon="ph:info-circle-duotone"}
 最近腾讯云的EdgeOne CDN简直火出天际！作为站长，我也忍不住上手实测了一周。**结论很明确：它有令人尖叫的亮点，但也有让你“咯噔”一下的限制！** 今天就把我的真实体验和踩坑心得，一次性说透！
 ::
 
@@ -27,7 +29,7 @@ image: https://i.p-i.vip/135/20251129-692a761a0ea99.png
 👉 **附本站速度实测图（默认节点+自用缓存规则）：**
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/3232192386.png
+src: https://i.p-i.vip/135/20260102-695781142d07d.webp
 caption: 腾讯EdgeOne CDN速度实测 | 国内节点表现稳定，海外节点亮眼
 ---
 ::
@@ -91,7 +93,7 @@ EdgeOne在**缓存和加速微调**上提供了**令人发指的丰富选项**�
 
 ## 💬 你会用EdgeOne吗？
 
-::quote
+::quote{icon="ph:lightbulb-duotone"}
 **EdgeOne的“无限防护”是中小站长的福音，但“下载限速”和“规则限制”在我看来————免费还要什么自行车！**
 ::
 

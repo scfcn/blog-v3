@@ -83,9 +83,10 @@ export default defineAppConfig({
 				title: '探索',
 				items: [
 					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/plain.html' },
+					{ icon: 'ph:bug-droid-bold', text: '揪蝉', url: 'https://www.jiuchan.org/' },
+					{ icon: 'streamline-ultimate-color:blogger-logo', text: 'BlogsClub', url: 'https://www.blogsclub.org/' },
 					{ icon: 'logos:blogger', text: '笔墨迹', url: 'https://blogscn.fun/' },
 					{ icon: 'el:livejournal', text: '博友圈', url: 'https://www.boyouquan.com/home' },
-					{ icon: 'ph:bug-droid-bold', text: '揪蝉', url: 'https://www.jiuchan.org/' },
 				],
 			},
 			{
@@ -94,14 +95,16 @@ export default defineAppConfig({
 					{ icon: 'ph:github-logo-bold', text: 'scfcn', url: 'https://github.com/scfcn' },
 					{ icon: 'ri:qq-line', text: '群: 665751334', url: 'https://qm.qq.com/q/veCtZrS51e' },
 					{ icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
+					{ icon: 'ph:telegram-logo-bold', text: 'TG群组', url: 'https://t.me/qxzhan' },
 				],
 			},
 			{
 				title: '信息',
 				items: [
 					{ icon: 'simple-icons:nuxtdotjs', text: `主题: Clarity ${version}`, url: 'https://github.com/L33Z22L11/blog-v3' },
-					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: 'https://blog.zhilu.site/theme' },
-					{ icon: 'streamline-ultimate-color:blogger-logo', text: 'BlogsClub', url: 'https://www.blogsclub.org/' },
+					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: '/theme' },
+					{ icon: 'ph:copyright-bold', text: '版权信息', url: '/copyright' },
+					{ icon: 'ph:file-text-bold', text: '隐私协议', url: '/privacy' },
 				],
 			},
 		] satisfies Nav,

@@ -1,26 +1,28 @@
 ---
 title: Joe再续前缘魔改（一）
 date: 2025-07-28 13:47:00
+updated: 2026-01-02 12:00:00
 type: tech
 categories: [技术干货]
 tags: [Joe魔改]
-summary: 本文介绍了如何为Joe主题添加友链状态页面，需先部署友链检测项目，并在博客中添加`ckflink.php`文件。教程还指导了在后台配置独立页面，并展示了前端效果预览。
-image: https://image.lolimi.cn/2025/07/28/68870eb30cb11.png
+recommend: 12
+description: 本文介绍了如何为Joe主题添加友链状态页面，需先部署友链检测项目，并在博客中添加`ckflink.php`文件。教程还指导了在后台配置独立页面，并展示了前端效果预览。
+image: https://image.lolimi.cn/2025/11/29/692ae13d33cc8.webp
 ---
 
-# 本文系Joe再续前缘主题魔改类第一篇正式教程，前置教程请见.
-::quote
-[Joe再续前缘魔改铺垫（一）](https://qxzhan.cn/post/Joemgpd1.php)
+## 本文系Joe再续前缘主题魔改类第一篇正式教程，前置教程请见.
+::quote{icon="ph:info-circle-duotone"}
+[Joe再续前缘魔改铺垫（一）](/2025/joemgpd1)
 ::
 ## 这一期讲讲新增友链状态页面，需要提前部署[友链检测](https://github.com/willow-god/check-flink)项目。
 
-{callout color="#e64747"}
+::quote{icon="ph:info-circle-duotone"}
 具体部署教程详见[Github Action实现友链状态检测](https://blog.liushen.fun/posts/c2262998/)
-{/callout}
+::
 
 ## 部署完成后，请在博客文件夹中的/usr/themes/joe里新增`ckflink.php`
 #### 代码如下
-{hide}
+
 ```php
 <?php
 
@@ -493,25 +495,24 @@ $this->need('module/single/pjax.php');
 </html>
 <?php $this->need('module/footer.php') ?>
 ```
-{/hide}
 ### 然后去博客后台>管理>独立页面>新增>模板选择`友链状态`
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/713354773.png
-caption: mdmolm4d.png
+src: https://i.p-i.vip/135/20260102-695773009639b.png
+caption: 博客后台独立页面添加友链状态模板
 ---
 ::
 ### 前端效果预览
 ::pic
 ---
-src: https://qxzhan.cn/usr/uploads/2025/07/4110129565.png
-caption: mdmomlou.png
+src: https://i.p-i.vip/135/20260102-6957734204ca2.png
+caption: 友链状态页面前端效果预览
 ---
 ::
-# 每日精选
+## 每日精选
 ::pic
 ---
 src: https://image.lolimi.cn/2025/11/29/692ae13d33cc8.webp
-caption: bizhi
+caption: 每日精选配图
 ---
 ::
