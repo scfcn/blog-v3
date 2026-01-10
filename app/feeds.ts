@@ -5,7 +5,7 @@ import { myFeed } from '../blog.config'
 export default [
 	// #region Clarity
 	{
-		name: '清晰体验',
+		name: '『清晰体验』',
 		desc: '使用 Clarity 博客主题构建的网站。',
 		// @keep-sorted { "keys": ["date"] }
 		entries: [
@@ -49,14 +49,14 @@ export default [
 				comment: 'fishcpy的小破站，2025年5月曾遭遇服务器攻击并处理CDN相关问题。内容涵盖运维部署（1panel搭建备案系统、哪吒监控美化）、设备体验、问题排查，也有音乐播放器分享、爱国图片合集等，实用与情怀兼具。',
 			},
 			{
-				author: '歆天之鸢',
-				sitenick: '',
-				title: '柒渊阁',
-				desc: '柒上月日，无铭之阁',
+				author: '缘之境',
+				sitenick: '源境录',
+				title: '源境录',
+				desc: '凡尘修行悟道，叩问仙缘之境',
 				link: 'https://www.myxz.top/',
 				feed: 'https://www.myxz.top/atom.xml',
-				icon: 'https://sourceimage.s3.bitiful.net/myxz.avif',
-				avatar: 'https://sourceimage.s3.bitiful.net/myxz.avif',
+				icon: 'https://www.myxz.top/avatar.avif',
+				avatar: 'https://www.myxz.top/avatar.avif',
 				archs: ['Nuxt', 'EdgeOne'],
 				date: '2024-12-09',
 				comment: '歆鸢阁（2025年底更新），站长将博客迁移至Nuxt框架，计划推进服务迁移与多服务器部署。内容聚焦Nuxt博客魔改，含页面添加、组件美化、评论优化等教程，也记录博客平台变迁，专注前端开发与个性化定制。',
@@ -66,7 +66,7 @@ export default [
 	// #endregion
 	// #region 网上邻居
 	{
-		name: '网上邻居',
+		name: '『网上邻居』',
 		desc: '哔——啵——电波通讯中，欢迎常来串门。',
 		// @keep-sorted { "keys": ["date"] }
 		entries: [

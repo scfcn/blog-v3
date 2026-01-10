@@ -5,6 +5,7 @@ defineOptions({ inheritAttrs: false })
 
 const props = defineProps<ArticleProps>()
 const appConfig = useAppConfig()
+const { donation } = appConfig
 const title = `${props.title} | ${appConfig.title}`
 const href = new URL(props.path!, appConfig.url).href
 const { copy, copied } = useCopy(href)
@@ -76,6 +77,28 @@ const { copy, copied } = useCopy(href)
 				icon="ph:link"
 				@click="copy()"
 			/>
+			<div class="donate-container">
+				<UtilHydrateSafe>
+					<Tooltip v-if="donation?.enable" :delay="200" interactive hide-on-click="toggle" max-width="">
+						<ZButton class="donate-button" icon="ph:heart-fill" text="赞赏作者" />
+						<template #content>
+							<div class="donation-content">
+								<div v-if="Object.keys(donation.items).length" class="donation-list">
+									<figure v-for="(image, label) in donation.items" :key="label" class="donation-item">
+										<UtilImg class="image" width="160" height="160" :src="image" />
+										<figcaption class="label">
+											{{ label }}
+										</figcaption>
+									</figure>
+								</div>
+								<p v-if="donation.message" class="donation-message">
+									{{ donation.message }}
+								</p>
+							</div>
+						</template>
+					</Tooltip>
+				</UtilHydrateSafe>
+			</div>
 		</div>
 	</section>
 </div>
@@ -111,11 +134,66 @@ section {
 	}
 }
 
-.share-button {
-	display: inline-flex;
-	aspect-ratio: 1;
+.content {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.donate-container {
+	margin-left: auto;
+}
+
+.donate-button {
+	padding: 0.6rem 0.8rem;
 	border: 1px solid var(--c-border);
-	border-radius: 50%;
 	box-shadow: none;
+}
+
+.donation-content {
+	padding: 0.5rem 0.6rem;
+	text-align: center;
+
+	.donation-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1.5rem;
+		padding: 0.5rem 0;
+	}
+
+	.donation-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+
+		.image {
+			border-radius: 0.5rem;
+			object-fit: cover;
+		}
+
+		.label {
+			color: var(--c-text-2);
+		}
+	}
+
+	.donation-message {
+		color: var(--c-text-1);
+	}
+}
+
+:deep([data-tippy-root]) {
+	max-width: calc(100% - 1rem);
+
+	.tippy-box {
+		border: 1px solid var(--c-border);
+		background-color: var(--c-bg-2);
+	}
+
+	.tippy-svg-arrow {
+		fill: var(--c-bg-2);
+	}
 }
 </style>

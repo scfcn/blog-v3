@@ -85,8 +85,7 @@ export default defineAppConfig({
 					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/plain.html' },
 					{ icon: 'ph:bug-droid-bold', text: '揪蝉', url: 'https://www.jiuchan.org/' },
 					{ icon: 'streamline-ultimate-color:blogger-logo', text: 'BlogsClub', url: 'https://www.blogsclub.org/' },
-					{ icon: 'logos:blogger', text: '笔墨迹', url: 'https://blogscn.fun/' },
-					{ icon: 'el:livejournal', text: '博友圈', url: 'https://www.boyouquan.com/home' },
+					{ icon: 'logos:blogger', text: '笔墨迹', url: 'https://blogscn.fun/' }
 				],
 			},
 			{
@@ -136,8 +135,10 @@ export default defineAppConfig({
 				{ icon: 'ph:archive-bold', text: '归档', url: '/archive' },
 				{ icon: 'ph:tag-bold', text: '标签', url: '/tags' },
 				{ icon: 'ph:link-bold', text: '友链', url: '/link' },
-				{ icon: 'ph:users-bold', text: '鱼塘', url: '/fcircle' },
-				{ icon: 'ph:chat-circle-bold', text: '说说', url: '/essay' },
+				{ icon: 'ph:fish-bold', text: '鱼塘', url: '/fcircle' },
+				{ icon: 'ph:chat-centered-dots-bold', text: '即刻', url: '/essay' },
+				{ icon: 'ph:laptop-bold', text: '装备', url: '/devices' },
+				{ icon: 'ri:bilibili-fill', text: '追番', url: '/bangumi' },
 			],
 		},
 	] satisfies Nav,
