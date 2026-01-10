@@ -25,7 +25,7 @@ export default function useBangumiCollection(
 	collectionType: Ref<CollectionType> = ref('wish'),
 	page: Ref<number> = ref(1),
 ) {
-	const username = '1152095'
+	const username = 'x20'
 
 	const subjectType = computed(() => TYPE_SUBJECT_MAP[toValue(contentType)])
 	const typeId = computed(() => TYPE_ID_MAP[toValue(collectionType)])
