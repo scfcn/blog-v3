@@ -108,8 +108,8 @@ export const equipment: item[] = [
   "money": 198
   },
   {
-  "name": "国誉 猫与少年 双肩书包",
-  "image": "https://image.lolimi.cn/2026/01/11/69632d7891abc.webp",
+  "name": "猫与少年双肩包",
+  "image": "https://image.lolimi.cn/2026/01/11/69632abd82c18.webp",
   "src": "https://www.kokuyo.cn/",
   "category": "出行",
   "desc": "高颜值双肩包，主打萌系猫主题设计，融合经典简约美学与少年感元素。",
