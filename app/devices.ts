@@ -70,8 +70,8 @@ export const equipment: item[] = [
   "tag": ["电竞鼠标", "狼蛛"],
   "date": "2025-08-17",
   "money": 29
-},
-{
+  },
+  {
   "name": "微星GK50Z",
   "image": "https://image.lolimi.cn/2026/01/10/69621c5338e3f.webp",
   "src": "https://www.msi.cn/Gaming-Gear/VIGOR-GK50Z/Specification",
@@ -88,8 +88,8 @@ export const equipment: item[] = [
   "tag": ["青轴", "微星"],
   "date": "2024-06-15",
   "money": 98
-},
-{
+  },
+  {
   "name": "倍思 M3s",
   "image": "https://image.lolimi.cn/2026/01/10/69621e9352f31.webp",
   "src": "https://www.baseus.cn/product/detail?skuId=4669",
@@ -106,5 +106,23 @@ export const equipment: item[] = [
   "tag": ["倍思", "降噪耳机"],
   "date": "2025-08-03",
   "money": 198
-}
+  },
+  {
+  "name": "国誉 猫与少年 双肩书包",
+  "image": "https://image.lolimi.cn/2026/01/11/69632d7891abc.webp",
+  "src": "https://www.kokuyo.cn/",
+  "category": "出行",
+  "desc": "高颜值双肩包，主打萌系猫主题设计，融合经典简约美学与少年感元素。",
+  "info": {
+    "材质": "防泼水聚酯纤维（外层）+ 透气网布（内层）",
+    "容量": "20L",
+    "尺寸": "45cm×30cm×18cm（高×宽×厚）",
+    "收纳分层": "主仓（含笔记本电脑隔层）+ 前袋（含笔插/卡片位）+ 双侧弹性侧袋",
+    "背负系统": "S型人体工学肩带 + 透气背板",
+    "颜色": "奶白灰"
+  },
+  "tag": ["国誉", "猫与少年"],
+  "date": "2025-11-04",
+  "money": 169
+  }
 ]
