@@ -155,7 +155,7 @@ const orderMap = {
       </div>
     </div>
 
-    <PostComment herf="/banguim" />
+    <PostComment href="/bangumi" />
   </div>
 </template>
 
