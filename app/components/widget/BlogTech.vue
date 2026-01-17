@@ -9,8 +9,8 @@ const packages = Object.assign({}, ...Object.values(pnpmWorkspace.catalogs as an
 const [pm, pmVersion] = packageManager.split('@') as [string, string]
 
 const service = computed(() => ([
-	{ label: '构建平台', value: () => [h('img', { src: 'https://edgeone.ai/favicon.ico', alt: 'edgeone' }), 'EO Pages'] },
-	{ label: '图片存储', value: () => [h('img', { src: 'https://www.baiwulin.work/favicon.ico', alt: 'baiwulin' }), '白雾林'] },
+	{ label: '构建平台', value: () => [h('img', { src: 'https://i.p-i.vip/135/20260117-696b7c219949f.png', alt: 'Cloudflare' }), 'Cloudflare'] },
+	{ label: '图片存储', value: () => [h('img', { src: 'https://i.p-i.vip/135/20260117-696b7c21a3374.png', alt: 'baiwulin' }), '白雾林'] },
 	{ label: '软件协议', value: 'MIT' },
 	{ label: '文章许可', value: appConfig.copyright.abbr },
 	{ label: '规范域名', value: getDomain(appConfig.url) },

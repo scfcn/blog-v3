@@ -17,25 +17,47 @@ export default defineAppConfig({
 		},
 
 		/** 外链安全提示 */
-	externalLink: {
+		externalLink: {
 		/** 是否启用外链安全提示 */
 		enabled: true,
 		/** 白名单域名，这些域名不会触发安全提示 */
 		whitelist: [
 			'qixz.cn',
 			'localhost',
+			'wudu.ltd',
+			'xnet.ren',
 			'github.com',
 			'qq.com',
 			'travellings.cn',
 			'jiuchan.org',
 			'blogscn.fun',
-			'boyouquan.com',
 			'blogsclub.org',
 		],
 		/** 强制跳转页面，支持字符串路径或正则表达式，这些页面会启用外链安全提示 */
 		pageWhitelist: [],
 		/** 禁用跳转页面，支持字符串路径或正则表达式，这些页面会禁用外链安全提示 */
 		pageBlacklist: [/link/],
+		/** 跳转提示页面配置 */
+		go: {
+			/** 跳转倒计时秒数 */
+			countdown: 5,
+			/** 页面标题 */
+			title: '跳转提示',
+			/** 错误状态文本 */
+			errorText: {
+				invalidLink: '链接无效',
+				decodeFailed: '链接解码失败',
+				missingParam: '缺少链接参数',
+			},
+			/** 正常状态文本 */
+			normalText: {
+				leaving: '安全提醒',
+				description: '您正在离开本站点',
+				countingDown: '自动跳转中...',
+				cancel: '取消',
+				jumpNow: '立即跳转',
+			},
+		},
 	},
 
 		codeblock: {
@@ -53,7 +75,7 @@ export default defineAppConfig({
 
 		/** 文章开头摘要 */
 		excerpt: {
-			animation: true,
+			animation: false,
 			caret: '_',
 		},
 

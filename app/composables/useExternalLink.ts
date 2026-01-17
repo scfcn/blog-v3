@@ -89,33 +89,28 @@ export function useExternalLink(options: ExternalLinkOptions = {}) {
 		return enabled && isCurrentPageAllowed() && isExternalLink(url) && !isInWhitelist(url)
 	}
 
+	function encodeUrl(url: string): string {
+		try {
+			// 使用 base64 编码 URL，确保安全传递
+			return btoa(encodeURIComponent(url))
+		} catch {
+			// 如果编码失败，使用 URI 编码
+			return encodeURIComponent(url)
+		}
+	}
+
 	async function handleExternalLink(url: string, target?: string) {
 		if (!shouldShowDialog(url)) {
 			window.open(url, target || '_blank', 'noopener,noreferrer')
 			return
 		}
 
-		currentUrl.value = url
-
-		// 每次都创建新的对话框实例，确保 url 正确更新
-		const DialogComponent = await getExternalLinkDialog()
-		dialog = popoverStore.use(() => h(DialogComponent, {
-			show: true,
-			url: currentUrl.value,
-			onConfirm: () => {
-				dialog?.close()
-				currentUrl.value = undefined
-				dialog = null
-				window.open(url, target || '_blank', 'noopener,noreferrer')
-			},
-			onCancel: () => {
-				dialog?.close()
-				currentUrl.value = undefined
-				dialog = null
-			},
-		}))
-
-		await dialog.open()
+		// 重定向到跳转页面（使用查询参数）
+		const encodedUrl = encodeUrl(url)
+		const goUrl = `/go?url=${encodedUrl}`
+		
+		// 在新标签页打开跳转页面
+		window.open(goUrl, target || '_blank', 'noopener,noreferrer')
 	}
 
 	function setupGlobalInterceptor() {

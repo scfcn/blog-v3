@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAppConfig } from 'nuxt/app'
 // 即使 boolean 可选，其值也不会是 undefined
 const props = defineProps<{
 	img?: string
@@ -7,6 +8,46 @@ const props = defineProps<{
 	round?: boolean
 	square?: boolean
 }>()
+
+const appConfig = useAppConfig()
+const whitelist = appConfig.component?.externalLink?.whitelist || []
+
+function isExternalLink(url: string): boolean {
+	try {
+		const urlObj = new URL(url, window.location.origin)
+		const currentHost = window.location.hostname
+		return urlObj.hostname !== currentHost
+	} catch {
+		return false
+	}
+}
+
+function isInWhitelist(url: string): boolean {
+	try {
+		const urlObj = new URL(url, window.location.origin)
+		return whitelist.some(domain => urlObj.hostname === domain || urlObj.hostname.endsWith(`.${domain}`))
+	} catch {
+		return false
+	}
+}
+
+function encodeUrl(url: string): string {
+	try {
+		return btoa(encodeURIComponent(url))
+	} catch {
+		return encodeURIComponent(url)
+	}
+}
+
+function getLinkUrl(href: string): string {
+	if (!href || !isExternalLink(href) || isInWhitelist(href)) {
+		return href
+	}
+	const encodedUrl = encodeUrl(href)
+	return `/go?url=${encodedUrl}`
+}
+
+const linkUrl = computed(() => getLinkUrl(props.link || ''))
 
 const img = computed(() => {
 	if (props.img)
@@ -33,7 +74,7 @@ const tip = computed(() => {
 </script>
 
 <template>
-<UtilLink v-tip="tip" class="badge" :class="{ round }" :to="link">
+<UtilLink v-tip="tip" class="badge" :class="{ round }" :to="linkUrl">
 	<NuxtImg v-if="img" class="badge-icon" :src="img" :alt="img" />
 	<span class="badge-text">
 		<slot>{{ text }}</slot>
