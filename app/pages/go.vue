@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import appConfig from '~/app.config'
 
 const route = useRoute()
-const router = useRouter()
 
 const goConfig = appConfig.component.externalLink.go
 
@@ -24,12 +23,20 @@ const countdownProgress = computed(() => {
   return (remaining / total) * 283
 })
 
+let countdownTimer: ReturnType<typeof setInterval> | null = null
+
 function startCountdown() {
   countdown.value = goConfig.countdown
-  const timer = setInterval(() => {
+  
+  if (countdownTimer) {
+    clearInterval(countdownTimer)
+  }
+  
+  countdownTimer = setInterval(() => {
     countdown.value--
     if (countdown.value <= 0) {
-      clearInterval(timer)
+      clearInterval(countdownTimer!)
+      countdownTimer = null
       jumpToExternal()
     }
   }, 1000)
@@ -49,11 +56,39 @@ function jumpToExternal() {
     error.value = goConfig.errorText.invalidLink
     return
   }
-  window.location.href = url.value
+  
+  // 在新窗口中打开外部链接
+  window.open(url.value, '_blank', 'noopener,noreferrer')
+  
+  // 清除倒计时定时器
+  if (countdownTimer) {
+    clearInterval(countdownTimer)
+    countdownTimer = null
+  }
+  
+  // 关闭当前页面
+  setTimeout(() => {
+    window.close()
+  }, 500)
 }
 
 function cancelJump() {
-  router.push('/')
+  // 清除倒计时定时器
+  if (countdownTimer) {
+    clearInterval(countdownTimer)
+    countdownTimer = null
+  }
+  
+  // 关闭当前页面
+  window.close()
+}
+
+function handleWindowClose() {
+  // 清除倒计时定时器，防止窗口关闭后仍执行跳转
+  if (countdownTimer) {
+    clearInterval(countdownTimer)
+    countdownTimer = null
+  }
 }
 
 onMounted(() => {
@@ -68,6 +103,20 @@ onMounted(() => {
   } else {
     error.value = goConfig.errorText.missingParam
   }
+  
+  // 添加窗口关闭事件监听器
+  window.addEventListener('beforeunload', handleWindowClose)
+})
+
+onUnmounted(() => {
+  // 清除倒计时定时器
+  if (countdownTimer) {
+    clearInterval(countdownTimer)
+    countdownTimer = null
+  }
+  
+  // 移除窗口关闭事件监听器
+  window.removeEventListener('beforeunload', handleWindowClose)
 })
 </script>
 

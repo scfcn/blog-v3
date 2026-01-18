@@ -667,7 +667,20 @@ export default [
 				archs: ['Astro', 'Vercel'],
 				date: '2024-12-09',
 				comment: '2025 年持续更新，站长为高中生。内容涵盖实用技术教程（宝塔专业版申请、免费图床搭建、AI 绘画、刷课脚本），也分享澎湃 OS 使用体验、CSGO 游戏日常，干货与生活记录兼具，性价比高。',
-			}
+			},
+			{
+				author: 'THW',
+				sitenick: '',
+				title: 'THW’s Blog',
+				desc: '前途似海，来日方长',
+				link: 'https://blog.tianhw.top/',
+				feed: 'https://blog.tianhw.top/rss.xml',
+				icon: 'https://image.tianhw.top/avatar.webp',
+				avatar: 'https://image.tianhw.top/avatar.webp',
+				archs: ['Astro', 'EdgeOne'],
+				date: '2026-01-18',
+				comment: '聚焦Web开发与云原生领域，近期围绕EdgeOne Pages、Astro静态生成等工具展开深度实践，分享自动化图床构建、一键部署方案、纯前端IP获取等硬核教程。',
+			},
 		],
 	},
 	// #endregion
