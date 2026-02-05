@@ -55,7 +55,7 @@ const blogConfig = {
 		/** 隐藏基于文件路由（不是自定义链接）的 URL /post 路径前缀 */
 		hidePostPrefix: true,
 		/** 禁止搜索引擎收录的路径 */
-		robotsNotIndex: ['/preview', '/previews/*'],
+		robotsNotIndex: ['/preview', '/previews/*', '/go'],
 	},
 
 	/** 赞赏配置 */
@@ -63,8 +63,8 @@ const blogConfig = {
 		enable: true,
 		message: '感谢您的支持，这将激励我创作更多优质内容！',
 		items: {
-			支付宝: 'https://image.lolimi.cn/2025/10/07/68e47ecc3e3a9.jpg',
-			微信: 'https://image.lolimi.cn/2025/10/07/68e47ecc450c5.png',
+			支付宝: 'https://image.lolimi.cn/2026/02/05/698495aa7d10d.webp',
+			微信: 'https://image.lolimi.cn/2026/02/05/698495aa1980d.webp',
 		},
 	},
 
@@ -74,6 +74,14 @@ const blogConfig = {
 		limit: 50,
 		/** 订阅源是否启用XSLT样式 */
 		enableStyle: true,
+	},
+
+	/** Bing IndexNow 配置 */
+	indexNow: {
+		/** 是否启用 IndexNow */
+		enable: true,
+		/** IndexNow API 密钥，从 https://www.bing.com/indexnow/getstarted 获取 */
+		key: '62b408c96e384086be35d761c56d77cb',
 	},
 
 	/** 向 <head> 中添加脚本 */

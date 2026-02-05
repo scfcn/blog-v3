@@ -8,7 +8,8 @@ const route = useRoute()
 const goConfig = appConfig.component.externalLink.go
 
 definePageMeta({
-  title: goConfig.title
+  title: goConfig.title,
+  robots: 'noindex, nofollow'
 })
 
 const encodedUrl = computed(() => route.query.url as string || '')

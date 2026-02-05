@@ -265,7 +265,7 @@ export default [
 				date: '2024-12-09',
 				comment: 'Xuan\'s blog（2025年11月更新），站长获项目劳务费，记录晚霞、中秋游记等生活点滴。内容涵盖Umami升级、Typecho博客运维（主题美化、插件监控等）教程，及GPT聊天应用、健身房管理系统开发实践，兼具技术干货与生活随笔。',
 			},
-			{
+			/*{
 				author: '秘柯絮语',
 				sitenick: '',
 				title: '秘柯絮语',
@@ -278,6 +278,7 @@ export default [
 				date: '2024-12-09',
 				comment: 'Mioc的博客（2025年更新），站长备考专业考试、即将开启一年船上实习，计划不定期更新。内容涵盖EasyTier异地组网搭建等技术教程，李煜、晏几道诗词赏析，还有航模、视频壁纸分享，兼具技术实践与文学随笔，风格多元。',
 			},
+			*/
 			{
 				author: '百里博客',
 				sitenick: '',
@@ -706,6 +707,19 @@ export default [
 				archs: ['Golang', '服务器'],
 				date: '2026-01-25',
 				comment: '聚焦于个体在虚妄与真实间的挣扎，通过《若为假希望宁无希望》等文探讨现代人精神困境。内容涵盖存在主义反思、自我解构与重建，领域涉及哲学思辨、心灵成长与文学性社会观察，文风冷峻犀利直指当代生存悖论。',
+			},
+			{
+				author: 'LanM',
+				sitenick: '',
+				title: 'LanM',
+				desc: '蓝莓',
+				link: 'https://bluelanm.github.io/my-website/',
+				feed: 'https://bluelanm.github.io/my-website/rss.xml',
+				icon: 'https://image.lolimi.cn/2026/02/05/6984abce1bbaa.webp',
+				avatar: 'https://image.lolimi.cn/2026/02/05/6984abce1bbaa.webp',
+				archs: ['GitHub Pages', 'HTML'],
+				date: '2026-02-05',
+				comment: '蓝莓のBlog近期调Docusaurus配置解加载问题，记建站实践，涉技术建站、个人实践，文风务实。',
 			},
 		],
 	},

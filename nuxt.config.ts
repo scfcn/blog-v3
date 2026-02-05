@@ -40,6 +40,14 @@ export default defineNuxtConfig({
 		},
 	},
 
+	typescript: {
+		tsConfig: {
+			compilerOptions: {
+				types: [], // 清空默认类型，避免unplugin-yaml/types错误
+			},
+		},
+	},
+
 	compatibilityDate: '2024-08-03',
 
 	components: [
@@ -175,16 +183,38 @@ ${packageJson.homepage}
 ================================
 `)
 		},
-		'content:file:afterParse': (ctx) => {
+		'content:file:afterParse': async (ctx) => {
 			const permalink = ctx.content.permalink as string
 			if (permalink) {
 				ctx.content.path = permalink
-				return
+			} else {
+				// 在 URL 中隐藏文件路由自动生成的 /posts 路径前缀
+				if (blogConfig.article.hidePostPrefix) {
+					const realPath = ctx.content.path as string | undefined
+					ctx.content.path = realPath?.replace(/^\/posts/, '')
+				}
 			}
-			// 在 URL 中隐藏文件路由自动生成的 /posts 路径前缀
-			if (blogConfig.article.hidePostPrefix) {
-				const realPath = ctx.content.path as string | undefined
-				ctx.content.path = realPath?.replace(/^\/posts/, '')
+
+			// 通知 IndexNow
+			if (blogConfig.indexNow.enable && blogConfig.indexNow.key && ctx.content.path) {
+				try {
+					const url = new URL(ctx.content.path as string, blogConfig.url).href
+					const requestBody = JSON.stringify({
+						host: new URL(blogConfig.url).hostname,
+						key: blogConfig.indexNow.key,
+						url,
+					})
+					await fetch('https://api.indexnow.org/indexnow', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json; charset=utf-8',
+						},
+						body: requestBody,
+					})
+					console.info(`IndexNow: ${url} submitted successfully`)
+				} catch (error) {
+					console.error('IndexNow submission failed:', error)
+				}
 			}
 		},
 	},

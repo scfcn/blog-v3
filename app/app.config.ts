@@ -160,7 +160,6 @@ export default defineAppConfig({
 				{ icon: 'ph:fish-bold', text: '鱼塘', url: '/fcircle' },
 				{ icon: 'ph:chat-centered-dots-bold', text: '即刻', url: '/essay' },
 				{ icon: 'ph:laptop-bold', text: '装备', url: '/devices' },
-				{ icon: 'ri:bilibili-fill', text: '追番', url: '/bangumi' },
 			],
 		},
 	] satisfies Nav,

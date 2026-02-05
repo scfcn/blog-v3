@@ -7,7 +7,7 @@ const props = defineProps<ArticleProps>()
 const appConfig = useAppConfig()
 const { donation } = appConfig
 const title = `${props.title} | ${appConfig.title}`
-const href = new URL(props.path!, appConfig.url).href
+const href = props.path ? new URL(props.path, appConfig.url).href : appConfig.url
 const { copy, copied } = useCopy(href)
 </script>
 

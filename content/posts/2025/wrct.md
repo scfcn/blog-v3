@@ -7,7 +7,7 @@ categories: [随笔杂谈]
 tags: [WRCT]
 recommend: 14
 description: 备战WRCT2025江苏选拔赛WHALESBOT赛项，更换设备提升效率，采用模块化设计应对随机赛道，因巡线问题改用启动电机实现精准转向，已完成部分路线程序。
-image: https://image.keimgae.fun/imgse/3/20250724/742d8b4abd13f58b351a53906d7408b4.png
+image: https://image.lolimi.cn/2026/02/05/69849617c40b5.webp
 ---
 
 ## WRCT2025 江苏选拔赛 WHALESBOT 赛项备赛日记：从手忙脚乱到稳如老狗

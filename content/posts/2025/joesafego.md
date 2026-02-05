@@ -7,7 +7,7 @@ categories: [技术干货]
 tags: [Joe魔改]
 recommend: 15
 description: SafeGo插件适配Joe再续前缘主题，替换goto.php文件实现安全跳转页面功能，支持配置倒计时、Base64编码、头像、标题等，提供黑暗模式选项。
-image: https://image.keimgae.fun/imgse/3/20250725/6e75b64e831e51a914a4f8ca99702464.webp
+image: https://image.lolimi.cn/2026/02/05/698495fee74f1.webp
 ---
 
 ## 原项目项目是柳神开发的Hexo插件[安全跳转页面·插件版](https://blog.liushen.fun/posts/1dfd1f41/)，我使用AI移植到了Joe再续前缘主题。
