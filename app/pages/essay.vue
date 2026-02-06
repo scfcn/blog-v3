@@ -7,7 +7,7 @@ import { fetchTalks } from '../talks'
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-log', 'comm-group'])
 
-const title = '说说'
+const title = '说说：记录生活点滴，一些想法'
 const description = '记录生活点滴，一些想法。'
 const image = 'https://eimg.yujiay.wang/images/2025/12/27/-.jpg'
 useSeoMeta({ title, description, ogImage: image })
@@ -90,6 +90,7 @@ function getEssayDate(date?: string | Date) {
 <template>
 <ZPageBanner :title :description :image />
 
+<h1 class="sr-only">说说</h1>
 <div class="talk-list">
 	<!-- 加载状态 -->
 	<template v-if="isLoading">

@@ -10,7 +10,7 @@ description: 本文介绍了Cloudflare优选方法，需准备信用卡和托管
 image: https://i.p-i.vip/135/20260102-69576a6dd87ef.webp
 ---
 
-# 本期来讲讲Cloudflare的优选方法
+## 本期来讲讲Cloudflare的优选方法
 首先需要一张信用卡来过验证，这样才能使用SAAS（自定义主机回退源），这里不多讲解，还需要一个域名托管于CF，一个域名托管到支持分线路解析的地方。
 ::quote{icon="ph:info-circle-duotone"}
 为了便于理解，实际访问域名称为`域名A`，托管于CF的回源域名称为`域名B`。

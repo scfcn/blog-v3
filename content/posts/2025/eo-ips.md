@@ -10,7 +10,7 @@ description: EdgeOne 提供官方 API `https://api.edgeone.ai/ips` 获取全球�
 image: https://r2.qixz.cn/qxz/img/eo-ips.svg
 ---
 
-# EdgeOne 官方 IP 段 API 使用教程：轻松获取回源节点 IP
+## EdgeOne 官方 IP 段 API 使用教程：轻松获取回源节点 IP
 
 EdgeOne 作为腾讯云推出的边缘安全加速平台，提供了全球分布的回源节点网络。为了确保源站安全，我们通常需要将这些回源节点的 IP 地址加入防火墙白名单。本文将详细介绍如何通过 EdgeOne 官方 API 获取这些 IP 段，并分享一些实用技巧。
 

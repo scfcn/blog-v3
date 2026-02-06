@@ -1,5 +1,5 @@
 ---
-title: Bing每日图片部署教程
+title: Bing每日图片部署教程：GitHub Actions工作流与随机图片功能
 date: 2025-08-25 10:28:00
 type: tech
 categories: [技术干货]

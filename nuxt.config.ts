@@ -199,10 +199,12 @@ ${packageJson.homepage}
 			if (blogConfig.indexNow.enable && blogConfig.indexNow.key && ctx.content.path) {
 				try {
 					const url = new URL(ctx.content.path as string, blogConfig.url).href
+					const keyLocation = new URL(`/${blogConfig.indexNow.key}.txt`, blogConfig.url).href
 					const requestBody = JSON.stringify({
 						host: new URL(blogConfig.url).hostname,
 						key: blogConfig.indexNow.key,
-						url,
+						keyLocation,
+						urlList: [url],
 					})
 					await fetch('https://api.indexnow.org/indexnow', {
 						method: 'POST',

@@ -1,5 +1,5 @@
 ---
-title: 组件样式示例
+title: 组件样式示例：展示Nuxt Content中可用的组件样式
 date: 2024-09-21 23:18:18
 updated: 2025-12-28 11:18:33
 type: tech

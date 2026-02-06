@@ -12,7 +12,7 @@ const { data: postLink } = await useAsyncData(
 )
 
 useSeoMeta({
-	title: '友链',
+	title: '友链：收集了添加他为友链的网站和他订阅的网站列表',
 	ogType: 'profile',
 	description: `${appConfig.title}的友链页面，收集了添加他为友链的网站和他订阅的网站列表。`,
 })

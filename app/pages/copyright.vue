@@ -2,7 +2,7 @@
 const appConfig = useAppConfig()
 
 useSeoMeta({
-  title: '版权信息',
+  title: '版权信息：青序栈网站版权声明和使用条款',
   description: '青序栈网站版权声明和使用条款'
 })
 

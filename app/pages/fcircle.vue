@@ -5,7 +5,7 @@ import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-tech', 'blog-log', 'comm-group'])
 
-const title = '朋友圈'
+const title = '朋友圈：发现更多有趣的博主'
 const description = '发现更多有趣的博主。'
 const image = 'https://i.p-i.vip/135/20251129-692ade5d9f367.webp'
 useSeoMeta({ title, description, ogImage: image })
@@ -198,6 +198,7 @@ onUnmounted(() => {
 </ZPageBanner>
 
 <div class="page-fcircle">
+	<h1 class="sr-only">朋友圈</h1>
 	<div class="fcircle">
 		<!-- 加载指示器 -->
 		<div v-if="isLoading" class="loading-container">

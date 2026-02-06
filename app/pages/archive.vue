@@ -3,7 +3,7 @@ import { group } from 'radash'
 
 const appConfig = useAppConfig()
 useSeoMeta({
-	title: '归档',
+	title: '归档：查看所有文章归档和年度字数统计',
 	description: `${appConfig.title}的所有文章归档。`,
 })
 const birthYear = appConfig.component.stats.birthYear
@@ -35,6 +35,7 @@ const yearlyWordCount = computed(() => {
 
 <template>
 <div class="archive proper-height">
+	<h1 class="sr-only">归档</h1>
 	<PostOrderToggle
 		v-model:is-ascending="isAscending"
 		v-model:sort-order="sortOrder"

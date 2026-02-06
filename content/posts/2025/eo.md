@@ -1,5 +1,5 @@
 ---
-title: EdgeOne优选教程
+title: EdgeOne优选教程：降低中国大陆用户访问延迟的完整指南
 date: 2025-07-21 10:03:00
 type: tech
 recommend: 16
@@ -10,7 +10,7 @@ description: EdgeOne优选教程建议将域名CNAME到eo.qxzhan.cn或eo.wudu.lt
 image: https://r2.qixz.cn/qxz/img/eo.svg
 ---
 
-# 问题背景：EO节点延迟问题
+## 问题背景：EO节点延迟问题
 ## eo优选的诞生
 ## 优选方法
 ### EASY~只需要将域名cname到优选域名eo.xnet.ren

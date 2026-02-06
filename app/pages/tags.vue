@@ -5,7 +5,7 @@ const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-tech', 'blog-log', 'comm-group'])
 
 const appConfig = useAppConfig()
-const title = '标签'
+const title = '标签：查看所有文章标签和分类'
 const description = `${appConfig.title}的所有文章标签。`
 useSeoMeta({ title, description })
 

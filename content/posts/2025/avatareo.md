@@ -1,5 +1,5 @@
 ---
-title: 免费搭建自己的头像源
+title: 免费搭建自己的头像源：利用EdgeOne免费资源实现多源头像API
 date: 2025-09-27 18:39:00
 type: tech
 categories: [技术干货]

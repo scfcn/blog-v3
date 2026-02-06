@@ -7,7 +7,7 @@ const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-tech', 'blog-log'])
 
 useSeoMeta({
-  title: '我的装备',
+  title: '我的装备：展示生产力、娱乐和移动设备清单',
 })
 
 // 新增状态管理
@@ -38,6 +38,7 @@ const getCategoryCount = computed(() => (category: string) => {
 
 <template>
   <div id="icat-equipment">
+    <h1 class="sr-only">我的装备</h1>
     <div class="equipment-category">
       <!-- 顶部导航栏 -->
       <div class="categories-tabs">

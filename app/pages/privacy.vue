@@ -2,7 +2,7 @@
 const appConfig = useAppConfig()
 
 useSeoMeta({
-  title: '隐私协议',
+  title: '隐私协议：青序栈网站隐私政策和用户数据保护声明',
   description: '青序栈网站隐私政策和用户数据保护声明'
 })
 

@@ -10,7 +10,7 @@ description: EdgeOne通过全球边缘节点缓存静态资源，显著降低延
 image: https://r2.qixz.cn/qxz/img/eo-cache.svg
 ---
 
-# 腾讯云EdgeOne缓存配置全解析：加速网站的秘密武器
+## 腾讯云EdgeOne缓存配置全解析：加速网站的秘密武器
 
 ::quote{icon="ph:info-circle-duotone"}
 本文深度解读EdgeOne边缘加速服务的缓存规则配置技巧，附实战配置案例。

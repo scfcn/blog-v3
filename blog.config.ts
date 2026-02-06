@@ -79,6 +79,7 @@ const blogConfig = {
 	/** Bing IndexNow 配置 */
 	indexNow: {
 		enable: true,
+
 		key: '62b408c96e384086be35d761c56d77cb',
 	},
 
