@@ -82,7 +82,7 @@ export function getDomainIcon(url: string) {
 	const mainDomain = getMainDomain(url, true)
 	if (domain in domainIcons)
 		return domainIcons[domain]
-	return mainDomainIcons[mainDomain]
+	return mainDomainIcons[mainDomain] || ''
 }
 
 /** 文件名后缀图标映射，优先级高于代码块语言图标映射 */

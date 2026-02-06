@@ -12,7 +12,7 @@ const domainTip: Record<string, string> = {
 
 export function getDomain(url: string) {
 	const domain = fromUrl(url)
-	return typeof domain === 'symbol' ? url : domain
+	return typeof domain === 'symbol' ? url : domain || url
 }
 
 export function getMainDomain(url: string, useIcann?: boolean) {

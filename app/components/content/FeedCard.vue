@@ -28,7 +28,6 @@ function getInspectStyle(src: string): CSSProperties {
 	return {
 		border: `2px solid ${color}`,
 		boxSizing: 'content-box',
-		boxSizingboxSizing,
 	}
 }
 </script>
@@ -43,11 +42,11 @@ function getInspectStyle(src: string): CSSProperties {
 		<div class="avatar" :title="feed ? undefined : '无订阅源'">
 			<ClientOnly v-if="isInspect">
 				<span style="position: absolute; left: 100%; white-space: nowrap;" v-text="title" />
-				<NuxtImg :src="icon" :title="icon" :style="getInspectStyle(icon)" />
-				<NuxtImg :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
+				<NuxtImg v-if="icon" :src="icon" :title="icon" :style="getInspectStyle(icon)" />
+				<NuxtImg v-if="avatar" :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
 			</ClientOnly>
 
-			<NuxtImg v-else class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" />
+			<NuxtImg v-else-if="avatar" class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" />
 			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="ph:bell-simple-slash-bold" />
 		</div>
 
@@ -57,7 +56,7 @@ function getInspectStyle(src: string): CSSProperties {
 
 	<template #content>
 		<div class="site-content">
-			<NuxtImg class="site-icon" :src="icon" :alt="title" />
+			<NuxtImg v-if="icon" class="site-icon" :src="icon" :alt="title" />
 
 			<div class="site-info">
 				<h3 class="text-creative">

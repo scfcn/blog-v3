@@ -240,6 +240,7 @@ onUnmounted(() => {
 			>
 				<div class="article-item__image" @click="showAvatarPosts(article.author, article.avatar, article.link)">
 					<NuxtImg
+						v-if="article.avatar"
 						:src="article.avatar"
 						:alt="article.author"
 						loading="lazy"
@@ -287,7 +288,8 @@ onUnmounted(() => {
 				<div class="modal__content" @click.stop>
 					<div class="modal__header">
 						<NuxtImg
-							:src="selectedAuthorAvatar || ''"
+							v-if="selectedAuthorAvatar"
+							:src="selectedAuthorAvatar"
 							:alt="selectedAuthor"
 							loading="lazy"
 							class="modal__avatar-img"
@@ -329,7 +331,8 @@ onUnmounted(() => {
 					</div>
 					<div class="modal__avatar">
 						<NuxtImg
-							:src="selectedAuthorAvatar || ''"
+							v-if="selectedAuthorAvatar"
+							:src="selectedAuthorAvatar"
 							:alt="selectedAuthor"
 							loading="lazy"
 							fallback-src=""

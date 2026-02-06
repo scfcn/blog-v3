@@ -69,7 +69,7 @@ const appConfig = useAppConfig()
 
 @font-face {
 	font-family: AlimamaFangYuanTi;
-	src: url("https://cdn.jsdmirror.com/gh/scfcn/Sharding-fonts/AlimamaFangYuanTi.woff2");
+	src: url("https://fonts.69b94fb6.er.aliyun-esa.net/AlimamaFangYuanTi.woff2");
 }
 
 .header-title {
