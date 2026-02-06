@@ -12,7 +12,7 @@ image: https://image.lolimi.cn/2025/11/29/692adfc0bbeb6.webp
 
 本文系Joe再续前缘主题魔改类第二篇教程，前置教程请见.
 ::quote{icon="ph:info-circle-duotone"}
-[Joe再续前缘魔改铺垫（一）](/2025/joemgpd1.md)
+[Joe再续前缘魔改铺垫（一）](/2025/joemgpd1)
 ::
 ## 这一期讲讲新增轻量朋友圈页面，需要提前部署[友链朋友圈](https://github.com/willow-god/Friend-Circle-Lite/)项目。
 

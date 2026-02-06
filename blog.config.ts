@@ -78,9 +78,7 @@ const blogConfig = {
 
 	/** Bing IndexNow 配置 */
 	indexNow: {
-		/** 是否启用 IndexNow */
 		enable: true,
-		/** IndexNow API 密钥，从 https://www.bing.com/indexnow/getstarted 获取 */
 		key: '62b408c96e384086be35d761c56d77cb',
 	},
 

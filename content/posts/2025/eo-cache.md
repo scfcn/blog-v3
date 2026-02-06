@@ -95,5 +95,5 @@ caption: 动态优化
 本文首发于个人技术博客，持续更新云服务实战技巧
 ::
 ::quote{icon="ph:info-circle-duotone"}
-原创声明：转载需保留来源信息 [@青序栈](https://www.qixz.cn/)
+原创声明：转载需保留来源信息 [@青序栈](/).
 ::
