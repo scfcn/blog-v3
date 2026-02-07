@@ -24,32 +24,32 @@ function scrollToTop() {
 </script>
 
 <template>
-	<Transition name="fade">
-		<button
-			v-if="isVisible"
-			class="back-to-top"
-			:aria-label="`返回顶部 - 已阅读 ${Math.round(readingProgress)}%`"
-			@click="scrollToTop"
-		>
-			<svg class="progress-ring" viewBox="0 0 50 50">
-				<circle
-					class="progress-ring-circle-bg"
-					cx="25"
-					cy="25"
-					r="22"
-				/>
-				<circle
-					class="progress-ring-circle"
-					cx="25"
-					cy="25"
-					r="22"
-					:stroke-dasharray="138.23"
-					:stroke-dashoffset="138.23 - (138.23 * readingProgress) / 100"
-				/>
-			</svg>
-			<Icon name="ph:arrow-up-bold" class="arrow-icon" />
-		</button>
-	</Transition>
+<Transition name="fade">
+	<button
+		v-if="isVisible"
+		class="back-to-top"
+		:aria-label="`返回顶部 - 已阅读 ${Math.round(readingProgress)}%`"
+		@click="scrollToTop"
+	>
+		<svg class="progress-ring" viewBox="0 0 50 50">
+			<circle
+				class="progress-ring-circle-bg"
+				cx="25"
+				cy="25"
+				r="22"
+			/>
+			<circle
+				class="progress-ring-circle"
+				cx="25"
+				cy="25"
+				r="22"
+				:stroke-dasharray="138.23"
+				:stroke-dashoffset="138.23 - (138.23 * readingProgress) / 100"
+			/>
+		</svg>
+		<Icon name="ph:arrow-up-bold" class="arrow-icon" />
+	</button>
+</Transition>
 </template>
 
 <style lang="scss" scoped>

@@ -22,16 +22,23 @@ watch(category, () => {
 useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
 
 const listRecommended = computed(() => sort(
-	listRaw.value.filter(item => item?.recommend),
+	(listRaw.value || []).filter(item => item?.recommend),
 	post => post.recommend || 0,
 	true,
 ))
+
+const isClient = process.client
 </script>
 
 <template>
 <BlogHeader class="mobile-only" to="/" tag="h1" />
 
-<PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
+<ClientOnly>
+	<PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
+	<template #fallback>
+		<UtilSkeleton type="image" />
+	</template>
+</ClientOnly>
 
 <div class="post-list">
 	<div class="toolbar">
@@ -52,15 +59,24 @@ const listRecommended = computed(() => sort(
 	</div>
 
 	<TransitionGroup tag="menu" class="proper-height" name="float-in">
+	<template v-if="listPaged.length">
 		<PostArticle
-			v-for="article, index in listPaged"
+			v-for="article in listPaged"
 			:key="article.path"
 			v-bind="article"
 			:to="article.path"
 			:use-updated="sortOrder === 'updated'"
-			:style="getFixedDelay(index * 0.05)"
 		/>
-	</TransitionGroup>
+	</template>
+	<template v-else>
+		<UtilSkeleton
+			v-for="i in 5"
+			:key="`skeleton-${i}`"
+			type="card"
+			:style="{ margin: '1rem 0' }"
+		/>
+	</template>
+</TransitionGroup>
 
 	<ZPagination v-model="page" sticky :total-pages="totalPages" />
 </div>

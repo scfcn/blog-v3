@@ -90,7 +90,9 @@ function getEssayDate(date?: string | Date) {
 <template>
 <ZPageBanner :title :description :image />
 
-<h1 class="sr-only">说说</h1>
+<h1 class="sr-only">
+	说说
+</h1>
 <div class="talk-list">
 	<!-- 加载状态 -->
 	<template v-if="isLoading">

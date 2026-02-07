@@ -10,11 +10,14 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 const categoryLabel = computed(() => props.categories?.[0])
 const categoryColor = computed(() => appConfig.article.categories[categoryLabel.value!]?.color)
 const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
+
+const articleRef = ref<HTMLElement>()
+const { isVisible } = useScrollAnimation(articleRef, { threshold: 0.1 })
 </script>
 
 <template>
-<UtilLink class="article-card card">
-	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
+<UtilLink ref="articleRef" class="article-card card" :class="{ 'scroll-animate': true, visible: isVisible }">
+	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" loading="lazy" />
 	<article>
 		<h2 class="article-title text-creative">
 			{{ title }}
@@ -62,7 +65,12 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	margin: 1rem 0;
 	border-radius: 0.8rem;
 	color: var(--c-text);
-	animation: float-in 0.2s var(--delay) backwards;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+	}
 
 	> article {
 		display: grid;

@@ -50,10 +50,11 @@ watch(isCollapsed, async (collapsed) => {
 	if (collapsed) {
 		await nextTick()
 		if (codeblock.value) {
-			const lineHeight = parseFloat(getComputedStyle(codeblock.value).lineHeight)
+			const lineHeight = Number.parseFloat(getComputedStyle(codeblock.value).lineHeight)
 			preHeight.value = `${lineHeight * compConf.collapsedRows + 3}rem`
 		}
-	} else {
+	}
+	else {
 		await nextTick()
 		if (codeblock.value) {
 			preHeight.value = `${codeblock.value.scrollHeight}px`
@@ -110,23 +111,23 @@ onMounted(async () => {
 			<Icon :name="icon" /> {{ filename }}
 		</span>
 		<span v-else />
-		<!-- 语言不采用绝对定位，因为和文件名占据互斥空间 -->
-		<span v-if="language" class="language">{{ language }}</span>
-		<div class="operations">
-			<button @click="isWrap = !isWrap">
-				{{ isWrap ? '横向滚动' : '自动换行' }}
-			</button>
-			<button @click="copy()">
-				{{ copied ? '已复制' : '复制' }}
-			</button>
+		<div class="header-right">
+			<span v-if="language" class="language">{{ language }}</span>
+			<div class="operations">
+				<button @click="isWrap = !isWrap">
+					{{ isWrap ? '横向滚动' : '自动换行' }}
+				</button>
+				<button @click="copy()">
+					{{ copied ? '已复制' : '复制' }}
+				</button>
+			</div>
 		</div>
 	</figcaption>
 
-	<!-- 嘿嘿，不要换行 -->
 	<pre
 		ref="codeblock"
 		class="shiki scrollcheck-x"
-		:class="[props.class, { wrap: isWrap }]"
+		:class="[props.class, { 'wrap': isWrap, 'show-line-numbers': compConf.showLineNumbers }]"
 		:style="{ maxHeight: isCollapsed ? preHeight : 'none' }"
 		v-html="rawHtml"
 	/>
@@ -179,6 +180,7 @@ onMounted(async () => {
 figcaption {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	gap: 1em;
 	position: sticky;
 	top: 0;
@@ -192,10 +194,18 @@ figcaption {
 		word-break: break-all;
 	}
 
+	> .header-right {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+	}
+
 	> .language {
-		opacity: 0.4;
-		height: 0;
-		transform: translateY(0.2em);
+		opacity: 0.6;
+		font-size: 0.75em;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		transition: opacity 0.2s;
 	}
 
 	> .operations {
@@ -205,14 +215,14 @@ figcaption {
 		padding: 0 0.6em;
 		border-end-start-radius: 0.5em;
 		background-color: var(--c-bg-2);
-		transition: opacity 0.2s;
+		transition: opacity 0.3s ease-in-out;
 
 		:hover > & {
 			opacity: 1;
 		}
 
 		> button {
-			opacity: 0.4;
+			opacity: 0.6;
 			padding: 0.2em 0.4em;
 			transition: opacity 0.2s;
 
@@ -230,10 +240,18 @@ pre {
 	padding: 1rem;
 	padding-inline-start: var(--start-offset);
 	max-height: none;
-	transition: max-height 0.3s ease-in-out, mask-image 0.3s ease-in-out;
+	transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), mask-image 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&.wrap {
 		white-space: pre-wrap;
+	}
+
+	&:not(.show-line-numbers) {
+		padding-inline-start: 1rem;
+
+		:deep(.line)::before {
+			display: none;
+		}
 	}
 }
 
@@ -248,6 +266,7 @@ pre {
 		text-align: end;
 		color: var(--c-text-3);
 		z-index: 1;
+		transition: color 0.2s;
 	}
 
 	&.highlight {
@@ -269,10 +288,15 @@ pre {
 	background-color: var(--c-bg-3);
 	text-align: center;
 	color: var(--c-text-2);
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s;
+
+	&:hover {
+		background-color: var(--c-bg-4);
+	}
 }
 
 .toggle-icon {
-	transition: all 0.2s;
+	transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&.is-collapsed {
 		transform: rotate(180deg);
@@ -287,7 +311,7 @@ pre {
 	position: absolute;
 	opacity: 0;
 	inset: auto 0;
-	transition: opacity 0.2s;
+	transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 	:hover > & {
 		opacity: 1;

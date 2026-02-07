@@ -1,6 +1,5 @@
 // 友链检测 CLI 需要使用显式导入和相对路径
 import type { FeedGroup } from '../app/types/feed'
-import { myFeed } from '../blog.config'
 
 export default [
 	// #region Clarity
@@ -95,19 +94,6 @@ export default [
 				archs: ['Golang', 'EdgeOne'],
 				date: '2024-12-09',
 				comment: '安和鱼的博客（2025年底持续更新），聚焦前端技术与Anheyu-App相关，分享CSS新方案、React漏洞、CSRF攻击等技术解析，及应用安装迁移教程，也含Mac使用体验、武汉旅游日志与年度总结，技术实用且兼顾生活气息。',
-			},
-			{
-				author: 'Liushen',
-				sitenick: '清羽飞扬',
-				title: '清羽飞扬',
-				desc: '柳影曳曳，清酒孤灯，扬笔撒墨，心境如霜',
-				link: 'https://blog.liushen.fun/',
-				feed: 'https://blog.liushen.fun/atom.xml',
-				icon: 'https://blog.liushen.fun/favicon.ico',
-				avatar: 'https://q.qlogo.cn/g?b=qq&nk=3162475700&s=640',
-				archs: ['Hexo', 'EdgeOne'],
-				date: '2025-01-01',
-				comment: '近期在成都活动、学 C++，曾感冒。文章多涉 Hexo/Butterfly 主题魔改、Anheyu-App 部署、TinyAuth 认证等筑站运维内容，也有旅游、观影类闲情杂记。',
 			},
 			{
 				author: 'FrWalker',
@@ -265,7 +251,7 @@ export default [
 				date: '2024-12-09',
 				comment: 'Xuan\'s blog（2025年11月更新），站长获项目劳务费，记录晚霞、中秋游记等生活点滴。内容涵盖Umami升级、Typecho博客运维（主题美化、插件监控等）教程，及GPT聊天应用、健身房管理系统开发实践，兼具技术干货与生活随笔。',
 			},
-			/*{
+			/* {
 				author: '秘柯絮语',
 				sitenick: '',
 				title: '秘柯絮语',
@@ -668,6 +654,19 @@ export default [
 				archs: ['Astro', 'Vercel'],
 				date: '2024-12-09',
 				comment: '2025 年持续更新，站长为高中生。内容涵盖实用技术教程（宝塔专业版申请、免费图床搭建、AI 绘画、刷课脚本），也分享澎湃 OS 使用体验、CSGO 游戏日常，干货与生活记录兼具，性价比高。',
+			},
+			{
+				author: 'Liushen',
+				sitenick: '清羽飞扬',
+				title: '清羽飞扬',
+				desc: '柳影曳曳，清酒孤灯，扬笔撒墨，心境如霜',
+				link: 'https://blog.liushen.fun/',
+				feed: 'https://blog.liushen.fun/atom.xml',
+				icon: 'https://blog.liushen.fun/favicon.ico',
+				avatar: 'https://q.qlogo.cn/g?b=qq&nk=3162475700&s=640',
+				archs: ['Hexo', 'EdgeOne'],
+				date: '2025-01-01',
+				comment: '近期在成都活动、学 C++，曾感冒。文章多涉 Hexo/Butterfly 主题魔改、Anheyu-App 部署、TinyAuth 认证等筑站运维内容，也有旅游、观影类闲情杂记。',
 			},
 			{
 				author: 'THW',

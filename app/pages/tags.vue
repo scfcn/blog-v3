@@ -45,11 +45,14 @@ function getTagSize(count: number): string {
 	const maxCount = Math.max(...Object.values(articlesByTag.value).map(articles => articles.length))
 	const minCount = Math.min(...Object.values(articlesByTag.value).map(articles => articles.length))
 	const range = maxCount - minCount
-	if (range === 0) return 'medium'
-	
+	if (range === 0)
+		return 'medium'
+
 	const ratio = (count - minCount) / range
-	if (ratio < 0.33) return 'small'
-	if (ratio < 0.66) return 'medium'
+	if (ratio < 0.33)
+		return 'small'
+	if (ratio < 0.66)
+		return 'medium'
 	return 'large'
 }
 
@@ -74,14 +77,14 @@ function clearSelectedTag() {
 			<h1 class="tag-selected-title">
 				<span class="tag-hashtag">#</span> {{ selectedTag }}
 			</h1>
-			<button class="tag-clear-btn" @click="clearSelectedTag" aria-label="返回标签云">
+			<button class="tag-clear-btn" aria-label="返回标签云" @click="clearSelectedTag">
 				<Icon name="ph:x-circle-bold" />
 			</button>
 		</div>
 		<div class="tag-selected-info">
 			共 {{ articlesByTag[selectedTag]?.length }} 篇文章
 		</div>
-		
+
 		<menu class="archive-list">
 			<TransitionGroup appear name="float-in">
 				<PostArchive
@@ -97,7 +100,9 @@ function clearSelectedTag() {
 
 	<!-- 标签云视图 -->
 	<div v-else class="tag-cloud">
-		<h1 class="tag-cloud-title">{{ title }}</h1>
+		<h1 class="tag-cloud-title">
+			{{ title }}
+		</h1>
 		<div class="tag-cloud-content">
 			<button
 				v-for="tag in sortedTags"
@@ -107,10 +112,10 @@ function clearSelectedTag() {
 				@click="handleTagClick(tag)"
 			>
 				# {{ tag }}
-                <span class="tag-count">{{ articlesByTag[tag]?.length }}</span>
+				<span class="tag-count">{{ articlesByTag[tag]?.length }}</span>
 			</button>
 		</div>
-		
+
 		<div class="tag-cloud-stats">
 			共 {{ sortedTags.length }} 个标签
 		</div>

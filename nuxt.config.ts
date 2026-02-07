@@ -187,7 +187,8 @@ ${packageJson.homepage}
 			const permalink = ctx.content.permalink as string
 			if (permalink) {
 				ctx.content.path = permalink
-			} else {
+			}
+			else {
 				// 在 URL 中隐藏文件路由自动生成的 /posts 路径前缀
 				if (blogConfig.article.hidePostPrefix) {
 					const realPath = ctx.content.path as string | undefined
@@ -214,7 +215,8 @@ ${packageJson.homepage}
 						body: requestBody,
 					})
 					console.info(`IndexNow: ${url} submitted successfully`)
-				} catch (error) {
+				}
+				catch (error) {
 					console.error('IndexNow submission failed:', error)
 				}
 			}
@@ -237,15 +239,15 @@ ${packageJson.homepage}
 		// https://github.com/nuxt/image/issues/1353
 		provider: NETLIFY ? 'none' : undefined,
 		format: ['avif', 'webp', 'jpeg'],
-  		quality: 80,
-  		screens: {
-    		'xs': 320,
-    		'sm': 640,
-    		'md': 768,
-    		'lg': 1024,
-    		'xl': 1280,
-    		'xxl': 1536,
-  		},
+		quality: 80,
+		screens: {
+			xs: 320,
+			sm: 640,
+			md: 768,
+			lg: 1024,
+			xl: 1280,
+			xxl: 1536,
+		},
 	},
 
 	linkChecker: {

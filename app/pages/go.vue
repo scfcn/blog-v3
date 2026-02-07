@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import appConfig from '~/app.config'
 
@@ -8,8 +8,8 @@ const route = useRoute()
 const goConfig = appConfig.component.externalLink.go
 
 definePageMeta({
-  title: goConfig.title,
-  robots: 'noindex, nofollow'
+	title: goConfig.title,
+	robots: 'noindex, nofollow',
 })
 
 const encodedUrl = computed(() => route.query.url as string || '')
@@ -19,163 +19,170 @@ const countdown = ref<number>(goConfig.countdown)
 const error = ref<string>('')
 const isLoading = ref(true)
 const countdownProgress = computed(() => {
-  const total = goConfig.countdown
-  const remaining = countdown.value
-  return (remaining / total) * 283
+	const total = goConfig.countdown
+	const remaining = countdown.value
+	return (remaining / total) * 283
 })
 
 let countdownTimer: ReturnType<typeof setInterval> | null = null
 
 function startCountdown() {
-  countdown.value = goConfig.countdown
-  
-  if (countdownTimer) {
-    clearInterval(countdownTimer)
-  }
-  
-  countdownTimer = setInterval(() => {
-    countdown.value--
-    if (countdown.value <= 0) {
-      clearInterval(countdownTimer!)
-      countdownTimer = null
-      jumpToExternal()
-    }
-  }, 1000)
+	countdown.value = goConfig.countdown
+
+	if (countdownTimer) {
+		clearInterval(countdownTimer)
+	}
+
+	countdownTimer = setInterval(() => {
+		countdown.value--
+		if (countdown.value <= 0) {
+			clearInterval(countdownTimer!)
+			countdownTimer = null
+			jumpToExternal()
+		}
+	}, 1000)
 }
 
 function decodeUrl(encoded: string): string {
-  try {
-    const decoded = decodeURIComponent(atob(encoded))
-    return decoded
-  } catch {
-    return encoded
-  }
+	try {
+		const decoded = decodeURIComponent(atob(encoded))
+		return decoded
+	}
+	catch {
+		return encoded
+	}
 }
 
 function jumpToExternal() {
-  if (!url.value) {
-    error.value = goConfig.errorText.invalidLink
-    return
-  }
-  
-  // 在新窗口中打开外部链接
-  window.open(url.value, '_blank', 'noopener,noreferrer')
-  
-  // 清除倒计时定时器
-  if (countdownTimer) {
-    clearInterval(countdownTimer)
-    countdownTimer = null
-  }
-  
-  // 关闭当前页面
-  setTimeout(() => {
-    window.close()
-  }, 500)
+	if (!url.value) {
+		error.value = goConfig.errorText.invalidLink
+		return
+	}
+
+	// 在新窗口中打开外部链接
+	window.open(url.value, '_blank', 'noopener,noreferrer')
+
+	// 清除倒计时定时器
+	if (countdownTimer) {
+		clearInterval(countdownTimer)
+		countdownTimer = null
+	}
+
+	// 关闭当前页面
+	setTimeout(() => {
+		window.close()
+	}, 500)
 }
 
 function cancelJump() {
-  // 清除倒计时定时器
-  if (countdownTimer) {
-    clearInterval(countdownTimer)
-    countdownTimer = null
-  }
-  
-  // 关闭当前页面
-  window.close()
+	// 清除倒计时定时器
+	if (countdownTimer) {
+		clearInterval(countdownTimer)
+		countdownTimer = null
+	}
+
+	// 关闭当前页面
+	window.close()
 }
 
 function handleWindowClose() {
-  // 清除倒计时定时器，防止窗口关闭后仍执行跳转
-  if (countdownTimer) {
-    clearInterval(countdownTimer)
-    countdownTimer = null
-  }
+	// 清除倒计时定时器，防止窗口关闭后仍执行跳转
+	if (countdownTimer) {
+		clearInterval(countdownTimer)
+		countdownTimer = null
+	}
 }
 
 onMounted(() => {
-  isLoading.value = false
-  if (encodedUrl.value) {
-    url.value = decodeUrl(encodedUrl.value)
-    if (url.value) {
-      startCountdown()
-    } else {
-      error.value = goConfig.errorText.decodeFailed
-    }
-  } else {
-    error.value = goConfig.errorText.missingParam
-  }
-  
-  // 添加窗口关闭事件监听器
-  window.addEventListener('beforeunload', handleWindowClose)
+	isLoading.value = false
+	if (encodedUrl.value) {
+		url.value = decodeUrl(encodedUrl.value)
+		if (url.value) {
+			startCountdown()
+		}
+		else {
+			error.value = goConfig.errorText.decodeFailed
+		}
+	}
+	else {
+		error.value = goConfig.errorText.missingParam
+	}
+
+	// 添加窗口关闭事件监听器
+	window.addEventListener('beforeunload', handleWindowClose)
 })
 
 onUnmounted(() => {
-  // 清除倒计时定时器
-  if (countdownTimer) {
-    clearInterval(countdownTimer)
-    countdownTimer = null
-  }
-  
-  // 移除窗口关闭事件监听器
-  window.removeEventListener('beforeunload', handleWindowClose)
+	// 清除倒计时定时器
+	if (countdownTimer) {
+		clearInterval(countdownTimer)
+		countdownTimer = null
+	}
+
+	// 移除窗口关闭事件监听器
+	window.removeEventListener('beforeunload', handleWindowClose)
 })
 </script>
 
 <template>
-  <div class="go-page">
-    <Transition name="fade">
-      <div v-if="!isLoading" class="card">
-        <div v-if="error" class="error-state">
-          <div class="error-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
-          </div>
-          <h1>页面出错</h1>
-          <p>{{ error }}</p>
-          <div class="actions">
-            <button @click="cancelJump" class="btn-secondary">
-              返回首页
-            </button>
-          </div>
-        </div>
+<div class="go-page">
+	<Transition name="fade">
+		<div v-if="!isLoading" class="card">
+			<div v-if="error" class="error-state">
+				<div class="error-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="10" />
+						<line x1="12" y1="8" x2="12" y2="12" />
+						<line x1="12" y1="16" x2="12.01" y2="16" />
+					</svg>
+				</div>
+				<h1>页面出错</h1>
+				<p>{{ error }}</p>
+				<div class="actions">
+					<button class="btn-secondary" @click="cancelJump">
+						返回首页
+					</button>
+				</div>
+			</div>
 
-        <div v-else class="normal-state">
-          <div class="icon-wrapper">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-            </svg>
-          </div>
+			<div v-else class="normal-state">
+				<div class="icon-wrapper">
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
+						<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+						<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+					</svg>
+				</div>
 
-          <h1>{{ goConfig.normalText.leaving }}</h1>
-          <p class="description">{{ goConfig.normalText.description }}</p>
+				<h1>{{ goConfig.normalText.leaving }}</h1>
+				<p class="description">
+					{{ goConfig.normalText.description }}
+				</p>
 
-          <div class="countdown-wrapper">
-            <div class="countdown-circle">
-              <svg viewBox="0 0 100 100">
-                <circle class="countdown-bg" cx="50" cy="50" r="45"/>
-                <circle class="countdown-progress" cx="50" cy="50" r="45" :style="{ strokeDashoffset: countdownProgress }"/>
-              </svg>
-              <span class="countdown-number">{{ countdown }}</span>
-            </div>
-            <p class="countdown-text">{{ goConfig.normalText.countingDown }}</p>
-          </div>
+				<div class="countdown-wrapper">
+					<div class="countdown-circle">
+						<svg viewBox="0 0 100 100">
+							<circle class="countdown-bg" cx="50" cy="50" r="45" />
+							<circle class="countdown-progress" cx="50" cy="50" r="45" :style="{ strokeDashoffset: countdownProgress }" />
+						</svg>
+						<span class="countdown-number">{{ countdown }}</span>
+					</div>
+					<p class="countdown-text">
+						{{ goConfig.normalText.countingDown }}
+					</p>
+				</div>
 
-          <div class="actions">
-            <button @click="cancelJump" class="btn-secondary">
-              {{ goConfig.normalText.cancel }}
-            </button>
-            <button @click="jumpToExternal" class="btn-primary">
-              {{ goConfig.normalText.jumpNow }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </Transition>
-  </div>
+				<div class="actions">
+					<button class="btn-secondary" @click="cancelJump">
+						{{ goConfig.normalText.cancel }}
+					</button>
+					<button class="btn-primary" @click="jumpToExternal">
+						{{ goConfig.normalText.jumpNow }}
+					</button>
+				</div>
+			</div>
+		</div>
+	</Transition>
+</div>
 </template>
 
 <style lang="scss" scoped>

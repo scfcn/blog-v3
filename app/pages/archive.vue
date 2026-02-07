@@ -31,11 +31,19 @@ const yearlyWordCount = computed(() => {
 		return acc
 	}, {})
 })
+
+const collapsedYears = ref<Record<string, boolean>>({})
+
+function toggleYear(year: string) {
+	collapsedYears.value[year] = !collapsedYears.value[year]
+}
 </script>
 
 <template>
 <div class="archive proper-height">
-	<h1 class="sr-only">归档</h1>
+	<h1 class="sr-only">
+		归档
+	</h1>
 	<PostOrderToggle
 		v-model:is-ascending="isAscending"
 		v-model:sort-order="sortOrder"
@@ -48,7 +56,7 @@ const yearlyWordCount = computed(() => {
 		:key="year"
 		class="archive-group"
 	>
-		<div class="archive-title">
+		<div class="archive-title" @click="toggleYear(year)">
 			<h2 class="archive-year">
 				{{ year }}
 			</h2>
@@ -62,9 +70,19 @@ const yearlyWordCount = computed(() => {
 				<span>{{ yearlyWordCount[year] }}字</span>
 				<span>{{ yearGroup?.length }}篇</span>
 			</div>
+
+			<Icon
+				class="toggle-icon"
+				:name="collapsedYears[year] ? 'ph:caret-right-bold' : 'ph:caret-down-bold'"
+			/>
 		</div>
 
-		<TransitionGroup tag="menu" class="archive-list" name="float-in">
+		<TransitionGroup
+			v-if="!collapsedYears[year]"
+			tag="menu"
+			class="archive-list"
+			name="float-in"
+		>
 			<PostArchive
 				v-for="article, index in yearGroup"
 				:key="article.path"
@@ -91,6 +109,7 @@ const yearlyWordCount = computed(() => {
 .archive-title {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	gap: 1em;
 	position: sticky;
 	opacity: 0.5;
@@ -98,6 +117,8 @@ const yearlyWordCount = computed(() => {
 	font-size: min(1.5em, 5vw);
 	color: transparent;
 	transition: color 0.2s;
+	cursor: pointer;
+	user-select: none;
 
 	&::selection, :hover > & {
 		color: var(--c-text-3);
@@ -135,6 +156,12 @@ const yearlyWordCount = computed(() => {
 		flex-wrap: wrap;
 		justify-content: flex-end;
 		column-gap: 0.5em;
+	}
+
+	> .toggle-icon {
+		font-size: 1.5em;
+		color: var(--c-text-3);
+		transition: transform 0.3s ease;
 	}
 }
 </style>

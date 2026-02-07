@@ -1,4 +1,5 @@
-import { defineAsyncComponent, type Component } from 'vue'
+import type { Component } from 'vue'
+import { defineAsyncComponent } from 'vue'
 
 export function createLazyComponent<T extends Component>(
 	componentLoader: () => Promise<{ default: T }>,

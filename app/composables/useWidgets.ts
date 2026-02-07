@@ -7,10 +7,10 @@ import {
 	LazyWidgetGithubCard,
 	LazyWidgetToc,
 	LazyWidgetWelcomeVisitor,
+	LazyWidgetRelatedPosts,
 } from '#components'
 import { pascal } from 'radash'
 
-// @keep-sorted
 const rawWidgets = {
 	LazyWidgetBlogLog,
 	LazyWidgetBlogStats,
@@ -20,6 +20,7 @@ const rawWidgets = {
 	LazyWidgetGithubCard,
 	LazyWidgetToc,
 	LazyWidgetWelcomeVisitor,
+	LazyWidgetRelatedPosts,
 }
 
 type RawWidgetName = keyof typeof rawWidgets

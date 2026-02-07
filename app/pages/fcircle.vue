@@ -198,7 +198,9 @@ onUnmounted(() => {
 </ZPageBanner>
 
 <div class="page-fcircle">
-	<h1 class="sr-only">朋友圈</h1>
+	<h1 class="sr-only">
+		朋友圈
+	</h1>
 	<div class="fcircle">
 		<!-- 加载指示器 -->
 		<div v-if="isLoading" class="loading-container">
