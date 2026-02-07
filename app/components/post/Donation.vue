@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ZButton } from '#components'
+
 const { donation } = useAppConfig()
 </script>
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type ArticleProps from '~/types/article'
+import { ZButton } from '#components'
 
 defineOptions({ inheritAttrs: false })
 
