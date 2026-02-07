@@ -2,7 +2,7 @@
 const route = useRoute()
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['toc', 'related-posts'])
+layoutStore.setAside(['toc'])
 
 const { data: post, pending } = await useAsyncData(
 	route.path,
@@ -44,10 +44,10 @@ if (import.meta.dev) {
 </script>
 
 <template>
-<PostReadingProgress />
 <template v-if="post">
 	<PostHeader v-bind="post" />
 	<PostExcerpt v-if="excerpt" :excerpt />
+	<!-- 使用 float-in 动画会导致搜索跳转不准确 -->
 	<ContentRenderer
 		class="article"
 		:class="getPostTypeClassName(post?.type, { prefix: 'md' })"

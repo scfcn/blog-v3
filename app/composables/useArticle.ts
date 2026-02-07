@@ -1,6 +1,7 @@
 import type ArticleProps from '~/types/article'
 import type { ArticleOrderType } from '~/types/article'
 import { alphabetical } from 'radash'
+import { useRouteQuery } from '~/composables/useRouteQuery'
 
 /**
  * 生成文章查询参数，完全包装 useAsyncData 会使 SSR 行为异常，缓存 key 需要暴露

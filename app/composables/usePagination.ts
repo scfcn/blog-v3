@@ -1,3 +1,5 @@
+import { useRouteQuery } from '~/composables/useRouteQuery'
+
 interface UsePaginationOptions {
 	initialPage?: number
 	perPage?: number
@@ -25,9 +27,14 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 		set() { },
 	})
 
-	const page = bindQuery
-		? useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage, mode })
+	const _page = bindQuery
+		? useRouteQuery<number>(bindQuery, initialPage, { transform: transformPage, mode })
 		: ref(initialPage)
+
+const page = computed({
+	get: () => _page.value || initialPage,
+	set: (value) => { _page.value = value }
+})
 
 	const listPaged = computed(() => {
 		const start = (page.value - 1) * perPage

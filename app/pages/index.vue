@@ -19,7 +19,7 @@ watch(category, () => {
 	page.value = 1
 })
 
-useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
+useSeoMeta({ title: () => ((page.value || 1) > 1 ? `第${page.value}页` : '') })
 
 const listRecommended = computed(() => sort(
 	(listRaw.value || []).filter(item => item?.recommend),
@@ -34,7 +34,7 @@ const isClient = process.client
 <BlogHeader class="mobile-only" to="/" tag="h1" />
 
 <ClientOnly>
-	<PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
+	<PostSlide v-if="listRecommended?.length && page === 1 && !category" :list="listRecommended" />
 	<template #fallback>
 		<UtilSkeleton type="image" />
 	</template>
@@ -59,7 +59,7 @@ const isClient = process.client
 	</div>
 
 	<TransitionGroup tag="menu" class="proper-height" name="float-in">
-	<template v-if="listPaged.length">
+	<template v-if="listPaged?.length">
 		<PostArticle
 			v-for="article in listPaged"
 			:key="article.path"
@@ -78,7 +78,7 @@ const isClient = process.client
 	</template>
 </TransitionGroup>
 
-	<ZPagination v-model="page" sticky :total-pages="totalPages" />
+	<ZPagination v-model="page" sticky :total-pages="totalPages || 1" />
 </div>
 </template>
 

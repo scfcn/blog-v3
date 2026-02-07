@@ -21,8 +21,9 @@ export function useScrollAnimation(
 
 	const { stop } = useIntersectionObserver(
 		target,
-		([{ isIntersecting }]) => {
-			if (isIntersecting) {
+		(entries) => {
+			const entry = entries[0]
+			if (entry && entry.isIntersecting) {
 				isVisible.value = true
 				if (once) {
 					hasAnimated.value = true
@@ -57,19 +58,19 @@ export function useScrollReveal() {
 			})
 
 			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.remove('scroll-reveal-hidden')
-							entry.target.classList.add('scroll-reveal-visible')
-						}
-					})
-				},
-				{
-					threshold: 0.1,
-					rootMargin: '0px 0px -50px 0px',
-				},
-			)
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry && entry.isIntersecting) {
+						entry.target.classList.remove('scroll-reveal-hidden')
+						entry.target.classList.add('scroll-reveal-visible')
+					}
+				})
+			},
+			{
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px',
+			},
+		)
 
 			elements.value.forEach((el) => observer.observe(el))
 
