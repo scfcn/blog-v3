@@ -16,6 +16,19 @@
 	}
 }
 
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spin {
+	animation: spin 1s linear infinite;
+}
+
 .float-in-enter-active,
 .float-in-leave-active {
 	transition: all 0.2s !important;

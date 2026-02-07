@@ -236,7 +236,16 @@ ${packageJson.homepage}
 		// Neylify 下 netlify 处理器无法显示站外图片，ipx 处理器无法显示站内图片，需彻底禁用
 		// https://github.com/nuxt/image/issues/1353
 		provider: NETLIFY ? 'none' : undefined,
-		format: ['avif', 'webp'],
+		format: ['avif', 'webp', 'jpeg'],
+  		quality: 80,
+  		screens: {
+    		'xs': 320,
+    		'sm': 640,
+    		'md': 768,
+    		'lg': 1024,
+    		'xl': 1280,
+    		'xxl': 1536,
+  		},
 	},
 
 	linkChecker: {

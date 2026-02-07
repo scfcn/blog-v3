@@ -1,5 +1,9 @@
 <script setup lang="ts">
-// 页面加载时立即初始化外链拦截器，使用事件委托确保所有链接都能被拦截
+import { createLazyComponent } from './utils/lazy'
+
+const BlogPanel = createLazyComponent(() => import('./components/blog/BlogPanel.vue'))
+const BlogPopover = createLazyComponent(() => import('./components/blog/BlogPopover.vue'))
+
 if (import.meta.client) {
 	const { setupGlobalInterceptor } = useExternalLink({ enabled: true })
 	setupGlobalInterceptor()

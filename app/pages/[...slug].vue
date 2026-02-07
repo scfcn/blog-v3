@@ -4,7 +4,7 @@ const route = useRoute()
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['toc'])
 
-const { data: post } = await useAsyncData(
+const { data: post, pending } = await useAsyncData(
 	route.path,
 	() => queryCollection('content').path(route.path).first(),
 )
@@ -32,7 +32,7 @@ if (post.value) {
 	})
 	layoutStore.setAside(post.value.meta?.aside as WidgetName[] | undefined)
 }
-else {
+else if (!pending.value) {
 	const event = useRequestEvent()
 	event && setResponseStatus(event, 404)
 	layoutStore.setAside(['blog-log'])
@@ -60,9 +60,34 @@ if (import.meta.dev) {
 	<PostComment />
 </template>
 
+<template v-else-if="pending">
+	<div class="loading-placeholder">
+		<Icon name="ph:spinner-bold" class="spin" />
+		<p>加载中...</p>
+	</div>
+</template>
+
 <ZError
 	v-else
 	icon="solar:confounded-square-bold-duotone"
 	title="内容为空或页面不存在"
 />
 </template>
+
+<style lang="scss" scoped>
+.loading-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 4rem 2rem;
+	min-height: 50vh;
+	font-size: 1.2rem;
+	color: var(--c-text-2);
+
+	.spin {
+		font-size: 3rem;
+	}
+}
+</style>

@@ -35,6 +35,7 @@ const compConf = appConfig.component.codeblock
 const rows = computed(() => props.code.split('\n').length - 1)
 const collapsible = computed(() => !meta.value.expand && rows.value > compConf.triggerRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
+const preHeight = ref('auto')
 
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
 const isWrap = ref(meta.value.wrap)
@@ -44,6 +45,21 @@ const { copy, copied } = useCopy(codeblock)
 
 const shikiStore = useShikiStore()
 const rawHtml = ref(escapeHtml(props.code))
+
+watch(isCollapsed, async (collapsed) => {
+	if (collapsed) {
+		await nextTick()
+		if (codeblock.value) {
+			const lineHeight = parseFloat(getComputedStyle(codeblock.value).lineHeight)
+			preHeight.value = `${lineHeight * compConf.collapsedRows + 3}rem`
+		}
+	} else {
+		await nextTick()
+		if (codeblock.value) {
+			preHeight.value = `${codeblock.value.scrollHeight}px`
+		}
+	}
+}, { immediate: true })
 
 function getIndent() {
 	if (meta.value.indent)
@@ -111,6 +127,7 @@ onMounted(async () => {
 		ref="codeblock"
 		class="shiki scrollcheck-x"
 		:class="[props.class, { wrap: isWrap }]"
+		:style="{ maxHeight: isCollapsed ? preHeight : 'none' }"
 		v-html="rawHtml"
 	/>
 
@@ -146,9 +163,7 @@ onMounted(async () => {
 	&.collapsed {
 		pre {
 			overflow: hidden;
-			max-height: calc(var(--line-height) * var(--collapsed-rows) + 3rem);
 			mask-image: linear-gradient(to top, transparent 2rem, #FFF 4rem);
-			animation: none;
 		}
 
 		.toggle-btn {
@@ -209,12 +224,13 @@ figcaption {
 }
 
 pre {
-	// 如果填写 0 会在 calc() 时出错
 	--start-offset: 4em;
 
 	overflow: auto;
 	padding: 1rem;
 	padding-inline-start: var(--start-offset);
+	max-height: none;
+	transition: max-height 0.3s ease-in-out, mask-image 0.3s ease-in-out;
 
 	&.wrap {
 		white-space: pre-wrap;
