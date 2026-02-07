@@ -293,7 +293,6 @@ onUnmounted(() => {
 							:alt="selectedAuthor"
 							loading="lazy"
 							class="modal__avatar-img"
-							fallback-src=""
 						/>
 						<h3>{{ selectedAuthor }}</h3>
 						<a
@@ -335,7 +334,6 @@ onUnmounted(() => {
 							:src="selectedAuthorAvatar"
 							:alt="selectedAuthor"
 							loading="lazy"
-							fallback-src=""
 						/>
 					</div>
 				</div>

@@ -15,8 +15,10 @@ const { toc, meta } = storeToRefs(contentStore)
 const excerpt = computed(() => post.value?.description || '')
 
 function setTocAndMeta() {
-	toc.value = post.value?.body.toc
-	meta.value = post.value?.meta
+	if (post.value) {
+		toc.value = post.value?.body.toc
+		meta.value = post.value?.meta
+	}
 }
 
 setTocAndMeta()
@@ -33,7 +35,6 @@ if (post.value) {
 else {
 	const event = useRequestEvent()
 	event && setResponseStatus(event, 404)
-	route.meta.title = '404'
 	layoutStore.setAside(['blog-log'])
 }
 

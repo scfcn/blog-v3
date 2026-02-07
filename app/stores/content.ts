@@ -5,7 +5,7 @@ export const useContentStore = defineStore('content', () => {
 
 	// 离开 /(.*)* 路由 ([...slug].vue) 时清除文章数据
 	router.beforeEach((to, from) => {
-		if (to.name !== from.name) {
+		if (to.name !== from.name && from.name === 'slug') {
 			toc.value = undefined
 			meta.value = undefined
 		}
