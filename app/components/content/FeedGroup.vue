@@ -6,6 +6,8 @@ const props = defineProps<FeedGroup & { shuffle?: boolean }>()
 const route = useRoute()
 const entries = ref(props.entries)
 
+const isNoFollow = computed(() => props.name === '失联友友')
+
 // 友链浮现随机延迟
 function getCardDelay(feed: FeedEntry) {
 	let hash = 0
@@ -51,7 +53,7 @@ if (import.meta.dev) {
 			:key="entry.link"
 			:style="`--delay: ${getCardDelay(entry)}s;`"
 		>
-			<FeedCard v-bind="entry" />
+			<FeedCard v-bind="entry" :nofollow="isNoFollow" />
 		</li>
 	</TransitionGroup>
 </section>

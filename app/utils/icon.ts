@@ -7,7 +7,8 @@ const archIcons = {
 	'Astro': 'simple-icons:astro',
 	'Cloudflare': 'simple-icons:cloudflare',
 	'Deno Deploy': 'simple-icons:deno',
-	'EdgeOne': 'simple-icons:cloudnativebuild', // 不准确
+	'EdgeOne': 'simple-icons:keycdn', // 不准确
+	'Esa': 'simple-icons:alibabacloud',
 	'GitHub Pages': 'simple-icons:github',
 	'Golang': 'simple-icons:go',
 	'Gridea': 'tabler:square-rounded-letter-g-filled', // 不准确

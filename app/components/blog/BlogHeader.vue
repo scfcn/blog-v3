@@ -5,17 +5,17 @@ withDefaults(defineProps<{
 	tag: 'div',
 })
 const appConfig = useAppConfig()
+
+const titleColor = computed(() => appConfig.header.titleColor || 'var(--c-text)')
 </script>
 
 <template>
 <UtilLink class="blog-header">
-	<div v-if="appConfig.header.emojiTail" class="emoji-tail">
-		<span
-			v-for="(emoji, emojiIndex) in appConfig.header.emojiTail"
-			:key="emojiIndex"
-			class="split-char"
-			:style="getFixedDelay(emojiIndex * .6 - 3)"
-			v-text="emoji"
+	<div v-if="appConfig.header.gifTail" class="gif-tail">
+		<NuxtImg
+			:src="appConfig.header.gifTail"
+			class="gif-image"
+			:alt="appConfig.title"
 		/>
 	</div>
 
@@ -27,7 +27,7 @@ const appConfig = useAppConfig()
 	/>
 
 	<div v-if="appConfig.header.showTitle" class="blog-text">
-		<component :is="tag" class="header-title">
+		<component :is="tag" class="header-title" :style="{ color: titleColor }">
 			<span
 				v-for="(char, charIndex) in appConfig.title"
 				:key="charIndex"
@@ -101,46 +101,32 @@ const appConfig = useAppConfig()
 	to { font-variation-settings: "BEVL" 1; }
 }
 
-.emoji-tail {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-	align-content: center;
-	justify-items: center;
+.gif-tail {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: absolute;
-	opacity: 0.2;
-	inset: 0;
-	font-size: 4rem;
+	opacity: 0.15;
+	inset: -3%;
 	transition: opacity 1s;
-	filter: blur(2px);
+	filter: blur(1px);
 	pointer-events: none;
-	z-index: -2;
+	z-index: -1;
 
-	> .split-char {
-		animation: 5s infinite alternate emoji-floating;
-		animation-delay: var(--delay);
-		animation-play-state: paused;
+	.gif-image {
+		width: 120%;
+		height: 120%;
+		object-fit: contain;
 	}
 }
 
 .blog-header:hover {
-	.emoji-tail {
+	.gif-tail {
 		opacity: 0.5;
 	}
 
 	.split-char {
 		animation-play-state: running;
-	}
-}
-
-@keyframes emoji-floating {
-	50% {
-		transform: translate(-12px, -4px) scale(1.2);
-		filter: blur(4px);
-	}
-
-	100% {
-		transform: translate(-4px, -12px) scale(0.9);
-		filter: blur(1px);
 	}
 }
 </style>

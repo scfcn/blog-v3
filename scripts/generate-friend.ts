@@ -34,6 +34,9 @@ export function generateFcircleJson() {
 	// 不想订阅的友链
 	const blacklist = ['名称1', '名称2']
 
+	// 跳过的分组（如失联友友）
+	const skipGroups = ['失联友友']
+
 	// 使用更可靠的方法获取当前文件目录
 	const currentFileUrl = new URL(import.meta.url)
 	const currentFilePath = currentFileUrl.protocol === 'file:'
@@ -45,20 +48,22 @@ export function generateFcircleJson() {
 
 	try {
 		// 提取有效友链数据
-		const friends = feedGroups.flatMap(group =>
-			group.entries
-				.filter(entry => !entry.error) // 跳过有错误的条目
-				.map((entry) => {
-					const siteName = entry.title || entry.sitenick || entry.author
-					// 跳过黑名单站点
-					if (blacklist.includes(siteName)) {
-						console.log(`跳过黑名单站点: ${siteName}`)
-						return null
-					}
-					return [siteName, entry.link, entry.avatar]
-				})
-				.filter(Boolean) as [string, string, string][],
-		)
+		const friends = feedGroups
+			.filter(group => !skipGroups.includes(group.name)) // 跳过指定分组
+			.flatMap(group =>
+				group.entries
+					.filter(entry => !entry.error) // 跳过有错误的条目
+					.map((entry) => {
+						const siteName = entry.title || entry.sitenick || entry.author
+						// 跳过黑名单站点
+						if (blacklist.includes(siteName)) {
+							console.log(`跳过黑名单站点: ${siteName}`)
+							return null
+						}
+						return [siteName, entry.link, entry.avatar]
+					})
+					.filter(Boolean) as [string, string, string][],
+			)
 
 		// 确保public目录存在并写入文件
 		const publicDir = path.resolve(__dirname, '../public')

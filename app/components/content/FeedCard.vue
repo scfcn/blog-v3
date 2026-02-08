@@ -2,7 +2,7 @@
 import type { CSSProperties } from 'vue'
 import type { FeedEntry } from '~/types/feed'
 
-const props = defineProps<FeedEntry>()
+const props = defineProps<FeedEntry & { nofollow?: boolean }>()
 
 const appConfig = useAppConfig()
 const route = useRoute()
@@ -38,6 +38,7 @@ function getInspectStyle(src: string): CSSProperties {
 		class="feed-card gradient-card"
 		:to="error ? undefined : link"
 		:data-error="error"
+		:nofollow="nofollow"
 	>
 		<div class="avatar" :title="feed ? undefined : '无订阅源'">
 			<ClientOnly v-if="isInspect">

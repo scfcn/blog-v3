@@ -84,8 +84,6 @@ export default defineAppConfig({
 		stats: {
 			/** 归档页面每年标题对应的年龄 */
 			birthYear: 2010,
-			/** blog-stats widget 的预置文本 */
-			wordCount: '约10万',
 		},
 	},
 
@@ -133,13 +131,20 @@ export default defineAppConfig({
 		] satisfies Nav,
 	},
 
+	/** Uptime Kuma 服务状态配置 */
+	uptime: {
+		/** Uptime Kuma API 地址，例如: https://status.example.com/api/status-page/heartbeat */
+		url: 'https://up.qixz.cn/api/status-page/heartbeat/qxz',
+	},
+
 	/** 左侧栏顶部 Logo */
 	header: {
 		logo: blogConfig.author.avatar,
 		/** 展示标题文本，否则展示纯 Logo */
 		showTitle: true,
 		subtitle: blogConfig.subtitle,
-		emojiTail: ['🌞', '🤫', '🕊️', '🎍', '👋🏻'],
+		gifTail: 'https://i.p-i.vip/135/20260208-6988282d2139e.gif',
+		titleColor: '#237c4aff',
 	},
 
 	/** 友链页面 */
