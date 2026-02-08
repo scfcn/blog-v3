@@ -33,10 +33,8 @@ defineProps<ButtonProps>()
 	background-color: var(--ld-bg-card);
 	line-height: 1.2;
 	vertical-align: middle;
-	transition: color 0.1s, background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+	transition: color 0.1s, background-color 0.2s;
 	cursor: pointer;
-	position: relative;
-	overflow: hidden;
 
 	&.primary {
 		background-color: var(--c-primary);
@@ -46,22 +44,16 @@ defineProps<ButtonProps>()
 	&:hover {
 		background-color: var(--c-bg-2);
 		color: var(--c-text);
-		transform: translateY(-2px);
-		box-shadow: 0 4px 0.8em var(--ld-shadow);
 	}
 
 	&:active {
 		background-color: var(--ld-shadow);
-		transform: translateY(0);
-		box-shadow: 0 2px 0.5em var(--ld-shadow);
 	}
 
 	&:disabled {
 		background-color: var(--c-bg-1);
 		color: var(--c-text-3);
 		cursor: not-allowed;
-		transform: none;
-		box-shadow: 0 2px 0.5em var(--ld-shadow);
 	}
 
 	& + .button {
@@ -74,14 +66,6 @@ defineProps<ButtonProps>()
 	align-items: center;
 	justify-content: center;
 	gap: 0.2em;
-
-	> .icon {
-		transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-	}
-
-	&:hover > .icon {
-		transform: scale(1.2);
-	}
 }
 
 .button-desc {

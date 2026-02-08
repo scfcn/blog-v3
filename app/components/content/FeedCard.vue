@@ -33,7 +33,7 @@ function getInspectStyle(src: string): CSSProperties {
 </script>
 
 <template>
-<Tooltip :delay="200" interactive hide-on-click="toggle">
+<Tooltip :delay="200" interactive :hide-on-click="false">
 	<UtilLink
 		class="feed-card gradient-card"
 		:to="error ? undefined : link"

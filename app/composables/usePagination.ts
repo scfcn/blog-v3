@@ -16,7 +16,8 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 
 	const totalPages = computed(() => Math.ceil(toValue(list).length / perPage) || initialPage)
 
-	function transformPage(val: string) {
+	function transformPage(val: string | undefined) {
+		if (!val) return initialPage
 		const page = Number(val)
 		return page >= 1 && page <= totalPages.value ? page : initialPage
 	}
@@ -27,14 +28,9 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 		set() { },
 	})
 
-	const _page = bindQuery
+	const page = bindQuery
 		? useRouteQuery<number>(bindQuery, initialPage, { transform: transformPage, mode })
 		: ref(initialPage)
-
-const page = computed({
-	get: () => _page.value || initialPage,
-	set: (value) => { _page.value = value }
-})
 
 	const listPaged = computed(() => {
 		const start = (page.value - 1) * perPage

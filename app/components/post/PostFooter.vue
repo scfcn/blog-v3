@@ -80,7 +80,7 @@ const { copy, copied } = useCopy(href)
 			/>
 			<div class="donate-container">
 				<UtilHydrateSafe>
-					<Tooltip v-if="donation?.enable" :delay="200" interactive hide-on-click="toggle" max-width="">
+					<Tooltip v-if="donation?.enable" :delay="200" interactive :hide-on-click="false" max-width="">
 						<ZButton class="donate-button" icon="ph:heart-fill" text="赞赏作者" />
 						<template #content>
 							<div class="donation-content">

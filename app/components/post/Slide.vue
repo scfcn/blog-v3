@@ -143,23 +143,12 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	border-radius: 0.5rem;
 	scroll-snap-align: center;
 	scroll-snap-stop: always;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-	&:hover {
-		transform: scale(1.05);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	}
 
 	> .cover {
 		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.3s ease;
-	}
-
-	&:hover > .cover {
-		transform: scale(1.1);
 	}
 
 	> .info {
@@ -174,29 +163,21 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		backdrop-filter: brightness(0.8) saturate(10) contrast(0.8) blur(2em);
 		text-align: center;
 		color: white;
-		transition: opacity 0.3s ease;
+		transition: opacity 0.2s;
 
 		> .title {
 			text-wrap: balance;
-			transform: translateY(10px);
-			transition: transform 0.3s ease;
 		}
 
 		> .desc {
 			opacity: 0.5;
 			font-size: 0.8em;
-			transform: translateY(10px);
-			transition: transform 0.3s ease, opacity 0.3s ease;
 		}
 	}
 
-	&:hover > .info {
+	&:hover > .info,
+	&:focus-within > .info {
 		opacity: 1;
-
-		> .title,
-		> .desc {
-			transform: translateY(0);
-		}
 	}
 }
 </style>

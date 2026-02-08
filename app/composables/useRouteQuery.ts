@@ -41,7 +41,7 @@ export function useRouteQuery<T = string>(
 			else {
 				newValue = value === undefined || value === defaultValue ? undefined : String(value)
 			}
-			const currentMode = typeof mode === 'function' ? mode.value : mode
+			const currentMode = typeof mode === 'object' && 'value' in mode ? mode.value : mode
 			router[currentMode]({ query: { ...route.query, [name]: newValue } })
 			trigger()
 		},

@@ -63,12 +63,12 @@ export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>, options?:
 		: ref<ArticleOrderType>(initialOrder)
 
 	const booleanQueryTransformer = {
-		get: (val: string) => val === 'true',
+		get: (val: string | undefined) => val === 'true',
 		set: (val: boolean) => val.toString(),
 	}
 
 	const isAscending = bindDirectionQuery
-		? useRouteQuery(bindDirectionQuery, initialAscend.toString(), { transform: booleanQueryTransformer })
+		? useRouteQuery(bindDirectionQuery, initialAscend, { transform: booleanQueryTransformer })
 		: ref<boolean>(initialAscend)
 
 	const listSorted = computed(() => alphabetical(

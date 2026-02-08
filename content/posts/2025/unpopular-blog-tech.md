@@ -6,6 +6,7 @@ type: tech
 categories: [随笔杂谈]
 tags: [博客, 网站, 前端]
 description: 博客的核心定位是“内容传递”与“用户信任”，但部分技术反向会破坏体验、流失读者。在这些负面技术特征下，用户可能因反感直接关闭页面，甚至不再回访。
+image: https://i.p-i.vip/135/20260208-6987de1fe6eaf.webp
 recommend: 20
 references:
   - title: 纸鹿摸鱼处 - 谈谈不受欢迎的博客技术特征

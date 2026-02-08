@@ -26,35 +26,6 @@ if (import.meta.client) {
 <BlogPopover />
 </template>
 
-<style>
-@keyframes page-in {
-	0% {
-		opacity: 0;
-		transform: translateY(20px) scale(0.98);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0) scale(1);
-	}
-}
-
-.page-enter-active {
-	animation: page-in 0.4s ease-out;
-}
-
-.page-leave-active {
-	transition: opacity 0.2s ease;
-}
-
-.page-enter-from {
-	opacity: 0;
-}
-
-.page-leave-to {
-	opacity: 0;
-}
-</style>
-
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->
 <style lang="scss">
 #z-root {
