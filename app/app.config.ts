@@ -131,18 +131,13 @@ export default defineAppConfig({
 		] satisfies Nav,
 	},
 
-	/** Uptime Kuma 服务状态配置 */
-	uptime: {
-		/** Uptime Kuma API 地址，例如: https://status.example.com/api/status-page/heartbeat */
-		url: 'https://up.qixz.cn/api/status-page/heartbeat/qxz',
-	},
-
 	/** 左侧栏顶部 Logo */
 	header: {
 		logo: blogConfig.author.avatar,
 		/** 展示标题文本，否则展示纯 Logo */
 		showTitle: true,
 		subtitle: blogConfig.subtitle,
+		emojiTail: ['🌞', '🤫', '🕊️', '🎍', '👋🏻'],
 		gifTail: 'https://i.p-i.vip/135/20260208-6988282d2139e.gif',
 		titleColor: '#237c4aff',
 	},
@@ -165,7 +160,7 @@ export default defineAppConfig({
 				{ icon: 'ph:tag-bold', text: '标签', url: '/tags' },
 				{ icon: 'ph:link-bold', text: '友链', url: '/link' },
 				{ icon: 'ph:fish-bold', text: '鱼塘', url: '/fcircle' },
-				{ icon: 'ph:chat-centered-dots-bold', text: '即刻', url: '/essay' },
+				{ icon: 'ph:chat-centered-dots-bold', text: '说说', url: '/essay' },
 				{ icon: 'ph:laptop-bold', text: '装备', url: '/devices' },
 			],
 		},

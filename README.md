@@ -1,13 +1,13 @@
-# 纸鹿摸鱼处
+# 青序栈
 
 [![框架](https://img.shields.io/badge/框架-Nuxt-00DC82?logo=Nuxt.js)](https://nuxt.com/)
 [![CMS](https://img.shields.io/badge/CMS-Nuxt%20Content-00DC82?logo=Nuxt.js)](https://content.nuxt.com/)
-[![部署平台](https://img.shields.io/badge/部署平台-Vercel-000000?logo=Vercel)](https://vercel.com/)
+[![部署平台](https://img.shields.io/badge/部署平台-Cloudflare-F38020?logo=Cloudflare)](https://pages.cloudflare.com/)
 [![访问统计](https://img.shields.io/badge/访问统计-Umami-000000?logo=Umami)](https://github.com/umami-software/umami)
 [![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)](https://eslint.org/)
 [![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)](https://stylelint.io/)
 
-我的第三代个人博客，于 2024 年 8 月 11 日上线。
+我的第三代个人博客，于 2024 年 7 月 18 日上线。
 
 > [!CAUTION]
 > - 部署前必须完成项目个性化配置与内容修改，不得将我的信息用于你的网站图标/名称，严禁将项目内我的文章以你的名义重新发布至公开环境。
@@ -18,7 +18,7 @@
 >
 > 修改本项目需要具备**前端开发**和**项目部署**能力。由于这是个人博客，代码经过深度定制，且可能会进行较大幅度的更新，建议您 Fork 后安心使用自己分支的版本；若需引入上游（本仓库）的新功能，建议重新 Fork 最新代码，以避免同步冲突。
 >
-> 如果需要协助或有问题咨询，欢迎加入 QQ 群 169994096 讨论/闲聊，我会在空闲时尽力解答。
+> 如果需要协助或有问题咨询，欢迎加入 QQ 群 665751334 讨论/闲聊，我会在空闲时尽力解答。
 
 ## 使用本主题的博客
 
@@ -26,7 +26,8 @@
 
 | 博客名称                                     | 作者          | 对应上游版本 | 下游特色功能                                 |
 | -------------------------------------------- | ------------- | ------------ | -------------------------------------------- |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | **v3.5.1**   | (我是上游)                                   |
+| [纸鹿摸鱼处](https://blog.zhilu.site/)       | L33Z22L11     | v3.6.3       | (我是上游)                                   |
+| **[青序栈](https://www.qixz.cn/)**           | **筱序二十**  | **v3.6.1**   | (我是下游)                                   |
 | [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8       | 最新评论                                     |
 | [SteinsNote](https://blog.labmem.chat/)      | Labmem-00     | v3.1-241112  | 专栏                                         |
 | [月空人](https://whbbit.cn/)                 | Whbbit1999    | v3.5.2       | 项目/博客/Snippets页                         |
@@ -45,11 +46,6 @@
 | [六月墨语](https://blog.june.ink/)           | Akuma-real    | v3.5.1       | 友圈+最新评论                                |
 | [Cталин博客](https://blog.jiclub.site/)      | StalinDev54   | v3.4.8       | 侧栏时间轴+关于页                            |
 | [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.5.2       | 即刻+友圈                                    |
-| [小源151博客](https://blog.xiaoyuan151.com/) | XiaoYuan151   | v3.4.8       |                                              |
-| [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang  | v3.4.8       |                                              |
-| [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan      | v3.4.9       |                                              |
-| [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning   | v3.4.9       |                                              |
-| [Cizai](https://blog.wl.do/)                 | Cizai         | v3.5.1       |                                              |
 | [林间拾语](https://www.xhhao.com/)           | acanyo        | Halo         | https://www.halo.run/store/apps/app-jglhpodw |
 
 ## 特性
@@ -167,7 +163,7 @@ pnpm preview
 - 输出目录: `dist`
 - 安装命令: `pnpm i`
 
-如果直接使用平台提供的“Nuxt”预设部署，则会变成 SSR 模式，此模式每次访问都会等待服务端重新渲染。请参阅 [Nuxt 文档](https://nuxt.com/docs/getting-started/deployment) 和 [Nuxt Content 文档](https://content.nuxt.com/docs/deploy/static) 的“部署”一节。
+如果直接使用平台提供的"Nuxt"预设部署，则会变成 SSR 模式，此模式每次访问都会等待服务端重新渲染。请参阅 [Nuxt 文档](https://nuxt.com/docs/getting-started/deployment) 和 [Nuxt Content 文档](https://content.nuxt.com/docs/deploy/static) 的"部署"一节。
 
 #### 疑难解答
 

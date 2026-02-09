@@ -19,18 +19,7 @@ const appConfig = useAppConfig()
 			</menu>
 		</div>
 	</nav>
-	<div class="footer-bottom">
-		<p v-html="appConfig.footer.copyright" />
-		<ClientOnly>
-			<template #fallback>
-				<span class="uptime-status unknown">
-					<Icon name="ph:question-bold" />
-					<span class="status-text">加载中...</span>
-				</span>
-			</template>
-			<UtilUptimeStatus />
-		</ClientOnly>
-	</div>
+	<p v-html="appConfig.footer.copyright" />
 </footer>
 </template>
 
@@ -68,16 +57,8 @@ const appConfig = useAppConfig()
 		}
 	}
 
-	.footer-bottom {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 1em;
-		flex-wrap: wrap;
-
-		p {
-			margin: 0.5em;
-		}
+	p {
+		margin: 0.5em;
 	}
 }
 </style>
