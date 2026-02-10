@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineOptions({
+	inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<{
 	el: HTMLImageElement
 	caption?: string
@@ -9,10 +13,6 @@ const props = withDefaults(defineProps<{
 }>(), {
 	duration: 300,
 	zIndex: 100,
-})
-
-defineOptions({
-	inheritAttrs: false,
 })
 
 const emit = defineEmits<{

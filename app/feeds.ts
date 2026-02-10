@@ -59,7 +59,7 @@ export default [
 				archs: ['Hexo', 'Cloudflare'],
 				date: '2024-12-09',
 				comment: '周润发博客是技术极客与生活观察者的跨界空间，聚焦开源工具与互联网实用项目分享。近期深度测评Cloudflare边缘证书部署、Vercel加速优化等硬核技术，揭秘临时邮箱搭建、订阅链接聚合等开发者刚需，并记录换电池翻车、域名抢注等趣味日常。内容横跨网络安全、系统调优、AI应用等领域，风格务实接地气，通过代码片段与实操指南降低技术门槛，同时以幽默笔触消解工具理性，是极客圈的宝藏工具库与治愈系精神角落。',
-			},			
+			},
 
 		],
 	},
@@ -119,7 +119,7 @@ export default [
 				date: '2024-12-09',
 				comment: 'Xuan\'s blog（2025年11月更新），站长获项目劳务费，记录晚霞、中秋游记等生活点滴。内容涵盖Umami升级、Typecho博客运维（主题美化、插件监控等）教程，及GPT聊天应用、健身房管理系统开发实践，兼具技术干货与生活随笔。',
 			},
-		]
+		],
 	},
 	// #endregion
 	// #region 网上邻居
@@ -630,8 +630,8 @@ export default [
 				desc: '终有一日，寻梦中人',
 				link: 'https://www.sumi233.top/',
 				feed: 'https://www.sumi233.top/atom.xml',
-				icon: 'https://jsd.qixz.cn/gh/huang233893/blog-image-bed@main/top/huang233893/imgs/blog/usersumi.png',
-				avatar: 'https://jsd.qixz.cn/gh/huang233893/blog-image-bed@main/top/huang233893/imgs/blog/usersumi.png',
+				icon: 'https://image.lolimi.cn/2026/02/10/698b1884e6695.webp',
+				avatar: 'https://image.lolimi.cn/2026/02/10/698b1884e6695.webp',
 				archs: ['Hexo', 'EdgeOne'],
 				date: '2024-12-09',
 				comment: '2025 年末持续更新，站长刚成年、备战高职考。内容以生活碎碎念为主，记录旅游、打工、游戏日常，也分享 Windows 更新日志、星露谷无显卡服务器搭建等实用教程，温馨又有干货。',
@@ -720,17 +720,17 @@ export default [
 		name: '网络组织',
 		desc: '一个人的寂寞，一群人的狂欢',
 		entries: [
-			{	
-			author: '开往',
-			sitenick: '友链接力!',
-			title: '开往',
-			desc: '让传统友链“活跃”，让网页相互接力，让流量相互流动，让网络开放起来',
-			link: 'https://www.travellings.cn/',
-			feed: '',
-			icon: 'https://www.travellings.cn/assets/travelling-dark.png',
-			avatar: 'https://www.travellings.cn/assets/travelling-dark.png',
-			archs: ['VitePress', 'EdgeOne'],
-			date: '2025-07-27',
+			{
+				author: '开往',
+				sitenick: '友链接力!',
+				title: '开往',
+				desc: '让传统友链“活跃”，让网页相互接力，让流量相互流动，让网络开放起来',
+				link: 'https://www.travellings.cn/',
+				feed: '',
+				icon: 'https://www.travellings.cn/assets/travelling-dark.png',
+				avatar: 'https://www.travellings.cn/assets/travelling-dark.png',
+				archs: ['VitePress', 'EdgeOne'],
+				date: '2025-07-27',
 			},
 			{
 				author: '揪蝉',

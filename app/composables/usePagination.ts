@@ -17,7 +17,8 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 	const totalPages = computed(() => Math.ceil(toValue(list).length / perPage) || initialPage)
 
 	function transformPage(val: string | undefined) {
-		if (!val) return initialPage
+		if (!val)
+			return initialPage
 		const page = Number(val)
 		return page >= 1 && page <= totalPages.value ? page : initialPage
 	}

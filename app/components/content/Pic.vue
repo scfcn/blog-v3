@@ -39,8 +39,8 @@ const { open } = popoverStore.use(
 		class="image"
 		:style="{ cursor: zoom && 'zoom-in' }"
 		:src :alt="caption" :width :height :mirror
-		@click="zoom && open()"
 		:loading="width || height ? 'eager' : 'lazy'"
+		@click="zoom && open()"
 	/>
 	<figcaption v-if="caption" aria-hidden v-text="caption" />
 </figure>

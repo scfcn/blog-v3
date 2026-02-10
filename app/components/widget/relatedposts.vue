@@ -25,7 +25,8 @@ const { data: relatedPosts } = await useAsyncData(
 
 			if (currentTags.value.length > 0) {
 				query.where('tags', 'IN', currentTags.value)
-			} else if (currentCategory.value) {
+			}
+			else if (currentCategory.value) {
 				query.where('categories', 'IN', [currentCategory.value])
 			}
 
@@ -46,7 +47,8 @@ function getExcerpt(post: any): string {
 }
 
 function formatDate(date: string | undefined): string {
-	if (!date) return ''
+	if (!date)
+		return ''
 	return new Date(date).toLocaleDateString('zh-CN', {
 		year: 'numeric',
 		month: '2-digit',
@@ -76,8 +78,12 @@ function formatDate(date: string | undefined): string {
 					/>
 				</div>
 				<div class="post-content">
-					<h3 class="post-title">{{ post.title }}</h3>
-					<p class="post-excerpt">{{ getExcerpt(post) }}</p>
+					<h3 class="post-title">
+						{{ post.title }}
+					</h3>
+					<p class="post-excerpt">
+						{{ getExcerpt(post) }}
+					</p>
 					<div class="post-meta">
 						<span class="post-date">
 							<Icon name="ph:calendar-dots-bold" />

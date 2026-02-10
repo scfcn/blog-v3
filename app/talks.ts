@@ -49,7 +49,7 @@ export async function fetchTalks(): Promise<TalkItem[]> {
 				text: item.content,
 				date: item.created_at,
 				tags: item.tags?.map(tag => tag.name) || [],
-				images: item.images?.map(img => {
+				images: item.images?.map((img) => {
 					let imageUrl = img.image_url
 					if (!imageUrl.startsWith('http')) {
 						imageUrl = `https://mm.qixz.cn/api${imageUrl}`
