@@ -66,7 +66,6 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	experimental: {
-		extractAsyncDataHandlers: true,
 		typescriptPlugin: true,
 	},
 

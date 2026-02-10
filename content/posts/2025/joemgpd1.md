@@ -4,7 +4,7 @@ date: 2025-07-24 13:42:00
 updated: 2026-01-02 12:00:00
 type: tech
 categories: [技术干货]
-tags: [Joe魔改]
+tags: [魔改, Joe]
 recommend: 13
 description: 从Hexo安知鱼主题迁移后，旧美化教程不适用，作者研究两三天移植部分内容，本期为魔改教程铺垫。介绍了柳神两个项目“朋友圈精简版”和“友链状态检测”的适配方法，包括新建api文件夹和php文件，实现伪静态静态化json。下期将出适配鱼塘的教程。
 image: https://image.lolimi.cn/2025/11/29/692ae259d11ca.webp

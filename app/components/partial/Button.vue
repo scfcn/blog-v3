@@ -8,11 +8,13 @@ export interface ButtonProps {
 	desc?: string
 	primary?: boolean
 }
-defineProps<ButtonProps>()
+
+const props = defineProps<ButtonProps>()
+const hasTo = computed(() => !!props.to)
 </script>
 
 <template>
-<component :is="to ? UtilLink : 'button'" :to class="button" :class="{ primary }">
+<component :is="hasTo ? UtilLink : 'button'" v-bind="hasTo ? { to } : {}" class="button" :class="{ primary }">
 	<div class="button-main">
 		<Icon v-if="icon" :name="icon" />
 		<slot>{{ text }}</slot>

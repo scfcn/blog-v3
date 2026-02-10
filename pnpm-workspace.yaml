@@ -38,6 +38,7 @@ catalogs:
     '@iconify-json/ph': ^1.2.2
     '@iconify-json/ri': ^1.2.6
     '@iconify-json/simple-icons': ^1.2.60
+    '@iconify-json/solar': ^1.2.0
     '@nuxt/icon': ^2.1.0
     '@nuxt/image': ^1.11.0
     '@nuxtjs/color-mode': ^3.5.2

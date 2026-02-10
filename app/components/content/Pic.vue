@@ -19,10 +19,14 @@ const picEl = useCurrentElement<HTMLImageElement>(pic)
 const popoverStore = usePopoverStore()
 
 const { open } = popoverStore.use(
-	() => h(LazyPopoverLightbox, {
-		el: picEl.value,
-		caption: props.caption,
-	}),
+	() => {
+		if (!picEl.value)
+			return h('div')
+		return h(LazyPopoverLightbox, {
+			el: picEl.value,
+			caption: props.caption,
+		})
+	},
 	{ unique: true },
 )
 </script>
@@ -36,6 +40,7 @@ const { open } = popoverStore.use(
 		:style="{ cursor: zoom && 'zoom-in' }"
 		:src :alt="caption" :width :height :mirror
 		@click="zoom && open()"
+		:loading="width || height ? 'eager' : 'lazy'"
 	/>
 	<figcaption v-if="caption" aria-hidden v-text="caption" />
 </figure>

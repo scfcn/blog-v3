@@ -113,7 +113,7 @@ const getCategoryCount = computed(() => (category: string) => {
 							详情
 						</a>
 						<button class="comment-btn" type="button" aria-label="快速评论" @click="goComment(item.desc)">
-							<icon name="ph:chats-bold icon" />
+							<Icon name="ph:chat-circle-bold" />
 						</button>
 					</div>
 				</div>

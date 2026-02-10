@@ -12,45 +12,49 @@ const props = defineProps<{
 const appConfig = useAppConfig()
 const whitelist = appConfig.component?.externalLink?.whitelist || []
 
-function isExternalLink(url: string): boolean {
-	try {
-		const urlObj = new URL(url, window.location.origin)
-		const currentHost = window.location.hostname
-		return urlObj.hostname !== currentHost
-	}
-	catch {
-		return false
-	}
-}
+const linkUrl = ref(props.link)
 
-function isInWhitelist(url: string): boolean {
-	try {
-		const urlObj = new URL(url, window.location.origin)
-		return whitelist.some(domain => urlObj.hostname === domain || urlObj.hostname.endsWith(`.${domain}`))
+onMounted(() => {
+	function isExternalLink(url: string): boolean {
+		try {
+			const urlObj = new URL(url, window.location.origin)
+			const currentHost = window.location.hostname
+			return urlObj.hostname !== currentHost
+		}
+		catch {
+			return false
+		}
 	}
-	catch {
-		return false
-	}
-}
 
-function encodeUrl(url: string): string {
-	try {
-		return btoa(encodeURIComponent(url))
+	function isInWhitelist(url: string): boolean {
+		try {
+			const urlObj = new URL(url, window.location.origin)
+			return whitelist.some(domain => urlObj.hostname === domain || urlObj.hostname.endsWith(`.${domain}`))
+		}
+		catch {
+			return false
+		}
 	}
-	catch {
-		return encodeURIComponent(url)
-	}
-}
 
-function getLinkUrl(href: string): string {
-	if (!href || !isExternalLink(href) || isInWhitelist(href)) {
-		return href
+	function encodeUrl(url: string): string {
+		try {
+			return btoa(encodeURIComponent(url))
+		}
+		catch {
+			return encodeURIComponent(url)
+		}
 	}
-	const encodedUrl = encodeUrl(href)
-	return `/go?url=${encodedUrl}`
-}
 
-const linkUrl = computed(() => getLinkUrl(props.link))
+	function getLinkUrl(href: string): string {
+		if (!href || !isExternalLink(href) || isInWhitelist(href)) {
+			return href
+		}
+		const encodedUrl = encodeUrl(href)
+		return `/go?url=${encodedUrl}`
+	}
+
+	linkUrl.value = getLinkUrl(props.link)
+})
 </script>
 
 <template>

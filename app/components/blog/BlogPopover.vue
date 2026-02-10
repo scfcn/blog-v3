@@ -5,6 +5,6 @@ const { pops } = storeToRefs(popoverStore)
 
 <template>
 <template v-for="{ vnode, zIndex, show, duration } in pops" :key="zIndex">
-	<component :is="vnode" :show :duration :style="{ zIndex }" />
+	<component :is="vnode" :show :duration :z-index="zIndex" />
 </template>
 </template>

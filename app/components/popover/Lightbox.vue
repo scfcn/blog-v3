@@ -1,15 +1,25 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
 	el: HTMLImageElement
 	caption?: string
 	show?: boolean
-}>()
+	duration?: number
+	zIndex?: number
+	style?: Record<string, string>
+}>(), {
+	duration: 300,
+	zIndex: 100,
+})
+
+defineOptions({
+	inheritAttrs: false,
+})
 
 const emit = defineEmits<{
 	close: []
 }>()
 
-const originRect = props.el.getBoundingClientRect()
+const originRect = computed(() => props.el?.getBoundingClientRect() || { width: 0, height: 0, left: 0, top: 0, right: 0, bottom: 0, x: 0, y: 0 })
 const rate = 0.8
 
 const lightbox = ref()
@@ -36,12 +46,12 @@ const distance = computed(() => getDistance('current'))
 
 function restrictScale(width: number, height: number, scale: number) {
 	if (scale < 1) {
-		return width < Math.min(winW.value, originRect.width, props.el.naturalWidth)
-			&& height < Math.min(winH.value, originRect.height, props.el.naturalHeight)
+		return width < Math.min(winW.value, originRect.value.width, props.el?.naturalWidth || 0)
+			&& height < Math.min(winH.value, originRect.value.height, props.el?.naturalHeight || 0)
 	}
 	else if (scale > 1) {
-		return width > Math.max(winW.value, originRect.width, props.el.naturalWidth)
-			&& height > Math.max(winH.value, originRect.height, props.el.naturalHeight)
+		return width > Math.max(winW.value, originRect.value.width, props.el?.naturalWidth || 0)
+			&& height > Math.max(winH.value, originRect.value.height, props.el?.naturalHeight || 0)
 	}
 }
 
@@ -125,6 +135,10 @@ useEventListener('pointerup', (e) => {
 })
 
 function onEnter(el: Element, done: () => void) {
+	if (!props.el) {
+		done()
+		return
+	}
 	const fixedWidth = window.innerWidth * rate
 	const fixedHeight = window.innerHeight * rate
 	const ratio = props.el.naturalWidth / props.el.naturalHeight
@@ -134,11 +148,15 @@ function onEnter(el: Element, done: () => void) {
 	const left = (winW.value - width) / 2
 	const top = (winH.value - height) / 2
 
-	animateBetweenRects(el, [originRect, { left, top, width, height }]).onfinish = done
+	animateBetweenRects(el, [originRect.value, { left, top, width, height }], { duration: props.duration }).onfinish = done
 }
 
 function onLeave(el: Element, done: () => void) {
-	animateBetweenRects(el, props.el).onfinish = done
+	if (!props.el) {
+		done()
+		return
+	}
+	animateBetweenRects(el, props.el, { duration: props.duration }).onfinish = done
 }
 
 useEventListener('keydown', (e) => {
@@ -161,6 +179,7 @@ useEventListener('keydown', (e) => {
 		v-if="show"
 		ref="lightbox"
 		class="image"
+		:style="{ zIndex, ...style }"
 		:alt="el.alt"
 		:width="el.width"
 		:height="el.height"
@@ -171,7 +190,7 @@ useEventListener('keydown', (e) => {
 </Transition>
 
 <Transition>
-	<div v-if="show" class="tooltip">
+	<div v-if="show" class="tooltip" :style="{ zIndex }">
 		<span v-if="caption" class="caption">{{ caption }}</span>
 		<button
 			class="close"

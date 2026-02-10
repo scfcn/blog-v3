@@ -9,45 +9,50 @@ const props = defineProps<{
 const appConfig = useAppConfig()
 const whitelist = appConfig.component?.externalLink?.whitelist || []
 
-function isExternalLink(url: string): boolean {
-	try {
-		const urlObj = new URL(url, window.location.origin)
-		const currentHost = window.location.hostname
-		return urlObj.hostname !== currentHost
-	}
-	catch {
-		return false
-	}
-}
+const linkUrl = ref(props.href)
 
-function isInWhitelist(url: string): boolean {
-	try {
-		const urlObj = new URL(url, window.location.origin)
-		return whitelist.some(domain => urlObj.hostname === domain || urlObj.hostname.endsWith(`.${domain}`))
+onMounted(() => {
+	function isExternalLink(url: string): boolean {
+		try {
+			const urlObj = new URL(url, window.location.origin)
+			const currentHost = window.location.hostname
+			return urlObj.hostname !== currentHost
+		}
+		catch {
+			return false
+		}
 	}
-	catch {
-		return false
-	}
-}
 
-function encodeUrl(url: string): string {
-	try {
-		return btoa(encodeURIComponent(url))
+	function isInWhitelist(url: string): boolean {
+		try {
+			const urlObj = new URL(url, window.location.origin)
+			return whitelist.some(domain => urlObj.hostname === domain || urlObj.hostname.endsWith(`.${domain}`))
+		}
+		catch {
+			return false
+		}
 	}
-	catch {
-		return encodeURIComponent(url)
-	}
-}
 
-function getLinkUrl(href: string): string {
-	if (!isExternalLink(href) || isInWhitelist(href)) {
-		return href
+	function encodeUrl(url: string): string {
+		try {
+			return btoa(encodeURIComponent(url))
+		}
+		catch {
+			return encodeURIComponent(url)
+		}
 	}
-	const encodedUrl = encodeUrl(href)
-	return `/go?url=${encodedUrl}`
-}
 
-const linkUrl = computed(() => getLinkUrl(props.href))
+	function getLinkUrl(href: string): string {
+		if (!isExternalLink(href) || isInWhitelist(href)) {
+			return href
+		}
+		const encodedUrl = encodeUrl(href)
+		return `/go?url=${encodedUrl}`
+	}
+
+	linkUrl.value = getLinkUrl(props.href)
+})
+
 const icon = computed(() => props.icon || getDomainIcon(props.href))
 const tip = computed(() => ({
 	content: isExtLink(props.href) ? getDomain(props.href) : decodeURIComponent(props.href),

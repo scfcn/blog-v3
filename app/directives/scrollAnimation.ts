@@ -6,6 +6,9 @@ interface ScrollAnimationBinding extends DirectiveBinding<string> {
 
 export const vScrollAnimation: Directive<HTMLElement, string> = {
   mounted(el: HTMLElement, binding: ScrollAnimationBinding) {
+    if (!el)
+      return
+    
     const animationClass = binding.value || 'scroll-animate'
     
     el.classList.add(animationClass)

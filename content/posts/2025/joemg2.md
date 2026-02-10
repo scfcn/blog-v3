@@ -4,7 +4,7 @@ date: 2025-07-29 12:28:00
 updated: 2026-01-02 12:00:00
 type: tech
 categories: [技术干货]
-tags: [Joe魔改]
+tags: [魔改, Joe]
 recommend: 12
 description: 本教程介绍如何在博客中新增轻量朋友圈页面，需先部署Friend-Circle-Lite项目。部署后，在博客后台添加独立页面代码，包括API地址、加载设置和样式脚本。教程提供代码示例和效果预览。
 image: https://image.lolimi.cn/2025/11/29/692adfc0bbeb6.webp

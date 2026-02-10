@@ -12,15 +12,20 @@ const props = withDefaults(defineProps<{
 	alt: '',
 })
 
-const refinedSrc = computed(() => {
-	if (props.src.startsWith('/') && !props.src.startsWith('//')) {
+const refinedSrc = ref(props.src)
+const referrerPolicy = ref<'no-referrer' | undefined>(undefined)
+
+onMounted(() => {
+	let src = props.src
+	if (src.startsWith('/') && !src.startsWith('//')) {
 		const _base = withLeadingSlash(withTrailingSlash(useRuntimeConfig().app.baseURL))
-		if (_base !== '/' && !props.src.startsWith(_base))
-			return joinURL(_base, props.src)
+		if (_base !== '/' && !src.startsWith(_base))
+			src = joinURL(_base, src)
 	}
 	if (props.mirror)
-		return getImgUrl(props.src, props.mirror)
-	return props.src
+		src = getImgUrl(src, props.mirror)
+	refinedSrc.value = src
+	referrerPolicy.value = props.mirror ? 'no-referrer' : undefined
 })
 </script>
 
@@ -31,6 +36,6 @@ const refinedSrc = computed(() => {
 	:alt="alt"
 	:width="width"
 	:height="height"
-	:referrerpolicy="mirror ? 'no-referrer' : undefined"
+	:referrerpolicy="referrerPolicy"
 />
 </template>

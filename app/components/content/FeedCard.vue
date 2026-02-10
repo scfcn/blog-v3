@@ -41,14 +41,14 @@ function getInspectStyle(src: string): CSSProperties {
 		:nofollow="nofollow"
 	>
 		<div class="avatar" :title="feed ? undefined : '无订阅源'">
-			<ClientOnly v-if="isInspect">
+			<template v-if="isInspect">
 				<span style="position: absolute; left: 100%; white-space: nowrap;" v-text="title" />
-				<NuxtImg v-if="icon" :src="icon" :title="icon" :style="getInspectStyle(icon)" />
-				<NuxtImg v-if="avatar" :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
-			</ClientOnly>
+				<NuxtImg v-if="icon" :src="icon" :title="icon" :style="getInspectStyle(icon)" width="40" height="40" />
+				<NuxtImg v-if="avatar" :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" width="40" height="40" />
+			</template>
 
-			<NuxtImg v-else-if="avatar" class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" />
-			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="ph:bell-simple-slash-bold" />
+			<NuxtImg v-else-if="avatar" class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" width="40" height="40" />
+			<Icon v-show="appConfig.link.remindNoFeed && !feed" class="no-feed" name="ph:bell-simple-slash-bold" />
 		</div>
 
 		<span class="author">{{ author }}</span>
@@ -168,6 +168,8 @@ function getInspectStyle(src: string): CSSProperties {
 	.site-icon {
 		width: 1.5rem;
 		height: 1.5rem;
+		min-width: 1.5rem;
+		min-height: 1.5rem;
 		border-radius: 4px;
 		object-fit: contain;
 	}

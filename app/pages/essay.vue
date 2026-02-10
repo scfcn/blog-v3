@@ -183,7 +183,7 @@ function getEssayDate(date?: string | Date) {
 						</a>
 					</div>
 					<button v-tip="'评论'" class="comment-btn" @click="replyTalk(talk.text)">
-						<Icon name="ph:chats-bold" />
+						<Icon name="ph:chat-circle-bold" />
 					</button>
 				</div>
 			</div>
