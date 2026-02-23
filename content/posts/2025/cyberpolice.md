@@ -25,10 +25,6 @@ image: https://i.p-i.vip/135/20260102-6957632e5595a.webp
 [罪人堂](https://zrwiki.top/)
 ::
 
-::quote{icon="ph:warning-circle-duotone"}
-及2054911074
-::
-
 ### 举报情况
 已经举报至[中华人民共和国公安部](https://cyberpolice.mps.gov.cn/)
 
