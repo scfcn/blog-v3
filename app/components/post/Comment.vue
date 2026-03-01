@@ -4,7 +4,6 @@ const appConfig = useAppConfig()
 onMounted(() => {
 	window.twikoo?.init({
 		envId: appConfig.twikoo?.envId,
-		// twikoo 会把挂载后的元素变为 #twikoo
 		el: '#twikoo',
 	})
 })
@@ -253,8 +252,6 @@ onMounted(() => {
 			font-size: 0.85rem;
 			color: var(--c-text-2);
 		}
-
-		.tk-action .tk-action-link:first-child { display: none; }
 	}
 
 	.tk-preview, .tk-cancel {
