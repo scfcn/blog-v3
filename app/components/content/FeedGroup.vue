@@ -4,7 +4,12 @@ import { shuffle } from 'radash'
 
 const props = defineProps<FeedGroup & { shuffle?: boolean }>()
 const route = useRoute()
-const entries = ref(props.entries)
+
+function sortByDate(entries: FeedEntry[]): FeedEntry[] {
+	return [...entries].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+}
+
+const entries = ref(sortByDate(props.entries))
 
 const isNoFollow = computed(() => props.name === '『失联友友』')
 
@@ -18,7 +23,7 @@ function getCardDelay(feed: FeedEntry) {
 }
 
 const shuffleEntries = () => entries.value = shuffle(entries.value)
-const unshuffleEntries = () => entries.value = props.entries
+const unshuffleEntries = () => entries.value = sortByDate(props.entries)
 
 onMounted(() => {
 	if (props.shuffle && route.query.shuffle !== 'false')
@@ -27,7 +32,7 @@ onMounted(() => {
 
 if (import.meta.dev) {
 	watch(() => props.entries, (newEntries) => {
-		entries.value = newEntries
+		entries.value = sortByDate(newEntries)
 	})
 }
 </script>

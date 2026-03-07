@@ -1,0 +1,114 @@
+name: 友链申请
+description: 申请添加友情链接
+labels: ["friend-link/add"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你申请友链！请填写以下信息。
+        
+        **申请要求**：
+        - 确保你的博客内容不违反任何法律。
+        - 确保你的博客有效文章数至少有 10 篇（非日常说说等）。
+        - 已运行至少3个月，并且保证能够长期存活。
+        - 请确保你已添加本站友链。
+        - 确保你的博客内容是、有价值的、不包含广告、垃圾信息或违规内容。
+        
+        **本站信息**：
+        - 博主：筱序二十
+        - 站名：青序栈
+        - 地址：https://www.qixz.cn/
+        - 描述：青序成栈·向简而生
+        - 头像：https://www.qixz.cn/avatar.avif
+
+  - type: input
+    id: author
+    attributes:
+      label: 博主昵称
+      description: 你的昵称或笔名
+      placeholder: 筱序二十
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: 博客名称
+      description: 博客大标题，不要附带の博客、's blog等
+      placeholder: 例如：青序栈
+    validations:
+      required: true
+
+  - type: textarea
+    id: desc
+    attributes:
+      label: 博客Slogan
+      description: 博客个性宣言（建议 10 字以内）
+      placeholder: 例如：青序成栈·向简而生
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: 博客地址
+      description: 你的博客 URL
+      placeholder: https://www.qixz.cn/
+    validations:
+      required: true
+
+  - type: input
+    id: linkPage
+    attributes:
+      label: 友链页面地址
+      description: 你的友链页面 URL（仅用于检测是否已添加本站链接）
+      placeholder: https://www.qixz.cn/link
+    validations:
+      required: true
+
+  - type: input
+    id: avatar
+    attributes:
+      label: 头像链接
+      description: 你的头像图片 URL
+      placeholder: https://www.qixz.cn/avatar.avif
+    validations:
+      required: true
+
+  - type: input
+    id: feed
+    attributes:
+      label: 订阅源
+      description: RSS/Atom 订阅地址（可选）
+      placeholder: https://www.qixz.cn/atom.xml
+
+  - type: input
+    id: sitenick
+    attributes:
+      label: 网站趣称
+      description: 网站的别名或昵称（可选）
+
+  - type: input
+    id: archs
+    attributes:
+      label: 技术架构
+      description: 博客使用的技术栈，用逗号分隔（可选）
+      placeholder: 例如：Hexo, Vercel
+
+  - type: textarea
+    id: comment
+    attributes:
+      label: 备注信息
+      description: 其他想说的内容（可选）
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 确认事项
+      options:
+        - label: 我已添加友情链接
+          required: true
+        - label: 我的博客符合友链规则
+          required: true
+        - label: 我确认以上信息真实有效
+          required: true

@@ -1,0 +1,21 @@
+name: 友链标签配置
+description: 友链管理相关标签说明
+labels:
+  - name: friend-link/add
+    description: 添加友链
+    color: "0E8A16"
+  - name: friend-link/remove
+    description: 移除友链
+    color: "B60205"
+  - name: friend-link/update
+    description: 更新友链信息
+    color: "FBCA04"
+  - name: friend-link/check
+    description: 仅检测，不执行操作
+    color: "1D76DB"
+  - name: friend-link/passed
+    description: 检测通过
+    color: "0E8A16"
+  - name: friend-link/failed
+    description: 检测未通过
+    color: "B60205"
