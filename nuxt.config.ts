@@ -2,8 +2,6 @@ import type { NitroConfig } from 'nitropack'
 import { arch, env, version as nodeVersion, platform } from 'node:process'
 import { name as ciName, CLOUDFLARE_PAGES, GITHUB_ACTIONS, NETLIFY } from 'ci-info'
 import { pascal } from 'radash'
-import { readFileSync, existsSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
 import redirectList from './redirects.json'
@@ -201,11 +199,11 @@ ${packageJson.homepage}
 			if (blogConfig.indexNow.enable && blogConfig.indexNow.key && ctx.content.path) {
 				try {
 					const url = new URL(ctx.content.path as string, blogConfig.url).href
-					const recordPath = join(process.cwd(), 'indexnow-submitted.json')
-					const submittedUrls: string[] = existsSync(recordPath) ? JSON.parse(readFileSync(recordPath, 'utf-8')) : []
+					const articleDate = new Date(ctx.content.updated as string || ctx.content.date as string)
+					const daysSinceUpdate = (Date.now() - articleDate.getTime()) / (1000 * 60 * 60 * 24)
 
-					if (submittedUrls.includes(url)) {
-						console.info(`IndexNow: ${url} already submitted, skipping`)
+					if (daysSinceUpdate > 30) {
+						console.info(`IndexNow: ${url} not recently updated (${Math.floor(daysSinceUpdate)} days ago), skipping`)
 						return
 					}
 
@@ -223,8 +221,6 @@ ${packageJson.homepage}
 						},
 						body: requestBody,
 					})
-					submittedUrls.push(url)
-					writeFileSync(recordPath, JSON.stringify(submittedUrls, null, 2))
 					console.info(`IndexNow: ${url} submitted successfully`)
 				}
 				catch (error) {
