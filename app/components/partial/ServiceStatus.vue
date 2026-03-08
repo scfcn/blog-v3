@@ -23,23 +23,27 @@ async function fetchData() {
 	try {
 		const response = await $fetch<HeartbeatResponse>(API_URL)
 		if (response?.heartbeatList) {
-			const hasValidData = MONITOR_IDS.some(id => {
+			const hasValidData = MONITOR_IDS.some((id) => {
 				const heartbeats = response.heartbeatList[id.toString()]
 				return heartbeats && heartbeats.length > 0
 			})
 			if (hasValidData) {
 				data.value = response
 				hasError.value = false
-			} else {
+			}
+			else {
 				hasError.value = true
 			}
-		} else {
+		}
+		else {
 			hasError.value = true
 		}
-	} catch (e) {
+	}
+	catch (e) {
 		console.error('Failed to fetch service status:', e)
 		hasError.value = true
-	} finally {
+	}
+	finally {
 		isLoading.value = false
 	}
 }
@@ -56,7 +60,8 @@ onUnmounted(() => {
 })
 
 const failedCount = computed(() => {
-	if (!data.value?.heartbeatList) return 0
+	if (!data.value?.heartbeatList)
+		return 0
 	let count = 0
 	for (const id of MONITOR_IDS) {
 		const heartbeats = data.value.heartbeatList[id.toString()]
@@ -73,20 +78,30 @@ const failedCount = computed(() => {
 })
 
 const statusType = computed(() => {
-	if (isLoading.value) return 'loading'
-	if (hasError.value) return 'error'
-	if (!data.value) return 'normal'
-	if (failedCount.value === 0) return 'normal'
-	if (failedCount.value === MONITOR_IDS.length) return 'all-failed'
+	if (isLoading.value)
+		return 'loading'
+	if (hasError.value)
+		return 'error'
+	if (!data.value)
+		return 'normal'
+	if (failedCount.value === 0)
+		return 'normal'
+	if (failedCount.value === MONITOR_IDS.length)
+		return 'all-failed'
 	return 'partial-failed'
 })
 
 const statusText = computed(() => {
-	if (isLoading.value) return '监察御史汇报中'
-	if (hasError.value) return '监察御史开小差了'
-	if (!data.value) return '所有服务正常'
-	if (failedCount.value === 0) return '所有服务正常'
-	if (failedCount.value === MONITOR_IDS.length) return '所有服务故障'
+	if (isLoading.value)
+		return '监察御史汇报中'
+	if (hasError.value)
+		return '监察御史开小差了'
+	if (!data.value)
+		return '所有服务正常'
+	if (failedCount.value === 0)
+		return '所有服务正常'
+	if (failedCount.value === MONITOR_IDS.length)
+		return '所有服务故障'
 	return `共 ${failedCount.value} 个服务故障`
 })
 </script>

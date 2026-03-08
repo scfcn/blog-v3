@@ -1,13 +1,9 @@
 <script setup lang="ts">
 const props = defineProps<{ to?: string, nofollow?: boolean }>()
 
-const isExternal = ref(false)
+const isExternal = computed(() => isExtLink(props.to))
 
-onMounted(() => {
-	isExternal.value = isExtLink(props.to)
-})
-
-const isStaticFile = computed(() => /\.(xml|json|txt|pdf|zip)$/i.test(props.to || ''))
+const isStaticFile = computed(() => /\.(?:xml|json|txt|pdf|zip)$/i.test(props.to || ''))
 </script>
 
 <template>

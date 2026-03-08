@@ -17,7 +17,6 @@ const { author } = useAppConfig()
 const recentTalks = ref<TalkItem[]>([])
 const isLoading = ref(true)
 const loadError = ref(false)
-const currentPage = ref(1)
 const hasMore = ref(true)
 
 async function loadTalks(showLoading = true) {
@@ -159,7 +158,7 @@ function getEssayDate(date?: string | Date) {
 				<div class="talk-content">
 					<div v-if="talk.text" class="text" v-html="talk.text" />
 					<div v-if="talk.images" class="images">
-						<Pic v-for="(image, index) in talk.images" :key="index" class="image" :src="image" />
+						<Pic v-for="(img, imgIndex) in talk.images" :key="imgIndex" class="image" :src="img" />
 					</div>
 					<VideoEmbed v-if="talk.video" class="video" v-bind="talk.video" height="" />
 				</div>

@@ -74,14 +74,15 @@ const getCategoryCount = computed(() => (category: string) => {
 						<h3 class="card-name">
 							{{ item.name }}
 						</h3>
-						<div v-if="item.category === '生产力'" class="card-category" style="
-
---category-color: #3AF;">
+						<div
+							v-if="item.category === '生产力'" class="card-category"
+							style="--category-color: #3AF;"
+						>
 							{{ item.category }}
 						</div>
-						<div v-if="item.category === '出行'" class="card-category" style="
-
---category-color: #3BA;">
+						<div
+							v-if="item.category === '出行'" class="card-category" style="--category-color: #3BA;"
+						>
 							{{ item.category }}
 						</div>
 					</div>
@@ -99,9 +100,11 @@ const getCategoryCount = computed(() => (category: string) => {
 						</div>
 					</div>
 					<div class="card-tags">
-						<span v-for="(tag, index) in item.tag ?? []" :key="index" class="tag" style="
+						<span
+							v-for="(tag, tagIndex) in item.tag ?? []" :key="tagIndex" class="tag" style="
 
-----category-color: #3AF;">
+----category-color: #3AF;"
+						>
 							{{ tag }}
 						</span>
 					</div>

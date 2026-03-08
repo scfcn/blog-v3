@@ -21,9 +21,9 @@ const { copy, copied } = useCopy(href)
 
 		<div class="content">
 			<ul>
-				<li v-for="{ title, link }, i in references" :key="i">
+				<li v-for="{ title: refTitle, link }, i in references" :key="i">
 					<ProseA :href="link || ''">
-						{{ title ?? link }}
+						{{ refTitle ?? link }}
 					</ProseA>
 				</li>
 			</ul>

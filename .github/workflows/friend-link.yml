@@ -11,8 +11,8 @@ permissions:
 
 env:
   MY_SITE_URL: 'https://www.qixz.cn/'
-  MY_SITE_NAME: '青序栈'
-  FEEDS_FILE: 'app/feeds.ts'
+  MY_SITE_NAME: 青序栈
+  FEEDS_FILE: app/feeds.ts
 
 jobs:
   check-and-process:
@@ -49,7 +49,7 @@ jobs:
         run: |
           label="${{ github.event.label.name }}"
           action="none"
-          
+
           if [[ "$label" == "friend-link/add" ]]; then
             action="add"
           elif [[ "$label" == "friend-link/remove" ]]; then
@@ -59,7 +59,7 @@ jobs:
           elif [[ "$label" == "friend-link/check" ]]; then
             action="check"
           fi
-          
+
           echo "action=$action" >> $GITHUB_OUTPUT
           echo "Action to perform: $action"
 
@@ -76,40 +76,41 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             let checkResult = {};
             try {
               checkResult = JSON.parse(fs.readFileSync('check-result.json', 'utf8'));
             } catch (e) {
               checkResult = { error: 'Failed to read check result' };
             }
-            
+
             const action = '${{ steps.action.outputs.action }}';
             const executeResult = '${{ steps.execute.outputs.result }}' || '';
-            
+
             const statusEmoji = (status) => {
               if (status === 'pass') return '✅';
               if (status === 'fail') return '❌';
               return '⚠️';
             };
-            
+
             let body = `## 🔍 友链检测结果\n\n`;
             body += `| 检测项 | 状态 | 详情 |\n`;
             body += `|--------|------|------|\n`;
             body += `| 站点连通性 | ${statusEmoji(checkResult.siteConnectivity?.status)} | ${checkResult.siteConnectivity?.message || '-'} |\n`;
             body += `| 友链互链 | ${statusEmoji(checkResult.linkBack?.status)} | ${checkResult.linkBack?.message || '-'} |\n`;
             body += `| 头像有效性 | ${statusEmoji(checkResult.avatarValid?.status)} | ${checkResult.avatarValid?.message || '-'} |\n`;
-            
+            body += `| 技术架构 | ${statusEmoji(checkResult.archsValid?.status)} | ${checkResult.archsValid?.message || '-'} |\n`;
+
             if (checkResult.sslValid) {
               body += `| SSL 证书 | ${statusEmoji(checkResult.sslValid?.status)} | ${checkResult.sslValid?.message || '-'} |\n`;
             }
-            
+
             body += `\n### 📋 申请信息摘要\n`;
             body += `- **博主**：${checkResult.data?.author || '-'}\n`;
             body += `- **博客**：${checkResult.data?.title || '-'}\n`;
             body += `- **地址**：${checkResult.data?.link || '-'}\n`;
             body += `- **友链页面**：${checkResult.data?.linkPage || '-'}\n`;
-            
+
             body += `\n### 🏷️ 操作状态\n`;
             if (action === 'check') {
               body += `> 仅执行检测，未执行任何修改操作。\n`;
@@ -132,10 +133,10 @@ jobs:
               body += `> \n`;
               body += `> ${executeResult}\n`;
             }
-            
+
             body += `\n---\n`;
             body += `*此评论由 GitHub Actions 自动生成*`;
-            
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -149,14 +150,14 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
-            const checkResult = fs.existsSync('check-result.json') 
+
+            const checkResult = fs.existsSync('check-result.json')
               ? JSON.parse(fs.readFileSync('check-result.json', 'utf8'))
               : {};
-            
+
             const labelsToAdd = [];
             const labelsToRemove = [];
-            
+
             if (checkResult.allPassed) {
               labelsToAdd.push('friend-link/passed');
               labelsToRemove.push('friend-link/failed');
@@ -164,7 +165,7 @@ jobs:
               labelsToAdd.push('friend-link/failed');
               labelsToRemove.push('friend-link/passed');
             }
-            
+
             if (labelsToRemove.length > 0) {
               try {
                 await github.rest.issues.removeLabel({
@@ -175,7 +176,7 @@ jobs:
                 });
               } catch (e) {}
             }
-            
+
             if (labelsToAdd.length > 0) {
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,

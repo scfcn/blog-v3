@@ -1,12 +1,11 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-	ignores: ['*.yaml'],
+	ignores: ['*.yaml', 'scripts/**', 'content/**'],
 	stylistic: {
 		indent: 'tab',
 	},
 	pnpm: true,
-	// @keep-sorted
 	rules: {
 		'jsonc/indent': ['error', 2],
 		'vue/block-lang': ['warn', {
@@ -27,12 +26,13 @@ export default antfu({
 	},
 }, {
 	files: ['content/**'],
-	// @keep-sorted
 	rules: {
 		'antfu/consistent-list-newline': 'off',
 		'eqeqeq': 'off',
 		'jsonc/comma-dangle': ['warn', 'always'],
+		'jsonc/no-irregular-whitespace': 'off',
 		'no-irregular-whitespace': 'off',
+		'no-unused-vars': 'off',
 		'no-sequences': 'off',
 		'prefer-arrow-callback': 'off',
 		'prefer-template': 'off',

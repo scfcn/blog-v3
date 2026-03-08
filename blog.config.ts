@@ -58,6 +58,12 @@ const blogConfig = {
 		robotsNotIndex: ['/preview', '/previews/*', '/go', '/go/*'],
 	},
 
+	/** ChronoFrame 图驿服务配置 */
+	chronoframe: {
+		/** ChronoFrame 部署地址 */
+		baseUrl: 'https://tuyi.qixz.cn',
+	},
+
 	/** 赞赏配置 */
 	donation: {
 		enable: true,
@@ -76,6 +82,12 @@ const blogConfig = {
 		enableStyle: true,
 	},
 
+	/** GitHub 仓库配置 */
+	github: {
+		/** 仓库地址 */
+		repo: 'scfcn/blog-v3',
+	},
+
 	/** Bing IndexNow 配置 */
 	indexNow: {
 		enable: true,
@@ -88,19 +100,13 @@ const blogConfig = {
 		// 自己部署的 Umami 统计服务
 		{ 'src': 'https://um.qixz.cn/script.js', 'data-website-id': '55ed3ffd-f0d7-4b3b-b8b2-e49f3507d028', 'defer': true, 'crossorigin': 'anonymous' as const },
 		// Twikoo 评论系统
-		{ 'src': 'https://registry.npmmirror.com/twikoo/1.7.1/files/dist/twikoo.min.js', defer: true, crossorigin: 'anonymous' as const },
+		{ src: 'https://registry.npmmirror.com/twikoo/1.7.1/files/dist/twikoo.min.js', defer: true, crossorigin: 'anonymous' as const },
 	],
 
 	/** 自己部署的 Twikoo 服务 */
 	twikoo: {
 		envId: 'https://twikoo.qixz.cn/',
 		preload: 'https://twikoo.qixz.cn/',
-	},
-
-	/** ChronoFrame 图驿服务配置 */
-	chronoframe: {
-		/** ChronoFrame 部署地址 */
-		baseUrl: 'https://tuyi.qixz.cn',
 	},
 }
 

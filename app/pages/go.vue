@@ -188,192 +188,193 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .go-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--c-bg-1);
-  padding: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 1rem;
+	background: var(--c-bg-1);
+	backdrop-filter: blur(20px);
 }
 
 .card {
-  width: 100%;
-  max-width: 360px;
-  background: var(--ld-bg-card);
-  border: 1px solid var(--c-bg-soft);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+	width: 100%;
+	max-width: 360px;
+	padding: 2rem;
+	border: 1px solid var(--c-bg-soft);
+	border-radius: 16px;
+	box-shadow: 0 0 0 1px var(--c-bg-soft);
+	background-color: var(--c-bg-a50);
 }
 
 .error-state {
-  text-align: center;
+	text-align: center;
 
-  .error-icon {
-    color: var(--c-primary);
-    margin-bottom: 1rem;
-  }
+	.error-icon {
+		margin-bottom: 1rem;
+		color: var(--c-primary);
+	}
 
-  h1 {
-    font-size: 1.25rem;
-    color: var(--c-text-1);
-    margin: 0 0 0.5rem 0;
-  }
+	h1 {
+		margin: 0 0 0.5rem;
+		font-size: 1.25rem;
+		color: var(--c-text-1);
+	}
 
-  p {
-    color: var(--c-text-2);
-    margin: 0 0 1.5rem 0;
-  }
+	p {
+		margin: 0 0 1.5rem;
+		color: var(--c-text-2);
+	}
 }
 
 .normal-state {
-  text-align: center;
+	text-align: center;
 
-  .icon-wrapper {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 1.25rem;
-    background: var(--c-primary-soft);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	.icon-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		margin: 0 auto 1.25rem;
+		border-radius: 50%;
+		background: var(--c-primary-soft);
 
-    .link-icon {
-      color: var(--c-primary);
-      width: 32px;
-      height: 32px;
-    }
-  }
+		.link-icon {
+			width: 32px;
+			height: 32px;
+			color: var(--c-primary);
+		}
+	}
 
-  h1 {
-    font-size: 1.5rem;
-    color: var(--c-text-1);
-    margin: 0 0 0.5rem 0;
-    font-weight: 600;
-  }
+	h1 {
+		margin: 0 0 0.5rem;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--c-text-1);
+	}
 
-  .description {
-    color: var(--c-text-2);
-    margin: 0 0 1.5rem 0;
-    font-size: 0.9rem;
-  }
+	.description {
+		margin: 0 0 1.5rem;
+		font-size: 0.9rem;
+		color: var(--c-text-2);
+	}
 }
 
 .countdown-wrapper {
-  margin: 2rem 0;
+	margin: 2rem 0;
 
-  .countdown-circle {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1rem;
-    position: relative;
+	.countdown-circle {
+		position: relative;
+		width: 100px;
+		height: 100px;
+		margin: 0 auto 1rem;
 
-    svg {
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg);
-    }
+		svg {
+			width: 100%;
+			height: 100%;
+			transform: rotate(-90deg);
+		}
 
-    .countdown-bg {
-      fill: none;
-      stroke: var(--c-bg-soft);
-      stroke-width: 8;
-    }
+		.countdown-bg {
+			fill: none;
+			stroke: var(--c-bg-soft);
+			stroke-width: 8;
+		}
 
-    .countdown-progress {
-      fill: none;
-      stroke: var(--c-primary);
-      stroke-width: 8;
-      stroke-linecap: round;
-      stroke-dasharray: 283;
-      stroke-dashoffset: 0;
-      transition: stroke-dashoffset 1s linear;
-    }
+		.countdown-progress {
+			fill: none;
+			stroke: var(--c-primary);
+			stroke-width: 8;
+			stroke-linecap: round;
+			stroke-dasharray: 283;
+			stroke-dashoffset: 0;
+			transition: stroke-dashoffset 1s linear;
+		}
 
-    .countdown-number {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--c-primary);
-    }
-  }
+		.countdown-number {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			font-size: 1.75rem;
+			font-weight: 700;
+			color: var(--c-primary);
+			transform: translate(-50%, -50%);
+		}
+	}
 
-  .countdown-text {
-    color: var(--c-text-2);
-    font-size: 0.85rem;
-    margin: 0;
-  }
+	.countdown-text {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--c-text-2);
+	}
 }
 
 .actions {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  margin-top: 1.5rem;
+	display: flex;
+	justify-content: center;
+	gap: 0.75rem;
+	margin-top: 1.5rem;
 }
 
 button {
-  padding: 0.65rem 1.25rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
+	padding: 0.65rem 1.25rem;
+	border: none;
+	border-radius: 8px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	transition: all 0.2s ease;
+	cursor: pointer;
 }
 
 .btn-primary {
-  background: var(--c-primary);
-  color: var(--c-bg);
+	background: var(--c-primary);
+	color: var(--c-bg);
 
-  &:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-  }
+	&:hover {
+		opacity: 0.9;
+		transform: translateY(-1px);
+	}
 
-  &:active {
-    transform: translateY(0);
-  }
+	&:active {
+		transform: translateY(0);
+	}
 }
 
 .btn-secondary {
-  background: var(--c-bg-soft);
-  color: var(--c-text-1);
+	background: var(--c-bg-soft);
+	color: var(--c-text-1);
 
-  &:hover {
-    background: var(--c-bg-2);
-  }
+	&:hover {
+		background: var(--c-bg-2);
+	}
 }
 
 .fade-enter-active {
-  transition: opacity 0.4s ease, transform 0.4s ease;
+	transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .fade-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+	transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
+	opacity: 0;
+	transform: translateY(10px);
 }
 
 @media (max-width: 480px) {
-  .card {
-    padding: 1.5rem;
-  }
+	.card {
+		padding: 1.5rem;
+	}
 
-  .actions {
-    flex-direction: column;
+	.actions {
+		flex-direction: column;
 
-    button {
-      width: 100%;
-    }
-  }
+		button {
+			width: 100%;
+		}
+	}
 }
 </style>

@@ -78,17 +78,17 @@ useEventListener('scroll', () => {
 
 <style lang="scss" scoped>
 .external-popover {
-	position: fixed;
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
+	position: fixed;
 	padding: 0.5rem 0.75rem;
 	border-radius: 0.5rem;
 	box-shadow: 0 0.25em 0.75em var(--ld-shadow), 0 0 0 1px var(--c-border);
 	background-color: var(--ld-bg-card);
 	font-size: 0.875rem;
-	z-index: 9998;
 	white-space: nowrap;
+	z-index: 9998;
 }
 
 .popover-text {
@@ -105,10 +105,10 @@ useEventListener('scroll', () => {
 	}
 
 	.domain {
-		max-width: 10em;
 		overflow: hidden;
-		text-overflow: ellipsis;
+		max-width: 10em;
 		font-family: var(--font-monospace);
+		text-overflow: ellipsis;
 	}
 }
 
@@ -121,8 +121,8 @@ useEventListener('scroll', () => {
 		padding: 0.25rem 0.6rem;
 		border-radius: 0.25rem;
 		font-size: 0.8rem;
-		cursor: pointer;
 		transition: all 0.15s;
+		cursor: pointer;
 	}
 
 	.btn-cancel {
@@ -141,8 +141,8 @@ useEventListener('scroll', () => {
 		color: white;
 
 		&:hover {
-			background-color: var(--c-primary-soft);
 			border-color: var(--c-primary-soft);
+			background-color: var(--c-primary-soft);
 		}
 	}
 }

@@ -3,7 +3,7 @@ import { packageManager, version } from '~~/package.json'
 import pnpmWorkspace from '~~/pnpm-workspace.yaml'
 
 const appConfig = useAppConfig()
-const { public: { arch, ci, nodeVersion, platform } } = useRuntimeConfig()
+const { public: { arch, nodeVersion, platform } } = useRuntimeConfig()
 
 const packages = Object.assign({}, ...Object.values(pnpmWorkspace.catalogs as any)) as Record<string, string>
 const [pm, pmVersion] = packageManager.split('@') as [string, string]

@@ -1,19 +1,19 @@
 name: 友链申请
 description: 申请添加友情链接
-labels: ["friend-link/add"]
+labels: [friend-link/add]
 body:
   - type: markdown
     attributes:
       value: |
         感谢你申请友链！请填写以下信息。
-        
+
         **申请要求**：
         - 确保你的博客内容不违反任何法律。
         - 确保你的博客有效文章数至少有 10 篇（非日常说说等）。
         - 已运行至少3个月，并且保证能够长期存活。
         - 请确保你已添加本站友链。
         - 确保你的博客内容是、有价值的、不包含广告、垃圾信息或违规内容。
-        
+
         **本站信息**：
         - 博主：筱序二十
         - 站名：青序栈
@@ -92,7 +92,9 @@ body:
     id: archs
     attributes:
       label: 技术架构
-      description: 博客使用的技术栈，仅支持以下文本:服务器、国内 CDN、虚拟主机、Astro、Cloudflare、Deploy、EdgeOne、Esa、GitHub Pages、Golang、Gridea、Halo、Hexo、HTML、Hugo、Jekyll、Mix Space、Netlify、Next.js、NotionNext、Nuxt、PHP、Python、React、Typecho、Veercel、VitePress、Vue、VuePress、WordPress、Zebaur
+      description: |
+        博客使用的技术栈，多个用逗号分隔。仅支持以下选项：
+        服务器、国内 CDN、虚拟主机、Astro、Cloudflare、Deno Deploy、EdgeOne、Esa、GitHub Pages、Golang、Gridea、Halo、Hexo、HTML、Hugo、Jekyll、Mix Space、Netlify、Next.js、NotionNext、Nuxt、PHP、Python、React、Typecho、Vercel、VitePress、Vue、VuePress、WordPress、Zebaur
       placeholder: 例如：Hexo, Vercel
 
   - type: textarea

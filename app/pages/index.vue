@@ -26,8 +26,6 @@ const listRecommended = computed(() => sort(
 	post => post.recommend || 0,
 	true,
 ))
-
-const isClient = process.client
 </script>
 
 <template>

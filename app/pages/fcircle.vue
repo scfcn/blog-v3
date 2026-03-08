@@ -353,11 +353,15 @@ onUnmounted(() => {
 }
 
 @keyframes slide-in-up {
-	0% { opacity: 0;
-		transform: translateY(20px); }
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-	100% { opacity: 1;
-		transform: translateY(0); }
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /* 主要样式 */
@@ -531,7 +535,6 @@ onUnmounted(() => {
 	position: fixed;
 	inset: 0;
 	backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
 	z-index: 100;
 
 	.modal__content {
@@ -553,14 +556,18 @@ onUnmounted(() => {
 			padding-bottom: 15px;
 			border-bottom: 1px solid var(--c-bg-soft);
 
-			img { width: 50px;
+			img {
+				width: 50px;
 				height: 50px;
 				border-radius: 50%;
-				object-fit: cover; }
+				object-fit: cover;
+			}
 
-			h3 { flex: 1;
+			h3 {
+				flex: 1;
 				margin: 0;
-				font-size: 1.2rem; }
+				font-size: 1.2rem;
+			}
 
 			.modal__author-link {
 				padding: 8px;
@@ -568,8 +575,10 @@ onUnmounted(() => {
 				color: var(--c-text-2);
 				transition: all 0.3s;
 
-				&:hover { background: var(--c-bg-soft);
-					color: var(--c-text); }
+				&:hover {
+					background: var(--c-bg-soft);
+					color: var(--c-text);
+				}
 			}
 		}
 
@@ -645,9 +654,11 @@ onUnmounted(() => {
 			pointer-events: none;
 			z-index: 1;
 
-			img { width: 100%;
+			img {
+				width: 100%;
 				height: 100%;
-				object-fit: cover; }
+				object-fit: cover;
+			}
 		}
 	}
 }
