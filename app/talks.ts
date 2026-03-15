@@ -87,26 +87,30 @@ export async function fetchTalks(options: FetchTalksOptions = {}): Promise<TalkI
 			if (item.extension) {
 				const extType = item.extension.type?.toUpperCase()
 				if (extType === 'VIDEO') {
-					const payload = item.extension.payload as { type?: string; id?: string } | undefined
+					const payload = item.extension.payload as { type?: string, id?: string } | undefined
 					const videoId = item.extension.echo_id || item.extension.id
-					const videoType = payload?.type?.toLowerCase() || 'bilibili'
+					const videoTypeRaw = payload?.type?.toLowerCase() || 'bilibili'
+					const videoType: 'raw' | 'bilibili' | 'bilibili-nano' | 'youtube' | 'douyin' | 'douyin-wide' | 'tiktok' = ['raw', 'bilibili', 'bilibili-nano', 'youtube', 'douyin', 'douyin-wide', 'tiktok'].includes(videoTypeRaw) ? videoTypeRaw as any : 'bilibili'
 
 					talkItem.video = {
-						type: videoType as TalkItem['video']['type'],
+						type: videoType,
 						id: payload?.id || videoId,
 					}
 				}
 				else if (extType === 'MUSIC') {
-					const payload = item.extension.payload as { type?: string; id?: string; author?: string; title?: string } | undefined
+					const payload = item.extension.payload as { type?: string, id?: string, author?: string, title?: string } | undefined
+					const musicTypeRaw = payload?.type || 'netease'
+					const musicType: 'netease' | 'qq' | 'kugou' | 'kuwo' | 'xiami' | 'apple' | 'spotify' = ['netease', 'qq', 'kugou', 'kuwo', 'xiami', 'apple', 'spotify'].includes(musicTypeRaw) ? musicTypeRaw as any : 'netease'
+
 					talkItem.music = {
-						type: payload?.type || 'netease',
+						type: musicType,
 						id: payload?.id || item.extension.id,
 						author: payload?.author,
 						title: payload?.title,
 					}
 				}
 				else if (extType === 'LINK') {
-					const payload = item.extension.payload as { url?: string; title?: string; image?: string; description?: string } | undefined
+					const payload = item.extension.payload as { url?: string, title?: string, image?: string, description?: string } | undefined
 					talkItem.link = {
 						url: payload?.url || item.extension.echo_id,
 						title: payload?.title,

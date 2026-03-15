@@ -727,21 +727,21 @@ onUnmounted(() => {
 }
 
 .live-play-btn {
-	position: absolute;
-	bottom: 1rem;
-	left: 1rem;
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
 	padding: 0.5rem 0.75rem;
 	border: none;
 	border-radius: 20px;
 	background: rgb(0 0 0 / 50%);
-	color: white;
-	font-size: 0.8rem;
-	cursor: pointer;
-	transition: all 0.2s;
 	backdrop-filter: blur(10px);
+	font-size: 0.8rem;
+	color: white;
+	transition: all 0.2s;
+	cursor: pointer;
 
 	&:hover {
 		background: rgb(0 0 0 / 70%);
@@ -751,7 +751,7 @@ onUnmounted(() => {
 		background: rgb(255 255 255 / 20%);
 
 		span {
-			color: #4ade80;
+			color: #4ADE80;
 		}
 	}
 

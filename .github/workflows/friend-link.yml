@@ -11,8 +11,8 @@ permissions:
 
 env:
   MY_SITE_URL: 'https://www.qixz.cn/'
-  MY_SITE_NAME: '青序栈'
-  FEEDS_FILE: 'app/feeds.ts'
+  MY_SITE_NAME: 青序栈
+  FEEDS_FILE: app/feeds.ts
 
 jobs:
   check-and-process:
@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -71,7 +71,7 @@ jobs:
         run: |
           label="${{ github.event.label.name }}"
           action="none"
-          
+
           if [[ "$label" == "friend-link/add" ]]; then
             action="add"
           elif [[ "$label" == "friend-link/remove" ]]; then
@@ -85,7 +85,7 @@ jobs:
           elif [[ "$label" == "friend-link/approve" ]]; then
             action="approve"
           fi
-          
+
           echo "action=$action" >> $GITHUB_OUTPUT
           echo "Action to perform: $action"
 
@@ -102,24 +102,24 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             let checkResult = {};
             try {
               checkResult = JSON.parse(fs.readFileSync('check-result.json', 'utf8'));
             } catch (e) {
               checkResult = { error: 'Failed to read check result' };
             }
-            
+
             const action = '${{ steps.action.outputs.action }}';
             const executeResult = '${{ steps.execute.outputs.result }}' || '';
-            
+
             const statusEmoji = (status) => {
               if (status === 'pass') return '✅';
               if (status === 'fail') return '❌';
               if (status === 'warn') return '⚠️';
               return '❓';
             };
-            
+
             let body = `## 🔍 友链检测结果\n\n`;
             body += `| 检测项 | 状态 | 详情 |\n`;
             body += `|--------|------|------|\n`;
@@ -128,20 +128,20 @@ jobs:
             body += `| 友链互链 | ${statusEmoji(checkResult.linkBack?.status)} | ${checkResult.linkBack?.message || '-'} |\n`;
             body += `| 头像有效性 | ${statusEmoji(checkResult.avatarValid?.status)} | ${checkResult.avatarValid?.message || '-'} |\n`;
             body += `| 技术架构 | ${statusEmoji(checkResult.archsValid?.status)} | ${checkResult.archsValid?.message || '-'} |\n`;
-            
+
             if (checkResult.sslValid) {
               body += `| SSL 证书 | ${statusEmoji(checkResult.sslValid?.status)} | ${checkResult.sslValid?.message || '-'} |\n`;
             }
-            
+
             body += `\n### 📋 申请信息摘要\n`;
             body += `- **博主**：${checkResult.data?.author || '-'}\n`;
             body += `- **博客**：${checkResult.data?.title || '-'}\n`;
             body += `- **地址**：${checkResult.data?.link || '-'}\n`;
             body += `- **友链页面**：${checkResult.data?.linkPage || '-'}\n`;
             body += `- **原始 Issue**：${checkResult.data?.originalIssueId ? '#' + checkResult.data.originalIssueId : '-'}\n`;
-            
+
             body += `\n### 🏷️ 操作状态\n`;
-            
+
             if (action === 'pending') {
               body += `> ⏳ 待人工审核...\n`;
               body += `> \n`;
@@ -187,10 +187,10 @@ jobs:
                 body += `> ❌ 检测未通过，请检查各项检测结果。\n`;
               }
             }
-            
+
             body += `\n---\n`;
             body += `*此评论由 GitHub Actions 自动生成*`;
-            
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -204,15 +204,15 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
-            const checkResult = fs.existsSync('check-result.json') 
+
+            const checkResult = fs.existsSync('check-result.json')
               ? JSON.parse(fs.readFileSync('check-result.json', 'utf8'))
               : {};
-            
+
             const action = '${{ steps.action.outputs.action }}';
             const labelsToAdd = [];
             const labelsToRemove = [];
-            
+
             if (action === 'add' || action === 'update' || action === 'remove') {
               if (checkResult.requiresManualReview || checkResult.identity?.needsManualReview) {
                 labelsToAdd.push('friend-link/pending');
@@ -225,12 +225,12 @@ jobs:
                 labelsToRemove.push('friend-link/passed');
               }
             }
-            
+
             if (action === 'approve') {
               labelsToRemove.push('friend-link/pending');
               labelsToAdd.push('friend-link/passed');
             }
-            
+
             if (labelsToRemove.length > 0) {
               try {
                 for (const label of labelsToRemove) {
@@ -245,7 +245,7 @@ jobs:
                 }
               } catch (e) {}
             }
-            
+
             if (labelsToAdd.length > 0) {
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
