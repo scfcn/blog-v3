@@ -55,7 +55,7 @@ const blogConfig = {
 		/** 隐藏基于文件路由（不是自定义链接）的 URL /post 路径前缀 */
 		hidePostPrefix: true,
 		/** 禁止搜索引擎收录的路径 */
-		robotsNotIndex: ['/preview', '/previews/*', '/go', '/go/*'],
+		robotsNotIndex: ['/preview', '/previews/*'],
 	},
 
 	/** ChronoFrame 图驿服务配置 */
@@ -100,7 +100,7 @@ const blogConfig = {
 		// 自己部署的 Umami 统计服务
 		{ 'src': 'https://um.qixz.cn/script.js', 'data-website-id': '55ed3ffd-f0d7-4b3b-b8b2-e49f3507d028', 'defer': true, 'crossorigin': 'anonymous' as const },
 		// Twikoo 评论系统
-		{ src: 'https://registry.npmmirror.com/twikoo/1.7.3/files/dist/twikoo.min.js', defer: true, crossorigin: 'anonymous' as const },
+		{ src: 'https://registry.npmmirror.com/twikoo/1.7.4/files/dist/twikoo.min.js', defer: true, crossorigin: 'anonymous' as const },
 	],
 
 	/** 自己部署的 Twikoo 服务 */

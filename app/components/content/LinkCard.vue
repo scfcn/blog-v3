@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useAppConfig } from 'nuxt/app'
-
 const props = defineProps<{
 	link: string
 	title: string
@@ -8,57 +6,10 @@ const props = defineProps<{
 	icon?: string
 	mirror?: ImgService
 }>()
-
-const appConfig = useAppConfig()
-const whitelist = appConfig.component?.externalLink?.whitelist || []
-
-const linkUrl = ref(props.link)
-
-onMounted(() => {
-	function isExternalLink(url: string): boolean {
-		try {
-			const urlObj = new URL(url, window.location.origin)
-			const currentHost = window.location.hostname
-			return urlObj.hostname !== currentHost
-		}
-		catch {
-			return false
-		}
-	}
-
-	function isInWhitelist(url: string): boolean {
-		try {
-			const urlObj = new URL(url, window.location.origin)
-			return whitelist.some(domain => urlObj.hostname === domain || urlObj.hostname.endsWith(`.${domain}`))
-		}
-		catch {
-			return false
-		}
-	}
-
-	function encodeUrl(url: string): string {
-		try {
-			return btoa(encodeURIComponent(url))
-		}
-		catch {
-			return encodeURIComponent(url)
-		}
-	}
-
-	function getLinkUrl(href: string): string {
-		if (!href || !isExternalLink(href) || isInWhitelist(href)) {
-			return href
-		}
-		const encodedUrl = encodeUrl(href)
-		return `/go?url=${encodedUrl}`
-	}
-
-	linkUrl.value = getLinkUrl(props.link)
-})
 </script>
 
 <template>
-<UtilLink :to="linkUrl" class="link-card card" :title="joinWith([title, description, link])">
+<UtilLink :to="link" class="link-card card" :title="joinWith([title, description, link])">
 	<div class="link-card-info">
 		<div class="link-card-title">
 			{{ title }}

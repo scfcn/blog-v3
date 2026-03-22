@@ -7,7 +7,7 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   MY_SITE_URL: 'https://www.qixz.cn/'
-  FEEDS_FILE: 'app/feeds.ts'
+  FEEDS_FILE: app/feeds.ts
 
 permissions:
   issues: write
@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Get pnpm store
         id: pnpm-cache
@@ -105,7 +105,7 @@ jobs:
 
             let body = `## 🔍 友链处理结果\n\n`;
             body += `| 检测项 | 状态 | 详情 |\n|--------|------|------|\n`;
-            
+
             if (action === 'add') {
               body += `| 站点连通性 | ${emoji(result.siteConnectivity?.status)} | ${result.siteConnectivity?.message || '-'} |\n`;
               body += `| 友链互链 | ${emoji(result.linkBack?.status)} | ${result.linkBack?.message || '-'} |\n`;
@@ -124,7 +124,7 @@ jobs:
 
             if (allPassed || autoApproved) {
               body += `> ✅ 处理完成，友链已${action === 'add' ? '添加' : action === 'update' ? '更新' : '移除'}\n`;
-              
+
               await github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -166,7 +166,7 @@ jobs:
               body += `> - 打上 \`friend-link/rejected\` 标签以拒绝\n`;
             } else {
               body += `> ❌ 检测未通过\n`;
-              
+
               await github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -227,11 +227,11 @@ jobs:
             });
 
             const isAdd = issue.labels.some(l => l.name === 'friend-link/add');
-            
+
             if (isAdd && result.data?.link) {
               const action = 'remove';
               const { execSync } = require('child_process');
-              
+
               execSync(`node scripts/friend-link-action.mjs`, {
                 env: { ...process.env, ACTION: action }
               });
