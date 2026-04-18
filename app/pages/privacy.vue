@@ -19,7 +19,7 @@ layoutStore.setAside(['blog-log', 'blog-tech'])
 	</h1>
 
 	<div class="content-section">
-		<h2>欢迎使用 {{ appConfig.title }}</h2>
+		<h2>欢迎访问 {{ appConfig.title }}</h2>
 		<p>本隐私协议描述了我们如何收集、使用、存储和保护您在访问和使用我们网站时提供的信息。请仔细阅读本协议，了解我们的隐私政策。</p>
 
 		<div class="info-group">

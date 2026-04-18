@@ -3,12 +3,6 @@ import { createLazyComponent } from './utils/lazy'
 
 const BlogPanel = createLazyComponent(() => import('./components/blog/BlogPanel.vue'))
 const BlogPopover = createLazyComponent(() => import('./components/blog/BlogPopover.vue'))
-const ExternalLinkPopover = createLazyComponent(() => import('./components/util/ExternalLinkPopover.vue'))
-
-if (import.meta.client) {
-	const { setupGlobalInterceptor } = useExternalLink({ enabled: true })
-	setupGlobalInterceptor()
-}
 </script>
 
 <template>
@@ -25,7 +19,6 @@ if (import.meta.client) {
 </div>
 <BlogPanel />
 <BlogPopover />
-<ExternalLinkPopover />
 </template>
 
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->

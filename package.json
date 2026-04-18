@@ -3,7 +3,7 @@
   "type": "module",
   "version": "3.6.4",
   "private": true,
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.33.0",
   "homepage": "https://github.com/scfcn/blog-v3",
   "engines": {
     "node": ">=22.15 <25",
