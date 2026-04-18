@@ -94,8 +94,8 @@ export default defineAppConfig({
 		showTitle: true,
 		subtitle: blogConfig.subtitle,
 		emojiTail: ['🌞', '🤫', '🕊️', '🎍', '👋🏻'],
-		gifTail: 'https://i.p-i.vip/135/20260208-6988282d2139e.gif',
-		titleColor: '#237c4aff',
+		gifTail: 'https://s3.qixz.cn/ywty/2026/04/18/69e37c5a29d9d.gif',
+		titleColor: '#006934',
 	},
 
 	/** 友链页面 */

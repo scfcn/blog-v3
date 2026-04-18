@@ -7,19 +7,19 @@ categories: [随笔杂谈]
 tags: [2025春晚, 分会场, 无锡]
 recommend: 14
 description: 2025年春晚首次设立四个分会场，无锡成为其中之一，彰显其江南水乡魅力与经济文化实力。分会场可能选址鼋头渚、央视无锡影视基地、惠山古镇或清名桥，展示无锡自然风光与传统文化。此举提升城市形象，推动文旅发展，增强市民自豪感，无锡将焕发迷人光彩。
-image: https://pic.wudu.ltd/pic/2025/11/01/6905598fdf53d.png
+image: https://s3.qixz.cn/ywty/2026/04/18/69e37ae811612.webp
 ---
 
 # 无锡是2025春晚分会场之一
 ::pic
 ---
-src: https://pic.wudu.ltd/pic/2025/11/01/6905593df1c5b.png
+src: https://s3.qixz.cn/ywty/2026/04/18/69e37b16738f8.webp
 caption: 官方发布的2025春晚分会场通知
 ---
 ::
 ::pic
 ---
-src: https://pic.wudu.ltd/pic/2025/11/01/6905593d67f26.png
+src: https://s3.qixz.cn/ywty/2026/04/18/69e37b1683365.webp
 caption: 新闻媒体对2025春晚无锡分会场的报道
 ---
 ::
@@ -32,7 +32,7 @@ caption: 新闻媒体对2025春晚无锡分会场的报道
 ### 鼋头渚：被誉为“中华第一胜境”，这里四季景色各异，尤其是春天樱花烂漫，吸引了无数游客前来观赏。在春晚的灯光下，鼋头渚将更加美轮美奂，成为展示无锡自然风光的最佳舞台。
 ::pic
 ---
-src: https://pic.wudu.ltd/pic/2025/11/01/69055a5b7837b.png
+src: https://s3.qixz.cn/ywty/2026/04/18/69e37bdd9efe2.webp
 caption: 鼋头渚风景区美景
 ---
 ::
@@ -40,7 +40,7 @@ caption: 鼋头渚风景区美景
 ### 央视无锡影视基地：这里是众多经典影视作品的取景地，设施完备，适合举办大型文艺活动。春晚分会场设在这里，可以利用其良好的基础设施，呈现出精彩的文艺演出。
 ::pic
 ---
-src: https://pic.wudu.ltd/pic/2025/11/01/69055a1c4ebbd.png
+src: https://s3.qixz.cn/ywty/2026/04/18/69e37bdd39eae.webp
 caption: 央视无锡影视基地
 ---
 ::
@@ -48,7 +48,7 @@ caption: 央视无锡影视基地
 ### 惠山古镇：这座古镇保留了大量明清时期的建筑，青砖灰瓦、古色古香，充满了浓厚的历史气息。在这里举办春晚分会场，可以让观众感受到传统文化的魅力。
 ::pic
 ---
-src: https://pic.wudu.ltd/pic/2025/11/01/69055bc3928b0.png
+src: https://s3.qixz.cn/ywty/2026/04/18/69e37bdd22c9f.webp
 caption: 惠山古镇古色古香的建筑
 ---
 ::
@@ -56,7 +56,7 @@ caption: 惠山古镇古色古香的建筑
 ### 清名桥：作为无锡的古老水乡，这里有着独特的江南水乡风情，是无锡的一张名片。在春晚的舞台上，清名桥将展现出江南水乡的独特韵味。
 ::pic
 ---
-src: https://pic.wudu.ltd/pic/2025/11/01/69055a5b4f9ac.png
+src: https://s3.qixz.cn/ywty/2026/04/18/69e37bdd6cc04.webp
 caption: 清名桥江南水乡风情
 ---
 ::
