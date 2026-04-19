@@ -20,7 +20,7 @@ export interface manufacturers {
 export const equipment: item[] = [
 	{
 		name: '暗影精灵7',
-		image: 'https://image.lolimi.cn/2026/01/10/6962042a87225.webp',
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e425ee5f814.png',
 		src: 'https://www.hp.com/cn-zh/gaming-pc/laptops.html',
 		category: '生产力',
 		desc: '16.1 英寸高端游戏本，采用第 11 代英特尔酷睿处理器平台，属于 OMEN 系列的经典游戏本产品线。',
@@ -38,7 +38,7 @@ export const equipment: item[] = [
 	},
 	{
 		name: 'REDMI K40',
-		image: 'https://image.lolimi.cn/2026/01/10/6962085415926.webp',
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e425eea1275.png',
 		src: 'https://www.mi.com/redmik40',
 		category: '生产力',
 		desc: '一款没有明显短板的旗舰手机，它在性能、屏幕、续航、设计等方面都达到了 2021 年旗舰水平',
@@ -56,7 +56,7 @@ export const equipment: item[] = [
 	},
 	{
 		name: '狼蛛S31',
-		image: 'https://image.lolimi.cn/2026/01/10/69621b164cbed.webp',
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e425e2d02db.png',
 		src: 'https://detail.zol.com.cn/1973/1972786/param.shtml',
 		category: '生产力',
 		desc: '一款高性价比有线电竞鼠标，兼顾游戏与办公需求，支持四挡DPI调节与RGB炫彩呼吸灯效，人体工学设计带来舒适握持体验。',
@@ -73,7 +73,7 @@ export const equipment: item[] = [
 	},
 	{
 		name: '微星GK50Z',
-		image: 'https://image.lolimi.cn/2026/01/10/69621c5338e3f.webp',
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e425e257dba.png',
 		src: 'https://www.msi.cn/Gaming-Gear/VIGOR-GK50Z/Specification',
 		category: '生产力',
 		desc: '一款百元级高性价比有线机械键盘，104键全尺寸布局，搭载高特防尘机械轴体，配备多彩混光与1.8米PVC线缆，兼顾游戏与办公需求，5000万次按压寿命保障耐用性{insert\_element\_0\_}。',
@@ -91,7 +91,7 @@ export const equipment: item[] = [
 	},
 	{
 		name: 'REDMI Buds 8 Pro',
-		image: 'https://image.lolimi.cn/2026/02/09/698933ec91ec5.webp',
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e425e257aef.png',
 		src: 'https://www.mi.com/prod/redmi-buds-8-pro',
 		category: '出行',
 		desc: '',
@@ -108,8 +108,8 @@ export const equipment: item[] = [
 		money: 369,
 	},
 	{
-		name: '酷态科 15号超级电脑柱 Ultra',
-		image: 'https://image.lolimi.cn/2026/02/28/69a254b23893d.webp',
+		name: '酷态科 15号超级电能柱',
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e425e257a3e.webp',
 		src: 'https://cuktech.com.cn/show_procon.thtml?id=219',
 		category: '出行',
 		desc: '双Type-C输入（165W），三口输出（140W+90W+33W），72Wh大容量，支持PD/QC/PPS多协议快充，轻薄便携，高效续航。',
@@ -126,8 +126,8 @@ export const equipment: item[] = [
 	},
 	{
 		name: 'JAVA 御夫座',
-		image: 'https://image.lolimi.cn/2026/01/23/6973699e3961e.jpg', // 产品实拍图（含车架、轮组、细节）
-		src: 'http://www.javabike.cn/ProductsDetail/3906.html', // 品牌官网链接
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e42689610b3.png', // 产品实拍图（含车架、轮组、细节）
+		src: 'https://www.javabike.cn/ProductsDetail/3906.html', // 品牌官网链接
 		category: '出行', // 所属分类（出行装备）
 		desc: '入门级轻量化公路车，采用航空级铝合金车架与Shimano变速系统，兼顾通勤效率与运动骑行体验，适合城市铺装路面及轻度长途拉练，人体工学坐垫+弯把设计降低骑行疲劳。',
 		info: { // 核心参数（按优先级排序）
@@ -144,7 +144,7 @@ export const equipment: item[] = [
 	},
 	{
 		name: '猫与少年双肩包',
-		image: 'https://image.lolimi.cn/2026/01/11/69632abd82c18.webp',
+		image: 'https://s3.qixz.cn/ywty/2026/04/19/69e42688aa1d0.webp',
 		src: 'https://www.kokuyo.cn/',
 		category: '出行',
 		desc: '高颜值双肩包，主打萌系猫主题设计，融合经典简约美学与少年感元素。',
