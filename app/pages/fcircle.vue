@@ -7,7 +7,7 @@ layoutStore.setAside(['blog-stats', 'blog-tech', 'blog-log', 'comm-group'])
 
 const title = '朋友圈：发现更多有趣的博主'
 const description = '发现更多有趣的博主。'
-const image = 'https://i.p-i.vip/135/20251129-692ade5d9f367.webp'
+const image = 'https://s3.qixz.cn/ywty/2026/04/19/69e44192c7c0c.webp'
 useSeoMeta({ title, description, ogImage: image })
 
 // 类型定义
@@ -198,9 +198,6 @@ onUnmounted(() => {
 </ZPageBanner>
 
 <div class="page-fcircle">
-	<h1 class="sr-only">
-		朋友圈
-	</h1>
 	<div class="fcircle">
 		<!-- 加载指示器 -->
 		<div v-if="isLoading" class="loading-container">

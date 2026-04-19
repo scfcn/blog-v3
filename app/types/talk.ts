@@ -14,6 +14,8 @@ export interface TalkItem {
 		id: string
 		author?: string
 		title?: string
+		url?: string
+		cover?: string
 	}
 	link?: {
 		url: string

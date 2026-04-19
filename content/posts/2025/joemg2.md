@@ -7,7 +7,7 @@ categories: [技术干货]
 tags: [魔改, Joe]
 recommend: 12
 description: 本教程介绍如何在博客中新增轻量朋友圈页面，需先部署Friend-Circle-Lite项目。部署后，在博客后台添加独立页面代码，包括API地址、加载设置和样式脚本。教程提供代码示例和效果预览。
-image: https://image.lolimi.cn/2025/11/29/692adfc0bbeb6.webp
+image: https://s3.qixz.cn/ywty/2026/04/19/69e44176ada86.webp
 ---
 
 本文系Joe再续前缘主题魔改类第二篇教程，前置教程请见.
@@ -56,7 +56,7 @@ caption: 轻量朋友圈页面前端效果预览
 ## 每日精选
 ::pic
 ---
-src: https://image.lolimi.cn/2025/11/29/692adfc0bbeb6.webp
+src: https://s3.qixz.cn/ywty/2026/04/19/69e44176ada86.webp
 caption: Joe再续前缘主题朋友圈页面配图
 ---
 ::

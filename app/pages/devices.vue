@@ -23,12 +23,22 @@ function handleTabClick(category: string) {
 }
 
 function goComment(content: string) {
-	const textarea = document.querySelector('.atk-textarea') as HTMLTextAreaElement
-	if (textarea) {
-		textarea.value = `> ${content.replace(/<[^>]+>/g, '')}\n\n`
-		textarea.focus()
-		textarea.scrollIntoView({ behavior: 'smooth', block: 'center' })
+	const input = document.querySelector('#twikoo .tk-input textarea')
+	if (!(input instanceof HTMLTextAreaElement))
+		return
+
+	if (content?.trim()) {
+		const quotes = content.split('\n').map(str => `> ${str}`)
+		input.value = `${quotes}\n\n`
 	}
+	else {
+		input.value = ''
+	}
+	input.dispatchEvent(new InputEvent('input'))
+
+	const length = input.value.length
+	input.setSelectionRange(length, length)
+	input.focus()
 }
 
 const getCategoryCount = computed(() => (category: string) => {
@@ -38,9 +48,6 @@ const getCategoryCount = computed(() => (category: string) => {
 
 <template>
 <div id="icat-equipment">
-	<h1 class="sr-only">
-		我的装备
-	</h1>
 	<div class="equipment-category">
 		<!-- 顶部导航栏 -->
 		<div class="categories-tabs">

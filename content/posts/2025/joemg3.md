@@ -6,7 +6,7 @@ categories: [技术干货]
 recommend: 12
 tags: [魔改, Joe]
 description: 本教程介绍Joe主题魔改新增友人帐页面延迟展示功能，需修改/usr/themes/joe/friends.php文件，替换为指定PHP代码，实现友链展示及状态标签延迟加载。部署后，友人帐页面将按设置延迟显示状态标签，提升用户体验。
-image: https://image.lolimi.cn/2025/07/30/6889a330421ce.png
+image: https://s3.qixz.cn/ywty/2026/04/19/69e4417ac84d6.webp
 ---
 
 # 本文系Joe再续前缘主题魔改类第三篇教程，前置教程请见.
@@ -255,7 +255,7 @@ caption: 友链延迟展示功能前端效果预览
 ## 每日精选
 ::pic
 ---
-src: https://image.lolimi.cn/2025/07/30/6889a330421ce.png
+src: https://s3.qixz.cn/ywty/2026/04/19/69e4417ac84d6.webp
 caption: Joe再续前缘主题友人帐页面预览图
 ---
 ::

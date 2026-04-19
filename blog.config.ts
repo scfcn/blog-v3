@@ -69,8 +69,8 @@ const blogConfig = {
 		enable: true,
 		message: '感谢您的支持，这将激励我创作更多优质内容！',
 		items: {
-			支付宝: 'https://image.lolimi.cn/2026/02/05/698495aa7d10d.webp',
-			微信: 'https://image.lolimi.cn/2026/02/05/698495aa1980d.webp',
+			支付宝: 'https://s3.qixz.cn/ywty/2026/04/19/69e44a1215c90.jpg',
+			微信: 'https://s3.qixz.cn/ywty/2026/04/19/69e44a12141af.png',
 		},
 	},
 

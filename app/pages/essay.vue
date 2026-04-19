@@ -9,7 +9,7 @@ layoutStore.setAside(['blog-stats', 'blog-log', 'comm-group'])
 
 const title = '说说：记录生活点滴，一些想法'
 const description = '记录生活点滴，一些想法。'
-const image = 'https://eimg.yujiay.wang/images/2025/12/27/-.jpg'
+const image = 'https://s3.qixz.cn/ywty/2026/04/19/69e44174e38dd.webp'
 useSeoMeta({ title, description, ogImage: image })
 
 const { author } = useAppConfig()
@@ -89,9 +89,6 @@ function getEssayDate(date?: string | Date) {
 <template>
 <ZPageBanner :title :description :image />
 
-<h1 class="sr-only">
-	说说
-</h1>
 <div class="talk-list">
 	<!-- 加载状态 -->
 	<template v-if="isLoading">
@@ -157,10 +154,12 @@ function getEssayDate(date?: string | Date) {
 
 				<div class="talk-content">
 					<div v-if="talk.text" class="text" v-html="talk.text" />
-					<div v-if="talk.images" class="images">
+					<div v-if="talk.images?.length" class="images">
 						<Pic v-for="(img, imgIndex) in talk.images" :key="imgIndex" class="image" :src="img" />
 					</div>
+					<MusicPlayer v-if="talk.music" class="music" v-bind="talk.music" />
 					<VideoEmbed v-if="talk.video" class="video" v-bind="talk.video" height="" />
+					<LinkCard v-if="talk.link" class="link" :link="talk.link.url" :title="talk.link.title || ''" :description="talk.link.description" :icon="talk.link.image" />
 				</div>
 
 				<div class="talk-bottom">
@@ -293,6 +292,16 @@ function getEssayDate(date?: string | Date) {
 			.video {
 				margin: 0;
 				border-radius: 8px;
+			}
+
+			.music {
+				margin: 0.5rem 0;
+			}
+
+			.link {
+				margin: 0.5rem auto;
+				width: 100%;
+				max-width: 400px;
 			}
 		}
 

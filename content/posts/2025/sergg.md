@@ -7,7 +7,7 @@ categories: [随笔杂谈]
 recommend: 5
 tags: [攻击]
 description: 网站于2025年8月9日遭受持续3秒的CC攻击，带宽达3.51 Mbps，流量662 MB，攻击次数4.4万，主要来自中国大陆陕西省宝鸡市IPv6地址。服务器宕机后经工程师重启恢复，数据通过WebDAV备份成功恢复。已将防御方式从JS质询改为拦截，目前CDN配置为丘盾加速大陆流量，EO防护海外并关闭IPv6访问。
-image: https://i.p-i.vip/135/20260102-6957653b4f3a0.png
+image: https://s3.qixz.cn/ywty/2026/04/19/69e4417403081.webp
 ---
 
 ## 前言
@@ -58,13 +58,10 @@ caption: 云驰互联工程师重启服务器记录
 ### 防御力度分析
 处置方式全部是`JS质询`，导致可以一直攻击，目前已经更换为`拦截`。
 
-#### 目前CDN配置
-使用[丘盾](https://panel.scdn.koxiuqiu.cc/){:target="_blank"}为大陆提供加速，EO防护海外，均关闭v6访问。
-
 ## 每日精选
 ::pic
 ---
-src: https://image.lolimi.cn/2025/11/29/692ae0a09711a.webp
+src: https://s3.qixz.cn/ywty/2026/04/19/69e4417403081.webp
 caption: 每日精选图片
 ---
 ::

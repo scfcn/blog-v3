@@ -7,7 +7,7 @@ categories: [技术干货]
 tags: [魔改, Joe]
 recommend: 12
 description: 本文介绍了如何为Joe主题添加友链状态页面，需先部署友链检测项目，并在博客中添加`ckflink.php`文件。教程还指导了在后台配置独立页面，并展示了前端效果预览。
-image: https://image.lolimi.cn/2025/11/29/692ae13d33cc8.webp
+image: https://s3.qixz.cn/ywty/2026/04/19/69e4418d1b93f.webp
 ---
 
 ## 本文系Joe再续前缘主题魔改类第一篇正式教程，前置教程请见.
@@ -512,7 +512,7 @@ caption: 友链状态页面前端效果预览
 ## 每日精选
 ::pic
 ---
-src: https://image.lolimi.cn/2025/11/29/692ae13d33cc8.webp
-caption: 每日精选配图
+src: https://s3.qixz.cn/ywty/2026/04/19/69e4418d1b93f.webp
+caption: 每日一图
 ---
 ::

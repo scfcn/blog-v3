@@ -20,7 +20,7 @@ export interface ApiTalkItem {
 		id: string
 		name: string
 		usage_count: number
-		created_at: string
+		created_at: string | number
 	}[]
 	echo_files?: {
 		id: string
@@ -38,7 +38,7 @@ export interface ApiTalkItem {
 			width: number
 			height: number
 			category: string
-			created_at: string
+			created_at: string | number
 		}
 		sort_order: number
 	}[]
@@ -49,7 +49,7 @@ export interface ApiTalkItem {
 		payload?: Record<string, unknown>
 	}
 	fav_count: number
-	created_at: string
+	created_at: string | number
 }
 
 export interface FetchTalksOptions {
@@ -60,6 +60,14 @@ export interface FetchTalksOptions {
 export async function fetchTalks(options: FetchTalksOptions = {}): Promise<TalkItem[]> {
 	const { page = 1, pageSize = 20 } = options
 	const baseUrl = 'https://mm.qixz.cn'
+
+	function normalizeDate(date: string | number | undefined): string {
+		if (!date) return new Date().toISOString()
+		if (typeof date === 'number') {
+			return new Date(date * 1000).toISOString()
+		}
+		return date
+	}
 
 	try {
 		const response = await fetch(`${baseUrl}/api/echo/page?page=${page}&pageSize=${pageSize}`)
@@ -73,14 +81,14 @@ export async function fetchTalks(options: FetchTalksOptions = {}): Promise<TalkI
 			const talkItem: TalkItem = {
 				id: Number.parseInt(item.id.replace(/-/g, '').slice(0, 8), 16),
 				text: item.content,
-				date: item.created_at,
+				date: normalizeDate(item.created_at),
 				tags: item.tags?.map(tag => tag.name) || [],
 			}
 
 			if (item.echo_files && item.echo_files.length > 0) {
 				const imageFiles = item.echo_files.filter(f => f.file?.category === 'image')
 				if (imageFiles.length > 0) {
-					talkItem.images = imageFiles.map(f => f.file?.url || '')
+					talkItem.images = imageFiles.map(f => f.file?.url || '').filter(Boolean)
 				}
 			}
 
@@ -98,7 +106,7 @@ export async function fetchTalks(options: FetchTalksOptions = {}): Promise<TalkI
 					}
 				}
 				else if (extType === 'MUSIC') {
-					const payload = item.extension.payload as { type?: string, id?: string, author?: string, title?: string } | undefined
+					const payload = item.extension.payload as { type?: string, id?: string, author?: string, title?: string, url?: string, cover?: string } | undefined
 					const musicTypeRaw = payload?.type || 'netease'
 					const musicType: 'netease' | 'qq' | 'kugou' | 'kuwo' | 'xiami' | 'apple' | 'spotify' = ['netease', 'qq', 'kugou', 'kuwo', 'xiami', 'apple', 'spotify'].includes(musicTypeRaw) ? musicTypeRaw as any : 'netease'
 
@@ -107,6 +115,8 @@ export async function fetchTalks(options: FetchTalksOptions = {}): Promise<TalkI
 						id: payload?.id || item.extension.id,
 						author: payload?.author,
 						title: payload?.title,
+						url: payload?.url,
+						cover: payload?.cover,
 					}
 				}
 				else if (extType === 'LINK') {
