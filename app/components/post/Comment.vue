@@ -180,8 +180,8 @@ onMounted(() => {
 		.tk-owo-emotion {
 			width: auto;
 			height: 4.2em;
-			vertical-align: middle;
 			margin: 0 0.2em;
+			vertical-align: middle;
 		}
 
 		a {

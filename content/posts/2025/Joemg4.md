@@ -6,7 +6,7 @@ categories: [技术干货]
 tags: [魔改, Joe]
 recommend: 12
 description: 文章介绍了如何为网站添加个性化定位欢迎信息功能，主要使用JavaScript代码实现。通过调用IP查询API获取用户位置信息，并根据用户所在地显示不同的欢迎语和距离提示。代码还包含根据本地时间切换欢迎语的功能，并适配了IPv6地址显示。最后，通过在HTML中添加自定义侧边栏代码，即可实现前端效果。
-image: https://pic.wudu.ltd/pic/2026/02/25/699edbbce61dc.webp
+image: https://s3.qixz.cn/ywty/2026/04/19/69e44fb7714db.webp
 ---
 
 ## 功能介绍
@@ -103,7 +103,7 @@ caption: 最终效果预览
 
 ::pic
 ---
-src: https://pic.wudu.ltd/pic/2026/02/25/699edbbce61dc.webp
+src: https://s3.qixz.cn/ywty/2026/04/19/69e44fb7714db.webp
 caption: 技术与美学的结合
 ---
 ::

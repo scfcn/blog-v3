@@ -299,9 +299,9 @@ function getEssayDate(date?: string | Date) {
 			}
 
 			.link {
-				margin: 0.5rem auto;
 				width: 100%;
 				max-width: 400px;
+				margin: 0.5rem auto;
 			}
 		}
 

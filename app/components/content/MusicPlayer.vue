@@ -24,7 +24,8 @@ const musicInfo = computed(() => {
 })
 
 const coverUrl = computed(() => {
-	if (props.cover) return props.cover
+	if (props.cover)
+		return props.cover
 	switch (props.type) {
 		case 'netease':
 			return `https://p1.music.126.net/${props.id}/${props.id}.jpg`
@@ -34,7 +35,8 @@ const coverUrl = computed(() => {
 })
 
 const audioUrl = computed(() => {
-	if (props.url) return props.url
+	if (props.url)
+		return props.url
 	switch (props.type) {
 		case 'netease':
 			return `https://music.163.com/song/media/outer/url?id=${props.id}.mp3`
@@ -71,7 +73,8 @@ const externalUrl = computed(() => {
 })
 
 function togglePlay() {
-	if (!audioRef.value) return
+	if (!audioRef.value)
+		return
 	if (isPlaying.value) {
 		audioRef.value.pause()
 	}
@@ -90,7 +93,8 @@ function onPause() {
 }
 
 function onTimeUpdate() {
-	if (!audioRef.value) return
+	if (!audioRef.value)
+		return
 	currentTime.value = audioRef.value.currentTime
 	duration.value = audioRef.value.duration || 0
 	if (duration.value > 0) {
@@ -105,7 +109,8 @@ function onLoadedMetadata() {
 }
 
 function seek(e: MouseEvent) {
-	if (!audioRef.value || !duration.value) return
+	if (!audioRef.value || !duration.value)
+		return
 	const target = e.currentTarget as HTMLElement
 	const rect = target.getBoundingClientRect()
 	const percent = (e.clientX - rect.left) / rect.width
@@ -113,7 +118,8 @@ function seek(e: MouseEvent) {
 }
 
 function formatTime(seconds: number): string {
-	if (!seconds || !Number.isFinite(seconds)) return '0:00'
+	if (!seconds || !Number.isFinite(seconds))
+		return '0:00'
 	const mins = Math.floor(seconds / 60)
 	const secs = Math.floor(seconds % 60)
 	return `${mins}:${secs.toString().padStart(2, '0')}`
@@ -146,15 +152,19 @@ onUnmounted(() => {
 		</div>
 
 		<div class="info">
-			<div class="title">{{ musicInfo.title }}</div>
-			<div class="author">{{ musicInfo.author }}</div>
+			<div class="title">
+				{{ musicInfo.title }}
+			</div>
+			<div class="author">
+				{{ musicInfo.author }}
+			</div>
 
 			<div class="progress-bar" @click="seek">
 				<div class="progress" :style="{ width: `${progress}%` }" />
 			</div>
 
 			<div class="controls">
-				<button class="play-btn" @click="togglePlay" :disabled="isLoading">
+				<button class="play-btn" :disabled="isLoading" @click="togglePlay">
 					<Icon v-if="isLoading" name="ph:spinner-bold" class="spin" />
 					<Icon v-else-if="isPlaying" name="ph:pause-fill" />
 					<Icon v-else name="ph:play-fill" />
@@ -178,8 +188,8 @@ onUnmounted(() => {
 	overflow: hidden;
 	margin: 1rem 0;
 	border-radius: 0.8rem;
-	background: var(--c-bg-2);
 	box-shadow: 0 2px 0.5rem var(--ld-shadow);
+	background: var(--c-bg-2);
 }
 
 audio {
@@ -227,8 +237,8 @@ audio {
 }
 
 .info {
-	flex: 1;
 	display: flex;
+	flex: 1;
 	flex-direction: column;
 	gap: 0.3rem;
 	min-width: 0;
@@ -236,18 +246,18 @@ audio {
 
 .title {
 	overflow: hidden;
-	font-weight: 600;
 	font-size: 0.95rem;
-	text-overflow: ellipsis;
+	font-weight: 600;
 	white-space: nowrap;
+	text-overflow: ellipsis;
 	color: var(--c-text-1);
 }
 
 .author {
 	overflow: hidden;
 	font-size: 0.8rem;
-	text-overflow: ellipsis;
 	white-space: nowrap;
+	text-overflow: ellipsis;
 	color: var(--c-text-3);
 }
 
@@ -290,8 +300,8 @@ audio {
 	background: var(--c-primary);
 	font-size: 1rem;
 	color: white;
-	cursor: pointer;
 	transition: all 0.2s;
+	cursor: pointer;
 
 	&:hover:not(:disabled) {
 		background: var(--c-primary-hover);

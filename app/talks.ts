@@ -62,7 +62,8 @@ export async function fetchTalks(options: FetchTalksOptions = {}): Promise<TalkI
 	const baseUrl = 'https://mm.qixz.cn'
 
 	function normalizeDate(date: string | number | undefined): string {
-		if (!date) return new Date().toISOString()
+		if (!date)
+			return new Date().toISOString()
 		if (typeof date === 'number') {
 			return new Date(date * 1000).toISOString()
 		}
